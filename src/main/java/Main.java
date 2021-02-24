@@ -2,7 +2,7 @@ import processing.core.PApplet;
 
 public class Main extends PApplet {
 
-player.
+
     public static void main(String[] args ) {
         PApplet.main("Main");
     }
@@ -11,7 +11,7 @@ player.
     public void settings() {
         size(1000,1000);
     }
-
+    Location location = new Location();
     Player player = new Player(this);
 
 
