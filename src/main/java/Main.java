@@ -2,6 +2,7 @@ import processing.core.PApplet;
 
 public class Main extends PApplet {
 
+    ImageLoader imgLoad = new ImageLoader(this);
 
     public static void main(String[] args ) {
         PApplet.main("Main");
