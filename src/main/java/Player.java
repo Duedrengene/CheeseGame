@@ -35,6 +35,7 @@ public class Player {
         p.rect(position.x,position.y,playerWidth,playerHeight);
         changePosition();
 
+
     }
 
     void interact(){
