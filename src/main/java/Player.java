@@ -9,6 +9,9 @@ public class Player {
     PVector position = new PVector();
     PVector velocity = new PVector();
 
+    PVector volicityaim = new PVector();
+
+
     PApplet p;
     int playerWidth = 10;
     int playerHeight=10;
@@ -17,6 +20,9 @@ public class Player {
 
     Player(PApplet p){
         this.p = p;
+        this.velocity.x = velocity.x;
+        this.velocity.y = velocity.y;
+
         position.set(100,this.p.height/2);
 
     }
@@ -28,12 +34,23 @@ public class Player {
         position.x =p.constrain(position.x,0,p.width-playerWidth);
         position.y=  p.constrain(position.y,0,p.height-playerHeight);
     }
+   void setVolicityaim(){
+        float angle = p.atan2(p.mouseY-velocity.y,p.mouseX-velocity.x);
+        float x = velocity.x+1800*p.cos(angle);
+        float y = velocity.y+1800*p.sin(angle);
+        p.stroke(255,0,0,180);
+        p.strokeWeight(3);
+        p.line(x,y,position.x,position.y);
 
+
+   }
 
     void draw(){
         changePosition();
         p.rect(position.x,position.y,playerWidth,playerHeight);
         changePosition();
+        setVolicityaim();
+
 
 
     }
