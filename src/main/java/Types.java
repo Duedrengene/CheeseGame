@@ -1,4 +1,8 @@
-public class Types {
-    String[] furnitureTypes  ={"shopSlot","cashRegister"};
+public enum Types {
+    shopCounter,
+    cashRegister
+
+
+
 
 }
