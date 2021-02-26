@@ -9,6 +9,9 @@ public class Player {
     PVector position = new PVector();
     PVector velocity = new PVector();
 
+
+boolean showAim = false;
+
     PApplet p;
     int playerWidth = 10;
     int playerHeight=10;
@@ -17,6 +20,8 @@ public class Player {
 
     Player(PApplet p){
         this.p = p;
+
+
         position.set(100,this.p.height/2);
 
     }
@@ -28,12 +33,19 @@ public class Player {
         position.x =p.constrain(position.x,0,p.width-playerWidth);
         position.y=  p.constrain(position.y,0,p.height-playerHeight);
     }
-
+   void setVolicityaim(){
+        if(showAim == true);
+        p.stroke(255,0,0,180);
+        p.strokeWeight(3);
+p.line(p.mouseX,p.mouseY,position.x,position.y);
+   }
 
     void draw(){
         changePosition();
         p.rect(position.x,position.y,playerWidth,playerHeight);
         changePosition();
+        setVolicityaim();
+
 
 
     }
@@ -48,8 +60,14 @@ public class Player {
     void controls(char key, int keyCode,  boolean pressed){
         velocity.set(0,0);
         if (key != p.CODED)
-            switch(key){
+            switch(key) {
 
+
+                case 'f': {
+                    if ((pressed) && (ready))
+                        showAim = true;
+
+            }break;
 
                 case 's': {
                     if((pressed) &&(ready))
@@ -79,7 +97,10 @@ public class Player {
                     else
                         right=false;
 
+
+
                 }break;
+
 
 
             }
