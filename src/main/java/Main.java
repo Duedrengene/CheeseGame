@@ -24,11 +24,14 @@ public class Main extends PApplet {
 
 
 
+
     @Override
     public void setup() {
+        super.setup();
         furnitureList.add(new Furniture(this,Types.shopCounter,50,50));
         shop =new Shop(furnitureList);
         location = new Location(shop,dungeon);
+        imgLoad.loadTheImages();
     }
 
     @Override

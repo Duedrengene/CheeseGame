@@ -13,7 +13,7 @@ public class ImageLoader {
     PImage parmesan;
     PImage cheddar;
     PImage madonna;
-    PImage mozarella;
+    PImage pizzatopping;
 
     //Player models
     PImage npcmale;
@@ -24,10 +24,22 @@ public class ImageLoader {
 
     ImageLoader(PApplet p) { this.p = p;}
 
-    void loadTheImages(int var, int w, int h) {
+    void loadTheImages() {
+/// Hvis resize(skulle importeres).
+        //scaleH = (float) w/1920;
+        //scaleW = (float) h/1080;
 
-        scaleH = (float) w/1920;
-        scaleW = (float) h/1080;
+        //Loaditemsmodel
+        pizzatopping = p.loadImage("pizza topping.png");
+        cheddar = p.loadImage("cheddar.png");
+        madonna = p.loadImage("Primadonna.png");
+        //Characters & Mobs
+        captaincheese = p.loadImage("Kaptajn Ost.png");
+        //Backgrounds
+
+
+
+
 
     }
 
