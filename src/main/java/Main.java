@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 public class Main extends PApplet {
 
-    ArrayList<Furniture> furnitureList = new ArrayList<>();
+    ArrayList<FurnitureB> furnitureBList = new ArrayList<>();
+    ArrayList<GridSpace> grid = new ArrayList<>();
+    GridCreater gridCreate = new GridCreater();
     ImageLoader imgLoad = new ImageLoader(this);
+
 
 
     public static void main(String[] args ) {
@@ -16,27 +19,33 @@ public class Main extends PApplet {
     public void settings() {
         size(1000,1000);
     }
+
     Shop shop;
     Dungeon dungeon;
     Location location;
     Player player = new Player(this);
 
-
-
-
     @Override
     public void setup() {
-        furnitureList.add(new Furniture(this,Types.shopCounter,50,50));
-        shop =new Shop(furnitureList);
+        grid = gridCreate.createGrid(width,height,this);
+        furnitureBList.add(new FurnitureB(this,Types.shopCounter,50,50));
+        shop =new Shop(furnitureBList);
         location = new Location(shop,dungeon);
+
     }
 
     @Override
     public void draw() {
         clear();
         background(0);
+
+
+
         player.draw();
         location.functions();
+        for(int i = 0;grid.size()>i;i++)
+            grid.get(i).display();
+            println(grid.size());
 
 
     }

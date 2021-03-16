@@ -19,12 +19,18 @@ public class ImageLoader {
     PImage npcmale;
     PImage captaincheese;
     PImage enemy;
+
+    //Furniture
+
+    PImage wall;
     float scaleW = 1;
     float scaleH = 1;
 
     ImageLoader(PApplet p) { this.p = p;}
 
     void loadTheImages(int var, int w, int h) {
+        p.loadImage("wall.png");
+
 
         scaleH = (float) w/1920;
         scaleW = (float) h/1080;

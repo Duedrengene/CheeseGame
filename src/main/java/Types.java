@@ -1,6 +1,8 @@
 public enum Types {
     shopCounter,
-    cashRegister
+    cashRegister,
+    door,
+    wall
 
 
 

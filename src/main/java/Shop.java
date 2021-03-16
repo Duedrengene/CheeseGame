@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 public class Shop {
 
-ArrayList<Furniture> furnitureList;
+ArrayList<FurnitureB> furnitureBList;
 
 
-    Shop(ArrayList<Furniture> furnitureList){
-        this.furnitureList = furnitureList;
+    Shop(ArrayList<FurnitureB> furnitureBList){
+        this.furnitureBList = furnitureBList;
 
 
 
     }
 
     void shopFunction(){
-        for(int i = 0;i<furnitureList.size();i++){
-            furnitureList.get(i).display();
+        for(int i = 0; i< furnitureBList.size(); i++){
+            furnitureBList.get(i).display();
 
 
 
