@@ -18,7 +18,8 @@ public class ImageLoader {
     //Player models
     PImage npcmale;
     PImage captaincheese;
-    PImage enemy;
+    PImage cheeseGolem;
+    PImage cheeseDemon;
     float scaleW = 1;
     float scaleH = 1;
 
@@ -35,6 +36,8 @@ public class ImageLoader {
         madonna = p.loadImage("Primadonna.png");
         //Characters & Mobs
         captaincheese = p.loadImage("Kaptajn Ost.png");
+        cheeseGolem = p.loadImage("cheesemob.png");
+        cheeseDemon = p.loadImage("cheesedemon.png");
         //Backgrounds
 
 
