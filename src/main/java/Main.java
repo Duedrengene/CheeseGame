@@ -6,7 +6,7 @@ public class Main extends PApplet {
 
     ArrayList<Furniture> furnitureList = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
-
+   int level;
 
     public static void main(String[] args ) {
         PApplet.main("Main");
