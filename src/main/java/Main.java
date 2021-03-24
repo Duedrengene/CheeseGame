@@ -35,8 +35,7 @@ public class Main extends PApplet {
         grid = gridCreate.createGrid(width,height,this);
         shop =new Shop(furnitureList,grid);
         location = new Location(shop,dungeon);
-        furnitureList.add(new Furniture(this,Types.shopCounter,50,50));
-        shop =new Shop(furnitureList);
+        shop =new Shop(furnitureList,grid);
         location = new Location(shop,dungeon);
         imgLoad.loadTheImages();
     }

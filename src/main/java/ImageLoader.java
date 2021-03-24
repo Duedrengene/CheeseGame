@@ -34,7 +34,7 @@ public class ImageLoader {
 
 
 
-    void loadTheImages(int var, int w, int h) {
+    void loadTheImages() {
 
 /// Hvis resize(skulle importeres).
         //scaleH = (float) w/1920;
