@@ -11,22 +11,20 @@ public class Location {
     }
 
 
-    LocationType location = LocationType.shop;
+    LocationType location = LocationType.dungeon;
 
 
     void functions(){
     if(location == LocationType.shop){
         shop.shopFunction();
 
+    }}
+
+    void changeShop(LocationType location){
+        this.location = location;
 
 
     }
-
-
-
-
-    }
-
 
 
 

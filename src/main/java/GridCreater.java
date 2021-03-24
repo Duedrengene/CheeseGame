@@ -14,6 +14,7 @@ int gridNumber = 10;
         for(int i2 = 1;i2<gridNumber ;i2++)
             grid.add(new GridSpace((width/gridNumber)*i,(height/gridNumber)*i2,width/gridNumber,height/gridNumber,p));;
         }
+
     return grid;
 
 
