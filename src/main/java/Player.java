@@ -41,17 +41,26 @@ p.line(p.mouseX,p.mouseY,position.x,position.y);
    }
 
     void draw(){
+
         changePosition();
-        p.rect(position.x,position.y,playerWidth,playerHeight);
+        //if(level ==1) {
+            //p.image(captaincheese,position.x,position.y);
+            p.rect(position.x,position.y,playerWidth,playerHeight);
+        //}
         changePosition();
         setVolicityaim();
+        simulate();
+        interact();
 
 
 
     }
+ void simulate() {
+     //if (level == 1) {
+    // }
+ }
 
     void interact(){
-
 
     }
 

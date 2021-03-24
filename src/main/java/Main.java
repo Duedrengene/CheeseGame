@@ -13,6 +13,8 @@ public class Main extends PApplet {
     Dungeon dungeon;
     Location location;
     Player player = new Player(this);
+	int level;
+
 
     public static void main(String[] args ) {
         PApplet.main("Main");
@@ -25,13 +27,18 @@ public class Main extends PApplet {
 
 
 
+
     @Override
     public void setup() {
+
 
         grid = gridCreate.createGrid(width,height,this);
         shop =new Shop(furnitureList,grid);
         location = new Location(shop,dungeon);
-
+        furnitureList.add(new Furniture(this,Types.shopCounter,50,50));
+        shop =new Shop(furnitureList);
+        location = new Location(shop,dungeon);
+        imgLoad.loadTheImages();
     }
 
     @Override
