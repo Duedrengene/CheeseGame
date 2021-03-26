@@ -9,10 +9,11 @@ public class Main extends PApplet {
     GridCreater gridCreate = new GridCreater();
     ImageLoader imgLoad = new ImageLoader(this);
 
+    Inventory inventory = new Inventory(this);
     Shop shop;
     Dungeon dungeon;
     Location location;
-    Player player = new Player(this);
+    Player player = new Player(this,inventory);
 	int level;
 
 
@@ -47,8 +48,6 @@ public class Main extends PApplet {
         background(0);
         location.functions();
         player.draw();
-
-
 
     }
 
