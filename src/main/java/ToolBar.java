@@ -35,7 +35,12 @@ public class ToolBar {
 
     }
 
+boolean checkClicked(int x,int y){
+        if(){}
+            else
 
+        return  false;
+}
 
 
 }

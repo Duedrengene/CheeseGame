@@ -32,13 +32,13 @@ public class Main extends PApplet {
     @Override
     public void setup() {
 
-
-        grid = gridCreate.createGrid(width,height,this);
-        shop =new Shop(furnitureList,grid);
-        location = new Location(shop,dungeon);
-        shop =new Shop(furnitureList,grid);
-        location = new Location(shop,dungeon);
         imgLoad.loadTheImages();
+
+        grid = gridCreate.createGrid(width,height,this,imgLoad,inventory);
+        shop =new Shop(furnitureList,grid);
+        location = new Location(shop,dungeon);
+        shop =new Shop(furnitureList,grid);
+        location = new Location(shop,dungeon);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Main extends PApplet {
     public void mousePressed(){
         for(int i = 0;i < grid.size();i++)
         grid.get(i).pressed(true,mouseX,mouseY);
-
+        inventory.selector(true);
 
         }
         public void mouseReleased(){

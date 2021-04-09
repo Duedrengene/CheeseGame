@@ -20,7 +20,11 @@ public class Inventory {
     }
 
 
+    void selector(int mouseX,int mouseY){
 
+
+
+}
 
     void add(Items item,int number){
 

@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 public class ImageLoader {
-    //Bagrounds
+    //Backgrounds
     PImage cave;
     PImage startup;
 
@@ -25,6 +25,9 @@ public class ImageLoader {
     //Furniture
 
     PImage wall;
+    PImage door;
+    PImage shopCounter;
+    PImage cashRegister;
 
 
     float scaleW = 1;
@@ -40,8 +43,13 @@ public class ImageLoader {
         //scaleH = (float) w/1920;
         //scaleW = (float) h/1080;
 
+        wall= p.loadImage("wall.png");
+        door = p.loadImage("door.png");
+        shopCounter = p.loadImage("shopCounter.png");
+        cashRegister = p.loadImage("cashRegister.png");
+
+
         //Loaditemsmodel
-		 p.loadImage("wall.png");
         pizzatopping = p.loadImage("pizza topping.png");
         cheddar = p.loadImage("cheddar.png");
         madonna = p.loadImage("Primadonna.png");
