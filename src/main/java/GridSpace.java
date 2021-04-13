@@ -31,12 +31,11 @@ gridType = newGridType;
 
 
 }
-    void pressed(boolean check,float mX,float mY){
+    void pressed(boolean check,float mX,float mY,Inventory inventory){
         if(check) {
             if(((mX <(x+width)) && ((x< mX)) )&& ((mY < y + height) && (mY > y))){
-                pressed = true;
-            } }
-        else{ pressed = false;
+             //   changeGridType(inventory.selected.);
+             }
 
 
         }
@@ -47,10 +46,7 @@ void display(){
 
 
 
-    if (pressed){
 
-        changeGridType(Types.wall);
-    }
 
 
 

@@ -9,6 +9,8 @@ public class Inventory {
     ArrayList<Item> itemList = new ArrayList<>();
     ArrayList<ToolBar> toolBarList = new ArrayList<>();
 
+    ToolBar selected;
+
     Inventory(PApplet p){
         this.p = p;
 
@@ -20,9 +22,8 @@ public class Inventory {
     }
 
 
-    void selector(int mouseX,int mouseY){
-
-
+    void selector(boolean pressed,int mouseX,int mouseY,Inventory inventory ){
+     //   if(pressed)
 
 }
 
