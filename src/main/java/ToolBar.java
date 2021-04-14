@@ -7,44 +7,47 @@ public class ToolBar {
 
     PApplet p;
 
-    PVector basePosition;
+    PVector position;
 
     ArrayList<Item> itemList = new ArrayList<>();
 
-
-
+    int width = 100;
+    int height = 100;
     int toolBarCount;
-    ToolBar(ArrayList<Item> itemList, int toolBarCount, PApplet p){
-        this.p =p;
+
+    boolean selected = false;
+
+    ToolBar(ArrayList<Item> itemList, int toolBarCount, PApplet p) {
+        this.p = p;
         this.toolBarCount = toolBarCount;
         this.itemList = itemList;
-         this.basePosition = new PVector((p.width / 2) - 300,p.height - 101);
+        this.position = new PVector((p.width / 2) - 300 + (toolBarCount * 100), p.height - 101);
+        System.out.println(p.height);
+
     }
 
 
-    void displayToolBar(){
+    void displayToolBar() {
 
-            p.strokeWeight(5);
-            p.stroke(255,0,0);
-            p.noFill();
-            if(itemList.size()>toolBarCount)
-                p.fill(255,255,255);
-            p.rect(basePosition.x+((5+toolBarCount)*100), p.height - 101, 100, 100);
+        p.strokeWeight(5);
+        p.stroke(255, 0, 0);
         p.noFill();
-            p.stroke(0);
-            p.strokeWeight(0);
+        if (itemList.size() > toolBarCount)
+            p.fill(255, 255, 255);
+        p.rect(position.x, position.y, width, height);
+        p.noFill();
+        p.stroke(0);
+        p.strokeWeight(0);
 
-            if(itemList.size() >toolBarCount) {
-                p.image(itemList.get(toolBarCount).getImage(), basePosition.x+((5+toolBarCount)*100), p.height - 101);
-            }
+        if (itemList.size() > toolBarCount) {
+            p.image(itemList.get(toolBarCount).getImage(), position.x , position.y);
+        }
     }
-/*
-boolean checkClicked(int x,int y){
-        if(){}
-            else
 
-        return  false;
-}
+    boolean checkClicked(int x, int y) {
+     /*   if (x < position.x + width && x > position.x &&) {
+        }
 */
-
+return false;
+    }
 }

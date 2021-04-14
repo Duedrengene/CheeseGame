@@ -6,4 +6,8 @@ public interface Item {
 
     PImage getImage();
 
+    boolean getSelected();
+
+    void setSelected(boolean check);
+
 }
