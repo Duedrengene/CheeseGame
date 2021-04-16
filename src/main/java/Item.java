@@ -6,4 +6,5 @@ public interface Item {
 
     PImage getImage();
 
+    FurnitureTypes getType();
 }

@@ -40,6 +40,7 @@ public class Main extends PApplet {
         shop =new Shop(furnitureList,grid);
         location = new Location(shop,dungeon);
         inventory.itemList.add(new WallItem(imgLoad));
+        inventory.itemList.add(new DoorItem(imgLoad));
     }
 
     @Override
@@ -73,8 +74,4 @@ public class Main extends PApplet {
                // grid.get(i).pressed(false,mouseX,mouseY);
 
 */
-        }
-
-
-
-}
+        }}

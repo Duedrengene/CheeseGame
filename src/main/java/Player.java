@@ -82,6 +82,74 @@ public class Player {
             switch(key) {
 
 
+                case '1':{
+                    if(pressed == false) {
+                    inventory.toolBarList.get(0).selected = !inventory.toolBarList.get(0).selected;
+                    for(int i = 0; i<5;i++) {
+                        if(i!=0)
+                        inventory.toolBarList.get(i).selected = false;
+                    }
+                        if (inventory.toolBarList.get(0).selected)
+                            inventory.selected = inventory.toolBarList.get(0);
+                    }
+
+                }break;
+                case '2':{
+                    if(pressed == false) {
+                    inventory.toolBarList.get(1).selected = !inventory.toolBarList.get(1).selected;
+                    for(int i = 0; i<5;i++) {
+                        if (i != 1)
+                            inventory.toolBarList.get(i).selected = false;
+                    }
+                        if (inventory.toolBarList.get(1).selected)
+                        inventory.selected = inventory.toolBarList.get(1);
+                    }
+
+
+                }break;
+                case '3':{
+                    if(pressed == false) {
+                        if(inventory.itemList.size()>3)
+                    inventory.toolBarList.get(2).selected = !inventory.toolBarList.get(2).selected;
+                    for(int i = 0; i<5;i++) {
+                        if(i!=2)
+                            inventory.toolBarList.get(i).selected = false;
+                    }
+                        if (inventory.toolBarList.get(2).selected)
+                            inventory.selected = inventory.toolBarList.get(2);
+                    }
+
+
+                }break;
+                case '4':{
+                    if(pressed == false) {
+                        if(inventory.itemList.size()>4)
+                    inventory.toolBarList.get(3).selected = !inventory.toolBarList.get(3).selected;
+                    for(int i = 0; i<5;i++) {
+                        if(i!=3)
+                            inventory.toolBarList.get(i).selected = false;
+                    }
+                        if (inventory.toolBarList.get(3).selected)
+                            inventory.selected = inventory.toolBarList.get(3);
+                    }
+
+
+                }break;
+                case '5':{
+                    if(pressed == false) {
+                        if(inventory.itemList.size()>5)
+                        inventory.toolBarList.get(4).selected = !inventory.toolBarList.get(4).selected;
+                        for (int i = 0; i < 5; i++) {
+                            if (i != 4)
+                                inventory.toolBarList.get(i).selected = false;
+                        }
+                        if (inventory.toolBarList.get(4).selected)
+                            inventory.selected = inventory.toolBarList.get(4);
+                    }
+
+                }break;
+
+
                 case 'f': {
                     if ((pressed) && (ready))
                         showAim = true;

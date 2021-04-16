@@ -1,15 +1,12 @@
 import processing.core.PApplet;
 
-import java.awt.*;
-import java.util.ArrayList;
-
 public class GridSpace {
 
 float x,y,width,height;
 PApplet p;
 boolean pressed = false;
 
-Types gridType = Types.empty;
+FurnitureTypes gridType = FurnitureTypes.empty;
 ImageLoader imgLoad;
 
 
@@ -24,7 +21,7 @@ this.imgLoad = imgLoad;
 }
 
 
-void changeGridType(Types newGridType){
+void changeGridType(FurnitureTypes newGridType){
 
 gridType = newGridType;
 
@@ -34,7 +31,12 @@ gridType = newGridType;
     void pressed(boolean check,float mX,float mY,Inventory inventory){
         if(check) {
             if(((mX <(x+width)) && ((x< mX)) )&& ((mY < y + height) && (mY > y))){
-             //   changeGridType(inventory.selected.);
+                for (int i = 0; i<inventory.toolBarList.size();i++ )
+                    if(inventory.toolBarList.get(i).selected == true)
+                        if(gridType != inventory.itemList.get(i).getType())
+             changeGridType(inventory.itemList.get(i).getType());
+                        else
+                            changeGridType(FurnitureTypes.empty);
              }
 
 

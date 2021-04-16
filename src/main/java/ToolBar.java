@@ -13,6 +13,7 @@ public class ToolBar {
 
 
 
+    boolean selected = false;
     int toolBarCount;
     ToolBar(ArrayList<Item> itemList, int toolBarCount, PApplet p){
         this.p =p;
@@ -26,6 +27,8 @@ public class ToolBar {
 
             p.strokeWeight(5);
             p.stroke(255,0,0);
+            if(selected)
+                p.stroke(0,255,0);
             p.noFill();
             if(itemList.size()>toolBarCount)
                 p.fill(255,255,255);
