@@ -7,12 +7,12 @@ public class ToolBar {
 
     PApplet p;
 
-    PVector basePosition;
+    PVector position;
 
     ArrayList<Item> itemList = new ArrayList<>();
 
-
-
+    int width = 100;
+    int height = 100;
     boolean selected = false;
     int toolBarCount;
     ToolBar(ArrayList<Item> itemList, int toolBarCount, PApplet p){
@@ -25,14 +25,15 @@ public class ToolBar {
 
     void displayToolBar(){
 
-            p.strokeWeight(5);
-            p.stroke(255,0,0);
+
             if(selected)
                 p.stroke(0,255,0);
-            p.noFill();
-            if(itemList.size()>toolBarCount)
-                p.fill(255,255,255);
-            p.rect(basePosition.x+((5+toolBarCount)*100), p.height - 101, 100, 100);
+        p.strokeWeight(5);
+        p.stroke(255, 0, 0);
+        p.noFill();
+        if (itemList.size() > toolBarCount)
+            p.fill(255, 255, 255);
+        p.rect(position.x, position.y, width, height);
         p.noFill();
             p.stroke(0);
             p.strokeWeight(0);

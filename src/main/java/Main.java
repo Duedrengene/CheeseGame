@@ -9,11 +9,11 @@ public class Main extends PApplet {
     GridCreater gridCreate = new GridCreater();
     ImageLoader imgLoad = new ImageLoader(this);
 
-    Inventory inventory = new Inventory(this);
+    Inventory inventory;
     Shop shop;
     Dungeon dungeon;
     Location location;
-    Player player = new Player(this,inventory);
+    Player player;
 	int level;
 
 
@@ -33,6 +33,8 @@ public class Main extends PApplet {
     public void setup() {
 
         imgLoad.loadTheImages();
+         inventory = new Inventory(this);
+        player =new Player(this,inventory);
 
         grid = gridCreate.createGrid(width,height,this,imgLoad,inventory);
         shop =new Shop(furnitureList,grid);
