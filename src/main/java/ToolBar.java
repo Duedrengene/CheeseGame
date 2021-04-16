@@ -19,7 +19,7 @@ public class ToolBar {
         this.p =p;
         this.toolBarCount = toolBarCount;
         this.itemList = itemList;
-         this.basePosition = new PVector((p.width / 2) - 300,p.height - 101);
+         this.position = new PVector((p.width / 2) - 300,p.height - 101);
     }
 
 
@@ -39,7 +39,7 @@ public class ToolBar {
             p.strokeWeight(0);
 
             if(itemList.size() >toolBarCount) {
-                p.image(itemList.get(toolBarCount).getImage(), basePosition.x+((5+toolBarCount)*100), p.height - 101);
+                p.image(itemList.get(toolBarCount).getImage(), position.x+((1+toolBarCount)*100), p.height - 101);
             }
     }
 /*
