@@ -15,10 +15,26 @@ public class Location {
 
 
     void functions(){
-    if(location == LocationType.shop){
-        shop.shopFunction();
 
-    }}
+        switch (location) {
+
+            case shop: {
+                shop.shopFunction();
+
+
+            }
+            break;
+
+            case dungeon:{
+                dungeon.functions();
+
+            }break;
+
+        }
+
+
+
+    }
 
     void changeShop(LocationType location){
         this.location = location;

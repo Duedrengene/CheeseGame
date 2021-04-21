@@ -1,20 +1,16 @@
 
 import processing.core.PApplet;
 import processing.core.PVector;
-
-
 import java.util.ArrayList;
-
 import static processing.core.PConstants.*;
 
 public class Player {
 
-<<<<<<< HEAD
+
     ArrayList<Bullet> bullets;
-    //ArrayList<Integer> bulletpool;
-=======
+
     PApplet p;
->>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
+
 
     PVector position = new PVector();
     PVector velocity = new PVector();
@@ -24,25 +20,22 @@ public class Player {
     PVector bulletspeed = new PVector();
     //final int frequency = 2;
 
-<<<<<<< HEAD
+
     boolean isShooting = false;
     boolean showAim = false;
     boolean cooldown = false;
     boolean check = true;
-=======
+
     Inventory inventory;
 
-    boolean showAim = false;
     boolean down,up,left,right = false;
     boolean ready = true;
     boolean open = false;
->>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
 
+    boolean buildMode = false;
     int playerWidth = 10;
-<<<<<<< HEAD
     int playerHeight = 10;
-    boolean down, up, left, right = false;
-    boolean ready = true;
+
     float maximumhealth = 100;
     float healthbarWidth = 200;
     float healthbarHeight = 40;
@@ -51,25 +44,16 @@ public class Player {
 
 
 
-    Player(PApplet p, ArrayList<Bullet> bullets) {
+    Player(PApplet p, ArrayList<Bullet> bullets,Inventory inventory) {
         this.playerhealth = playerhealth;
         this.p = p;
         this.bullets = bullets;
         //this.bulletpool = bulletpool;
 
-=======
-    int playerHeight=10;
-
->>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
-
-    Player(PApplet p,Inventory inventory){
-
-        this.p = p;
         this.inventory = inventory;
 
 
         position.set(100, this.p.height / 2);
-
     }
 
 
@@ -82,16 +66,23 @@ public class Player {
 
         Walk(dir);
     }
-<<<<<<< HEAD
+
     public void Walk(PVector dir) {
         PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
 
     }
 
     void Dash(PVector position,PVector bodydash) {
-=======
+        //if(cooldown = false)
+        //
+
+        //bodydash = new PVector(position.x,position.y,0);
+        //bodydash.normalize(playerspeed);
+
+    }
+
    void setAim(){
-        if(showAim == true);
+
 
         p.stroke(255,0,0,180);
         p.strokeWeight(3);
@@ -101,53 +92,17 @@ public class Player {
        p.stroke(0);
        p.strokeWeight(1);
    }
->>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
 
-        //if(cooldown = false)
-       //
 
-<<<<<<< HEAD
-           //bodydash = new PVector(position.x,position.y,0);
-       //bodydash.normalize(playerspeed);
-
-    }
 
 
     void draw() {
         changePosition();
-=======
-       // changePosition();
->>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
-        //if(level ==1) {
-        //p.image(captaincheese,position.x,position.y);
+
         p.stroke(204, 102, 0);
         p.rect(position.x, position.y, playerWidth, playerHeight);
 
-        //}
         inventory.display();
-        changePosition();
-<<<<<<< HEAD
-        setVolicityaim();
-        showHealth();
-=======
-        setAim();
->>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
-        simulate();
-        interact();
-
-        runability();
-        //if (p.mousePressed && p.frameCount % Bullet.FREQUENCY == 0);
-        p.mouseClicked();
-
-
-            int bls = bullets.size();
-            while (bls-- != 0)
-                bullets.get(bls).script();
-
-
-            p.println(isShooting);
-
-            //p.println(bullets.size());
 
     }
 
@@ -168,12 +123,8 @@ public class Player {
         }
 
 
-    void setVolicityaim() {
-        if (showAim == true) ;
-        p.stroke(255, 0, 0, 180);
-        p.strokeWeight(3);
-        p.line(p.mouseX, p.mouseY, position.x, position.y);
-        }
+
+
 
 
 
@@ -218,14 +169,14 @@ public class Player {
 
 
 
-    void controls(char key, int keyCode,  boolean pressed){
+    void controls(char key, int keyCode,  boolean pressed,LocationType location){
         velocity.set(0,0);
         if (key != p.CODED)
             switch(key) {
 
 
                 case '1':{
-                    if(pressed == false) {
+                    if(pressed == true) {
                     inventory.toolBarList.get(0).selected = !inventory.toolBarList.get(0).selected;
                     for(int i = 0; i<5;i++) {
                         if(i!=0)
@@ -237,7 +188,7 @@ public class Player {
 
                 }break;
                 case '2':{
-                    if(pressed == false) {
+                    if(pressed == true) {
                     inventory.toolBarList.get(1).selected = !inventory.toolBarList.get(1).selected;
                     for(int i = 0; i<5;i++) {
                         if (i != 1)
@@ -250,7 +201,7 @@ public class Player {
 
                 }break;
                 case '3':{
-                    if(pressed == false) {
+                    if(pressed == true) {
                         if(inventory.itemList.size()>3)
                     inventory.toolBarList.get(2).selected = !inventory.toolBarList.get(2).selected;
                     for(int i = 0; i<5;i++) {
@@ -264,7 +215,7 @@ public class Player {
 
                 }break;
                 case '4':{
-                    if(pressed == false) {
+                    if(pressed == true) {
                         if(inventory.itemList.size()>4)
                     inventory.toolBarList.get(3).selected = !inventory.toolBarList.get(3).selected;
                     for(int i = 0; i<5;i++) {
@@ -278,7 +229,7 @@ public class Player {
 
                 }break;
                 case '5':{
-                    if(pressed == false) {
+                    if(pressed == true) {
                         if(inventory.itemList.size()>5)
                         inventory.toolBarList.get(4).selected = !inventory.toolBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
@@ -373,6 +324,20 @@ public class Player {
 
                 }break;
 
+                case TAB:{
+                    System.out.println("Bruh");
+                    if(pressed) {
+                        if (location == LocationType.shop) {
+                            buildMode = !buildMode;
+
+
+                        }
+
+                    }
+
+                }break;
+
+
             }
 
 
@@ -380,7 +345,7 @@ public class Player {
         velocity.set(((right)?1:0) +((left)?-1:0),(((up)?-1:0) +((down)?1:0)));
     }
 
-     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location) {
+     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpace> grid) {
         if(location==LocationType.dungeon) {
             if(pressed)
                if(check) {
@@ -393,6 +358,16 @@ public class Player {
                 isShooting =false;
             }
         }
+
+         if(location == LocationType.shop) {
+             if(buildMode) {
+                 for (int i = 0; i < grid.size(); i++)
+                     grid.get(i).pressed(true, mouseX, mouseY, inventory);
+             }
+             inventory.selector(true, mouseX, mouseY, inventory);
+         }
+
+
      }
 
 }
