@@ -1,5 +1,6 @@
-import processing.core.PApplet;
+public interface Furniture {
 
+<<<<<<< HEAD
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -38,6 +39,11 @@ public class Furniture {
         }
 
     }
+=======
+>>>>>>> c71393e8418544b0a06014c17f13ab55e3506332
 
 
+     void display();
+     void function();
+     void playerNearby();
 }

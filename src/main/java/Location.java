@@ -18,15 +18,13 @@ public class Location {
     if(location == LocationType.shop){
         shop.shopFunction();
 
+    }}
+
+    void changeShop(LocationType location){
+        this.location = location;
 
 
     }
-
-
-
-
-    }
-
 
 
 
