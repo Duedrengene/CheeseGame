@@ -7,7 +7,7 @@ public class Furniture {
 
     PApplet p;
     Types furnitureType;
-    ArrayList<int> grid = new ArrayList()
+    //ArrayList<int> grid = new ArrayList();
     int x,y;
 
     Furniture(PApplet p,Types furnitureType,int x,int y){
