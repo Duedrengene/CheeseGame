@@ -55,7 +55,7 @@ public class Player {
 
     float maximumstamina = 100;
     float staminaloss = 0.5f;
-    float passivestamina = 0.1f;
+    float passivestamina = 0.15f;
 
     float stamina = maximumstamina;
 
@@ -86,16 +86,6 @@ public class Player {
 
     public void Walk(PVector dir) {
         PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
-
-    }
-
-    void Dash(PVector position,PVector bodydash) {
-        //if(cooldown = false)
-        //
-
-        //bodydash = new PVector(position.x,position.y,0);
-        //bodydash.normalize(playerspeed);
-
     }
 
    void setAim(){
@@ -140,7 +130,7 @@ public class Player {
         else if ( playerhealth < 25) {
             p.fill(0,255,0);
         }
-        //p.noStroke();
+
         float calculateplayerHP = (playerhealth/maximumhealth)* healthbarWidth;
 
         //der er 2 rect tilstede grundet til at der skal være en omkreds om cirkel (da det andet areal/længde går nedad når den mister liv).
@@ -152,7 +142,6 @@ public class Player {
         p.textSize(20);
         p.text(calculateplayerHP/2+" HP",805,50);
 
-        //p.println(playerhealth);
     }
  void useStamina() {
         if(running==true) {
@@ -170,7 +159,6 @@ void regainStamina() {
         stamina += passivestamina;
         if (stamina > maximumstamina) {
             stamina = 100.f;
-
         }
     }
 }
@@ -178,23 +166,15 @@ void regainStamina() {
 
 
    void showStamina(){
-        if(loaded) {
-            counter=0;
-            timer = p.millis();
-            maxtime = 2000;
-            loaded = false;
-
-        }
-
-        //p.fill(244,3,3);
-        //p.noStroke();
-        //p.map(counter-timer,0,maxtime,0,200);
-        //p.rect(20,100,p.map(counter-p.millis(),0,maxtime,0,200),19 );
-       // p.rect(20,100,200,19);
-        //p.text(counter-timer+""+ ""+ maxtime +""+(p.map(counter-timer,0,maxtime,0,200)),20,160);
-
-        //p.text(counter-timer+""+maxtime+)
+   p.fill(244,35,3);
+   p.noStroke();
+   float displaystamina = stamina *2;
+   p.rect(740,75,displaystamina,20);
+   p.noFill();
+   p.stroke(0);
+   p.rect(20,100,100,20);
    }
+
     void runability(){
     PVector runningspeed = new PVector();
     runningspeed.set(4,4);
