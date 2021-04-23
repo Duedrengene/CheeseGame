@@ -153,8 +153,8 @@ public class Player {
         }
  }
 void regainStamina() {
-    //p.println(running);
-    p.println(stamina);
+
+
     if (running == false) {
         stamina += passivestamina;
         if (stamina > maximumstamina) {
@@ -163,16 +163,17 @@ void regainStamina() {
     }
 }
 
-
-
    void showStamina(){
    p.fill(244,35,3);
    p.noStroke();
    float displaystamina = stamina *2;
-   p.rect(740,75,displaystamina,20);
-   p.noFill();
+   p.rect(740,75,displaystamina,40);
+
+
    p.stroke(0);
-   p.rect(20,100,100,20);
+   
+   p.fill(255);
+   p.text(stamina,805,110);
    }
 
     void runability(){
