@@ -1,6 +1,8 @@
 
 import processing.core.PApplet;
 import processing.core.PVector;
+
+
 import java.util.ArrayList;
 import static processing.core.PConstants.*;
 
@@ -32,15 +34,32 @@ public class Player {
     boolean ready = true;
     boolean open = false;
 
+    boolean loaded;
+    boolean running = false;
+
+    boolean notAbleToRun = false;
+
     boolean buildMode = false;
     int playerWidth = 10;
     int playerHeight = 10;
+    int counter=0;
+    float maxtime =2000;
+    int timer;
 
     float maximumhealth = 100;
     float healthbarWidth = 200;
     float healthbarHeight = 40;
     float playerhealth = 100;
     float maxmagasineupgrade;
+
+
+    float maximumstamina = 100;
+    float staminaloss = 0.5f;
+    float passivestamina = 0.1f;
+
+    float stamina = maximumstamina;
+
+
 
 
 
@@ -51,14 +70,12 @@ public class Player {
         //this.bulletpool = bulletpool;
 
         this.inventory = inventory;
-
-
+        loaded = false;
         position.set(100, this.p.height / 2);
     }
 
 
     void changePosition() {
-
         position.add(velocity);
         position.x = p.constrain(position.x, 0, p.width - playerWidth);
         position.y = p.constrain(position.y, 0, p.height - playerHeight);
@@ -83,7 +100,6 @@ public class Player {
 
    void setAim(){
 
-
         p.stroke(255,0,0,180);
         p.strokeWeight(3);
         p.line(p.mouseX,p.mouseY,position.x,position.y);
@@ -92,9 +108,6 @@ public class Player {
        p.stroke(0);
        p.strokeWeight(1);
    }
-
-
-
 
     void draw() {
         changePosition();
@@ -105,7 +118,6 @@ public class Player {
         inventory.display();
 
     }
-
      void addBullet() {
         bulletspeed.set(p.mouseX,p.mouseY,0);
         bulletspeed.sub(position);
@@ -115,19 +127,8 @@ public class Player {
 
     }
     void Magasine() {
-
-
-
             bullets.add(new Bullet(p,position,bulletspeed));
-
         }
-
-
-
-
-
-
-
 
     void showHealth() {
         if (playerhealth < 50) {
@@ -150,30 +151,64 @@ public class Player {
         p.fill(255);
         p.textSize(20);
         p.text(calculateplayerHP/2+" HP",805,50);
+
         //p.println(playerhealth);
     }
- void simulate() {
-
-     //if (level == 1) {
-    // }
+ void useStamina() {
+        if(running==true) {
+            stamina -= staminaloss;
+            if (stamina < 0) {
+                stamina = 0.f;
+                notAbleToRun = true;
+            }
+        }
  }
+void regainStamina() {
+    //p.println(running);
+    p.println(stamina);
+    if (running == false) {
+        stamina += passivestamina;
+        if (stamina > maximumstamina) {
+            stamina = 100.f;
 
+        }
+    }
+}
+
+
+
+   void showStamina(){
+        if(loaded) {
+            counter=0;
+            timer = p.millis();
+            maxtime = 2000;
+            loaded = false;
+
+        }
+
+        //p.fill(244,3,3);
+        //p.noStroke();
+        //p.map(counter-timer,0,maxtime,0,200);
+        //p.rect(20,100,p.map(counter-p.millis(),0,maxtime,0,200),19 );
+       // p.rect(20,100,200,19);
+        //p.text(counter-timer+""+ ""+ maxtime +""+(p.map(counter-timer,0,maxtime,0,200)),20,160);
+
+        //p.text(counter-timer+""+maxtime+)
+   }
+    void runability(){
+    PVector runningspeed = new PVector();
+    runningspeed.set(4,4);
+        if(running) {
+        position.add(runningspeed);
+    }
+    }
     void interact(){
 
-
     }
-
-    void runability(){
-
-    }
-
-
-
     void controls(char key, int keyCode,  boolean pressed,LocationType location){
         velocity.set(0,0);
         if (key != p.CODED)
             switch(key) {
-
 
                 case '1':{
                     if(pressed == true) {
@@ -248,10 +283,7 @@ public class Player {
                         showAim = true;
 
             }break;
-                case 'k' : {
-            if((pressed) && (ready))
-                cooldown = false;
-                }break;
+
 
 
                 case 's': {
@@ -323,6 +355,19 @@ public class Player {
 
 
                 }break;
+                case SHIFT: {
+                        if((pressed)) {
+                            if (ready)
+                                running = true;
+                        }
+                        else {
+                            running = false;
+
+
+                        }
+
+                    }break;
+
 
                 case TAB:{
                     System.out.println("Bruh");
