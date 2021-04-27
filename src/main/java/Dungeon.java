@@ -15,7 +15,6 @@ public class Dungeon {
     this.player = player;
     this.enemies = enemies;
 
-
     }
 
    void functions(){
@@ -27,7 +26,13 @@ public class Dungeon {
    }
 
    void playerFunctions(){
-    player.showHealth();
+       player.showHealth();
+       player.setAim();
+       player.runAbility();
+       player.regainStamina();
+       player.useStamina();
+       player.showStamina();
+
        p.mouseClicked();
 
 

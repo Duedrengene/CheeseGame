@@ -5,15 +5,12 @@ import java.util.ArrayList;
 
 public class Main extends PApplet {
 
-
-
-
     ArrayList<GridSpace> grid = new ArrayList<>();
     ArrayList<Furniture> furnitureList = new ArrayList<>();
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
     ArrayList<Bullet> bullets = new ArrayList<>();
-    ArrayList<Integer> bulletpool = new ArrayList<>();
+
 
     GridCreater gridCreate = new GridCreater();
 
@@ -41,9 +38,6 @@ public class Main extends PApplet {
 
         super.setup();
 
-
-
-
         imgLoad.loadTheImages();
         inventory = new Inventory(this);
         player = new Player(this,bullets,inventory);
@@ -65,15 +59,7 @@ public class Main extends PApplet {
         location.functions();
 
 
-
     }
-
-
-
-
-
-
-
 
 
     public void keyPressed(){
