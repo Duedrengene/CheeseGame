@@ -1,12 +1,14 @@
 import processing.core.PApplet;
 
 import javax.tools.Tool;
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 public class Inventory {
 
     PApplet p;
     ArrayList<Item> itemList = new ArrayList<>();
+    ArrayList<Item> furnitureList = new ArrayList<>();
     ArrayList<ToolBar> toolBarList = new ArrayList<>();
     ArrayList<ToolBar> buildBarList = new ArrayList<>();
     ToolBar selected;
