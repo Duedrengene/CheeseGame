@@ -26,12 +26,12 @@ public class Dungeon {
    }
 
    void playerFunctions(){
-    player.showHealth();
-    player.setAim();
-    player.runAbility();
-    player.regainStamina();
-    player.useStamina();
-    player.showStamina();
+       player.showHealth();
+       player.setAim();
+       player.runAbility();
+       player.regainStamina();
+       player.useStamina();
+       player.showStamina();
 
        p.mouseClicked();
 

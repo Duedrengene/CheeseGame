@@ -1,8 +1,6 @@
 
 import processing.core.PApplet;
 import processing.core.PVector;
-
-
 import java.util.ArrayList;
 import static processing.core.PConstants.*;
 
@@ -77,7 +75,10 @@ public class Player {
 
 
     void changePosition() {
-        position.add(velocity);
+
+        PVector speed = new PVector(velocity.x,velocity.y);
+                speed.mult(runningspeed.x);
+        position.add(speed);
         position.x = p.constrain(position.x, 0, p.width - playerWidth);
         position.y = p.constrain(position.y, 0, p.height - playerHeight);
         PVector dir = new PVector(position.x,position.y);
@@ -109,7 +110,7 @@ public class Player {
         p.stroke(204, 102, 0);
         p.rect(position.x, position.y, playerWidth, playerHeight);
 
-        inventory.display();
+        inventory.display(buildMode);
 
     }
      void addBullet() {
@@ -153,7 +154,7 @@ public class Player {
 
         p.fill(255);
         p.textSize(20);
-        p.text(calculateplayerHP/2+" HP",805,50);
+        p.text((int)calculateplayerHP/2+" HP",805,50);
     }
  void useStamina() {
      if (running == true) {
@@ -189,13 +190,13 @@ void regainStamina() {
    p.stroke(0);
 
    p.fill(255);
-   p.text(stamina,805,110);
+   p.text((int)stamina+" S",805,110);
    }
 
     void runAbility(){
     //PVector runningspeed = new PVector();
 
-if(running = false) {
+if(running == false) {
     runningspeed.set(1,1);
 }
 else{
@@ -204,7 +205,7 @@ else{
        // if(running) {
         //position.add(runningspeed);
 
-
+System.out.println("Lugte");
     }
     }
     void interact(){
@@ -285,7 +286,7 @@ else{
                     }
                 }
                 break;
-
+                case 'F':
                 case 'f': {
                     if ((pressed == false) && (ready))
                         showAim = true;
@@ -298,7 +299,7 @@ else{
 
 
             }break;
-
+                case 'S':
                 case 's': {
                     if((pressed) &&(ready))
                         down=true;
@@ -306,7 +307,7 @@ else{
                         down=false;}
 
                 }break;
-
+                case 'W':
                 case 'w': {
                     if((pressed) &&(ready))
                         up = true;
@@ -314,6 +315,7 @@ else{
                         up=false;
 
                 }break;
+                case 'A':
                 case 'a': {
                     if((pressed) &&(ready))
                         left=true;
@@ -321,6 +323,7 @@ else{
                         left=false;
 
                 }break;
+                case 'D':
                 case 'd': {
                     if((pressed) &&(ready))
                         right=true;
@@ -330,6 +333,21 @@ else{
 
 
                 }break;
+
+                case TAB:{
+                    System.out.println("Bruh");
+                    if(pressed) {
+                        if (location == LocationType.shop) {
+                            buildMode = !buildMode;
+                            System.out.println(buildMode);
+
+                        }
+
+                    }
+
+                }break;
+
+
 
 
 
@@ -369,40 +387,27 @@ else{
 
                 }break;
                 case SHIFT: {
-                        if((pressed)) {
-                            if (ready)
-                                running = true;
-                        }
-                        else {
-                            running = false;
+                    if((pressed)) {
+                        if (ready)
+                            running = true;
+                        System.out.println(running);
+                    }
+                    else {
+                        running = false;
 
-
-                        }
-
-                    }break;
-
-
-                case TAB:{
-                    System.out.println("Bruh");
-                    if(pressed) {
-                        if (location == LocationType.shop) {
-                            buildMode = !buildMode;
-
-
-                        }
 
                     }
 
                 }break;
 
 
+
             }
 
 
         }
-        velocity.set((((right)?1:0) +((left)?-1:0))*runningspeed.x,(((up)?-1:0) +((down)?1:0))*runningspeed.y);
+        velocity.set((((right)?1:0) +((left)?-1:0)),(((up)?-1:0) +((down)?1:0)));
 
-        //runningspeed.set(((right)?2:0) +((left)?-2:0),(((up)?-2:0) +((down)?2:0)));
         }
 
 
@@ -421,6 +426,7 @@ else{
         }
 
          if(location == LocationType.shop) {
+             if (pressed)
              if(buildMode) {
                  for (int i = 0; i < grid.size(); i++)
                      grid.get(i).pressed(true, mouseX, mouseY, inventory);
