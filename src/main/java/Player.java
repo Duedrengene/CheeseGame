@@ -138,10 +138,19 @@ public class Player {
         float calculateplayerHP = (playerhealth/maximumhealth)* healthbarWidth;
 
         //der er 2 rect tilstede grundet til at der skal være en omkreds om cirkel (da det andet areal/længde går nedad når den mister liv).
-        p.stroke(0);
+        p.strokeCap(ROUND);
+
+        p.stroke(204, 104, 0);
+
+
+        p.strokeWeight(3);
+
         p.rect(740,25,calculateplayerHP,healthbarHeight);
-        //Til at vise den maximale HP bar stadig selvom HP forsvinder.
+        p.noFill();
         p.rect(740,25,healthbarWidth,healthbarHeight);
+        p.println(calculateplayerHP);
+        //Til at vise den maximale HP bar stadig selvom HP forsvinder.
+
         p.fill(255);
         p.textSize(20);
         p.text(calculateplayerHP/2+" HP",805,50);
