@@ -145,7 +145,7 @@ public class Player {
         p.rect(740,25,healthbarWidth,healthbarHeight);
         p.fill(255);
         p.textSize(20);
-        p.text(calculateplayerHP/2+" HP",805,50);
+        p.text((int)calculateplayerHP/2+" HP",805,50);
     }
  void useStamina() {
      if (running == true) {
@@ -181,7 +181,7 @@ void regainStamina() {
    p.stroke(0);
 
    p.fill(255);
-   p.text(stamina,805,110);
+   p.text((int)stamina+" S",805,110);
    }
 
     void runAbility(){
