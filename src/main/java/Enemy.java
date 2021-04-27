@@ -27,7 +27,6 @@ public class Enemy {
 
     float Playeradius = 10;
     float Enemyradius = 10;
-
     PVector position;
 
 
@@ -43,7 +42,6 @@ public class Enemy {
         acceleration = new PVector(0,0);
 
     }
-
     void update() {
         if (followingplayer) {
             //Identificere spillerens lokation.
@@ -105,7 +103,6 @@ public class Enemy {
             if(player.playerhealth < 0) {
                 p.text("Press to Respawn",250,50);
                 player.playerhealth =0;
-
             }
 
         }
@@ -124,7 +121,7 @@ public class Enemy {
                 enemyslashrange = true;
                 if (enemyslashrange = true) ;
 
-                float slowdown = (float) 1.6;
+                float slowdown = 1.6f;
                 movespeed = slowdown;
             }
                  else

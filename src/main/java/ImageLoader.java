@@ -21,6 +21,15 @@ public class ImageLoader {
     PImage enemy;
     PImage cheeseGolem;
     PImage cheeseDemon;
+
+
+    //only player
+    PImage behindplayer;
+    PImage leftsideplayer;
+    PImage rightsideplayer;
+    PImage forward1;
+    PImage forward2;
+
 	
     //Furniture
 
@@ -59,7 +68,12 @@ public class ImageLoader {
         cheeseDemon = p.loadImage("cheesedemon.png");
         //Backgrounds
 
-
+//Player
+        behindplayer = p.loadImage("behindcheeseman.png");
+        leftsideplayer = p.loadImage("leftsidecheeseman.png");
+        rightsideplayer = p.loadImage("rightsidecheeseman.png");
+        forward1 = p.loadImage("Playerforward1.png");
+        forward2 = p.loadImage("forwardplayer2.png");
 
 
 

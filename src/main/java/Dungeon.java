@@ -33,6 +33,7 @@ public class Dungeon {
        player.useStamina();
        player.showStamina();
 
+
        p.mouseClicked();
 
 

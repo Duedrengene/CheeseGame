@@ -14,12 +14,11 @@ public class Player {
 
     PVector position = new PVector();
     PVector velocity = new PVector();
-    PVector playerspeed = new PVector(0,0);
+
     PVector bodydash = new PVector();
     float playerspd = 20;
     PVector bulletspeed = new PVector();
     PVector runningspeed = new PVector();
-
 
 
 
@@ -79,6 +78,7 @@ public class Player {
         PVector speed = new PVector(velocity.x,velocity.y);
                 speed.mult(runningspeed.x);
         position.add(speed);
+
         position.x = p.constrain(position.x, 0, p.width - playerWidth);
         position.y = p.constrain(position.y, 0, p.height - playerHeight);
         PVector dir = new PVector(position.x,position.y);
@@ -93,7 +93,6 @@ public class Player {
    void setAim() {
 
         if (showAim) {
-
            p.stroke(255, 0, 0, 180);
            p.strokeWeight(3);
            p.line(p.mouseX, p.mouseY, position.x, position.y);
@@ -139,7 +138,7 @@ public class Player {
         float calculateplayerHP = (playerhealth/maximumhealth)* healthbarWidth;
 
         //der er 2 rect tilstede grundet til at der skal være en omkreds om cirkel (da det andet areal/længde går nedad når den mister liv).
-        p.strokeCap(ROUND);
+
 
         p.stroke(204, 104, 0);
 
@@ -205,7 +204,7 @@ else{
        // if(running) {
         //position.add(runningspeed);
 
-System.out.println("Lugte");
+
     }
     }
     void interact(){

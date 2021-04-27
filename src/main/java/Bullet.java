@@ -52,6 +52,7 @@ void script() {
 
         drawbullet();
         movebullet();
+
         //hit();
         //return isShooting;
 
