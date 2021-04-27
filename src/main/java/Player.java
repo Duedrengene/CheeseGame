@@ -102,7 +102,7 @@ public class Player {
         p.stroke(204, 102, 0);
         p.rect(position.x, position.y, playerWidth, playerHeight);
 
-        inventory.display();
+        inventory.display(buildMode);
 
     }
 
@@ -286,6 +286,20 @@ public class Player {
 
                 }break;
 
+                case TAB:{
+                    System.out.println("Bruh");
+                    if(pressed) {
+                        if (location == LocationType.shop) {
+                            buildMode = !buildMode;
+                            System.out.println(buildMode);
+
+                        }
+
+                    }
+
+                }break;
+
+
 
 
             }
@@ -324,19 +338,6 @@ public class Player {
 
                 }break;
 
-                case TAB:{
-                    System.out.println("Bruh");
-                    if(pressed) {
-                        if (location == LocationType.shop) {
-                            buildMode = !buildMode;
-
-
-                        }
-
-                    }
-
-                }break;
-
 
             }
 
@@ -360,6 +361,7 @@ public class Player {
         }
 
          if(location == LocationType.shop) {
+             if (pressed)
              if(buildMode) {
                  for (int i = 0; i < grid.size(); i++)
                      grid.get(i).pressed(true, mouseX, mouseY, inventory);
