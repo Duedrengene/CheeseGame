@@ -28,7 +28,7 @@ public class Dungeon {
    void playerFunctions(){
     player.showHealth();
     player.setAim();
-    player.runability();
+    player.runAbility();
     player.regainStamina();
     player.useStamina();
     player.showStamina();

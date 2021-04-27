@@ -20,7 +20,9 @@ public class Player {
     PVector bodydash = new PVector();
     float playerspd = 20;
     PVector bulletspeed = new PVector();
-    //final int frequency = 2;
+    PVector runningspeed = new PVector();
+
+
 
 
     boolean isShooting = false;
@@ -34,17 +36,16 @@ public class Player {
     boolean ready = true;
     boolean open = false;
 
-    boolean loaded;
-    boolean running = false;
 
+    boolean running = false;
     boolean notAbleToRun = false;
 
     boolean buildMode = false;
     int playerWidth = 10;
     int playerHeight = 10;
-    int counter=0;
-    float maxtime =2000;
-    int timer;
+
+
+
 
     float maximumhealth = 100;
     float healthbarWidth = 200;
@@ -55,7 +56,7 @@ public class Player {
 
     float maximumstamina = 100;
     float staminaloss = 0.5f;
-    float passivestamina = 0.15f;
+    float passivestamina = 0.10f;
 
     float stamina = maximumstamina;
 
@@ -70,7 +71,7 @@ public class Player {
         //this.bulletpool = bulletpool;
 
         this.inventory = inventory;
-        loaded = false;
+
         position.set(100, this.p.height / 2);
     }
 
@@ -85,20 +86,23 @@ public class Player {
     }
 
     public void Walk(PVector dir) {
-        PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
+        //PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
     }
 
-   void setAim(){
+   void setAim() {
 
-        p.stroke(255,0,0,180);
-        p.strokeWeight(3);
-        p.line(p.mouseX,p.mouseY,position.x,position.y);
+        if (showAim) {
+
+           p.stroke(255, 0, 0, 180);
+           p.strokeWeight(3);
+           p.line(p.mouseX, p.mouseY, position.x, position.y);
 
 
-       p.stroke(0);
-       p.strokeWeight(1);
+           p.stroke(0);
+           p.strokeWeight(1);
+
+       }
    }
-
     void draw() {
         changePosition();
 
@@ -141,20 +145,23 @@ public class Player {
         p.fill(255);
         p.textSize(20);
         p.text(calculateplayerHP/2+" HP",805,50);
-
     }
  void useStamina() {
-        if(running==true) {
-            stamina -= staminaloss;
-            if (stamina < 0) {
-                stamina = 0.f;
-                notAbleToRun = true;
-            }
-        }
+     if (running == true) {
+         stamina -= staminaloss;
+         if (stamina < 0) {
+             stamina = 0.f;
+
+             if (stamina < 10) {
+                 notAbleToRun = true;
+                 if (notAbleToRun) {
+                     running = false;
+                 }
+             }
+         }
+     }
  }
 void regainStamina() {
-
-
     if (running == false) {
         stamina += passivestamina;
         if (stamina > maximumstamina) {
@@ -171,83 +178,95 @@ void regainStamina() {
 
 
    p.stroke(0);
-   
+
    p.fill(255);
    p.text(stamina,805,110);
    }
 
-    void runability(){
-    PVector runningspeed = new PVector();
+    void runAbility(){
+    //PVector runningspeed = new PVector();
+
+if(running = false) {
+    runningspeed.set(1,1);
+}
+else{
     runningspeed.set(4,4);
-        if(running) {
-        position.add(runningspeed);
+
+       // if(running) {
+        //position.add(runningspeed);
+
+
     }
     }
     void interact(){
 
     }
-    void controls(char key, int keyCode,  boolean pressed,LocationType location){
-        velocity.set(0,0);
-        if (key != p.CODED)
-            switch(key) {
+    void controls(char key, int keyCode,  boolean pressed,LocationType location) {
+        velocity.set(0, 0);
 
-                case '1':{
-                    if(pressed == true) {
-                    inventory.toolBarList.get(0).selected = !inventory.toolBarList.get(0).selected;
-                    for(int i = 0; i<5;i++) {
-                        if(i!=0)
-                        inventory.toolBarList.get(i).selected = false;
-                    }
+
+        if (key != p.CODED)
+            switch (key) {
+
+                case '1': {
+                    if (pressed == true) {
+                        inventory.toolBarList.get(0).selected = !inventory.toolBarList.get(0).selected;
+                        for (int i = 0; i < 5; i++) {
+                            if (i != 0)
+                                inventory.toolBarList.get(i).selected = false;
+                        }
                         if (inventory.toolBarList.get(0).selected)
                             inventory.selected = inventory.toolBarList.get(0);
                     }
 
-                }break;
-                case '2':{
-                    if(pressed == true) {
-                    inventory.toolBarList.get(1).selected = !inventory.toolBarList.get(1).selected;
-                    for(int i = 0; i<5;i++) {
-                        if (i != 1)
-                            inventory.toolBarList.get(i).selected = false;
-                    }
+                }
+                break;
+                case '2': {
+                    if (pressed == true) {
+                        inventory.toolBarList.get(1).selected = !inventory.toolBarList.get(1).selected;
+                        for (int i = 0; i < 5; i++) {
+                            if (i != 1)
+                                inventory.toolBarList.get(i).selected = false;
+                        }
                         if (inventory.toolBarList.get(1).selected)
-                        inventory.selected = inventory.toolBarList.get(1);
+                            inventory.selected = inventory.toolBarList.get(1);
                     }
 
-
-                }break;
-                case '3':{
-                    if(pressed == true) {
-                        if(inventory.itemList.size()>3)
-                    inventory.toolBarList.get(2).selected = !inventory.toolBarList.get(2).selected;
-                    for(int i = 0; i<5;i++) {
-                        if(i!=2)
-                            inventory.toolBarList.get(i).selected = false;
-                    }
+                }
+                break;
+                case '3': {
+                    if (pressed == true) {
+                        if (inventory.itemList.size() > 3)
+                            inventory.toolBarList.get(2).selected = !inventory.toolBarList.get(2).selected;
+                        for (int i = 0; i < 5; i++) {
+                            if (i != 2)
+                                inventory.toolBarList.get(i).selected = false;
+                        }
                         if (inventory.toolBarList.get(2).selected)
                             inventory.selected = inventory.toolBarList.get(2);
                     }
 
-
-                }break;
-                case '4':{
-                    if(pressed == true) {
-                        if(inventory.itemList.size()>4)
-                    inventory.toolBarList.get(3).selected = !inventory.toolBarList.get(3).selected;
-                    for(int i = 0; i<5;i++) {
-                        if(i!=3)
-                            inventory.toolBarList.get(i).selected = false;
-                    }
+                }
+                break;
+                case '4': {
+                    if (pressed == true) {
+                        if (inventory.itemList.size() > 4)
+                            inventory.toolBarList.get(3).selected = !inventory.toolBarList.get(3).selected;
+                        for (int i = 0; i < 5; i++) {
+                            if (i != 3)
+                                inventory.toolBarList.get(i).selected = false;
+                        }
                         if (inventory.toolBarList.get(3).selected)
                             inventory.selected = inventory.toolBarList.get(3);
                     }
 
 
-                }break;
-                case '5':{
-                    if(pressed == true) {
-                        if(inventory.itemList.size()>5)
-                        inventory.toolBarList.get(4).selected = !inventory.toolBarList.get(4).selected;
+                }
+                break;
+                case '5': {
+                    if (pressed == true) {
+                        if (inventory.itemList.size() > 5)
+                            inventory.toolBarList.get(4).selected = !inventory.toolBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 4)
                                 inventory.toolBarList.get(i).selected = false;
@@ -255,17 +274,21 @@ void regainStamina() {
                         if (inventory.toolBarList.get(4).selected)
                             inventory.selected = inventory.toolBarList.get(4);
                     }
-
-                }break;
-
+                }
+                break;
 
                 case 'f': {
-                    if ((pressed) && (ready))
+                    if ((pressed == false) && (ready))
                         showAim = true;
 
+                        //setAim();
+                    else{
+                        //else if ((pressed == true) && (ready = false))
+                        showAim = false;
+                }
+
+
             }break;
-
-
 
                 case 's': {
                     if((pressed) &&(ready))
@@ -368,8 +391,11 @@ void regainStamina() {
 
 
         }
-        velocity.set(((right)?1:0) +((left)?-1:0),(((up)?-1:0) +((down)?1:0)));
-    }
+        velocity.set((((right)?1:0) +((left)?-1:0))*runningspeed.x,(((up)?-1:0) +((down)?1:0))*runningspeed.y);
+
+        //runningspeed.set(((right)?2:0) +((left)?-2:0),(((up)?-2:0) +((down)?2:0)));
+        }
+
 
      void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpace> grid) {
         if(location==LocationType.dungeon) {
