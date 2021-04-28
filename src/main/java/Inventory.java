@@ -11,6 +11,7 @@ public class Inventory {
     ArrayList<Item> furnitureList = new ArrayList<>();
     ArrayList<ToolBar> toolBarList = new ArrayList<>();
     ArrayList<ToolBar> buildBarList = new ArrayList<>();
+    ArrayList<ToolBar> useBarList = new ArrayList<>();
     ToolBar selected;
 
     Inventory(PApplet p){
@@ -50,14 +51,13 @@ public class Inventory {
     }
 
     void display(boolean buildMode){
+        if (buildMode)
+            useBarList = buildBarList;
+        else useBarList = toolBarList;
+
+
         for(int i = 0; i< toolBarList.size();i++)
-
-            if(!buildMode)
-        toolBarList.get(i).displayToolBar();
-        else
-        buildBarList.get(i).displayToolBar();
-
-
+        useBarList.get(i).displayToolBar();
     }
 
     void open(){

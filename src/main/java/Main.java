@@ -10,7 +10,7 @@ public class Main extends PApplet {
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
     ArrayList<Bullet> bullets = new ArrayList<>();
-
+    GUI gUI;
 
     GridCreater gridCreate = new GridCreater();
 
@@ -44,9 +44,10 @@ public class Main extends PApplet {
         grid = gridCreate.createGrid(width, height, this, imgLoad, inventory);
         shop = new Shop(furnitureList, grid);
         dungeon = new Dungeon(this,player,enemies);
-        location = new Location(shop, dungeon);
-        inventory.itemList.add(new WallItem(imgLoad));
-        inventory.itemList.add(new DoorItem(imgLoad));
+        gUI = new GUI(this,player);
+        location = new Location(shop, dungeon,gUI);
+        inventory.furnitureList.add(new WallItem(imgLoad));
+        inventory.furnitureList.add(new DoorItem(imgLoad));
     }
 
     @Override

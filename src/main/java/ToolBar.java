@@ -10,14 +10,13 @@ public class ToolBar {
 
     PVector position;
 
-    ArrayList<Item> itemList = new ArrayList<>();
-    ArrayList<Item> furnitureList = new ArrayList<>();
+
     ArrayList<Item> useList = new ArrayList<>();
     int width = 100;
     int height = 100;
-    boolean selected = false;
     int toolBarCount;
     boolean build;
+    boolean selected = false;
     ToolBar(ArrayList<Item> list, int toolBarCount, PApplet p){
         this.p =p;
         this.toolBarCount = toolBarCount;
@@ -38,24 +37,19 @@ public class ToolBar {
         if (useList.size()-1 < toolBarCount)
             p.fill(255, 255, 255);
         p.rect(position.x, position.y, width, height);
+
         p.noFill();
             p.stroke(0);
             p.strokeWeight(0);
 
+        if(useList.size() >toolBarCount) {
+            p.image(useList.get(toolBarCount).getImage(), position.x, p.height - 101);
 
-            if(useList.size() >toolBarCount) {
-                p.image(useList.get(toolBarCount).getImage(), position.x, p.height - 101);
+        }
 
-            }
 
     }
-/*
-boolean checkClicked(int x,int y){
-        if(){}
-            else
 
-        return  false;
-}
-*/
+
 
 }

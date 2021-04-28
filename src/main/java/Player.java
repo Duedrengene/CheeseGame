@@ -18,7 +18,7 @@ public class Player {
     PVector bodydash = new PVector();
     float playerspd = 20;
     PVector bulletspeed = new PVector();
-    PVector runningspeed = new PVector();
+    PVector runningspeed = new PVector(1,1);
 
 
 
@@ -106,7 +106,7 @@ public class Player {
    }
     void draw() {
         changePosition();
-
+        p.fill(255);
         p.stroke(204, 102, 0);
         p.rect(position.x, position.y, playerWidth, playerHeight);
 
@@ -220,26 +220,26 @@ System.out.println("Lugte");
 
                 case '1': {
                     if (pressed == true) {
-                        inventory.toolBarList.get(0).selected = !inventory.toolBarList.get(0).selected;
+                        inventory.useBarList.get(0).selected = !inventory.useBarList.get(0).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 0)
-                                inventory.toolBarList.get(i).selected = false;
+                                inventory.useBarList.get(i).selected = false;
                         }
-                        if (inventory.toolBarList.get(0).selected)
-                            inventory.selected = inventory.toolBarList.get(0);
+                        if (inventory.useBarList.get(0).selected)
+                            inventory.selected = inventory.useBarList.get(0);
                     }
 
                 }
                 break;
                 case '2': {
                     if (pressed == true) {
-                        inventory.toolBarList.get(1).selected = !inventory.toolBarList.get(1).selected;
+                        inventory.useBarList.get(1).selected = !inventory.useBarList.get(1).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 1)
-                                inventory.toolBarList.get(i).selected = false;
+                                inventory.useBarList.get(i).selected = false;
                         }
-                        if (inventory.toolBarList.get(1).selected)
-                            inventory.selected = inventory.toolBarList.get(1);
+                        if (inventory.useBarList.get(1).selected)
+                            inventory.selected = inventory.useBarList.get(1);
                     }
 
                 }
@@ -247,13 +247,13 @@ System.out.println("Lugte");
                 case '3': {
                     if (pressed == true) {
                         if (inventory.itemList.size() > 3)
-                            inventory.toolBarList.get(2).selected = !inventory.toolBarList.get(2).selected;
+                            inventory.useBarList.get(2).selected = !inventory.useBarList.get(2).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 2)
-                                inventory.toolBarList.get(i).selected = false;
+                                inventory.useBarList.get(i).selected = false;
                         }
-                        if (inventory.toolBarList.get(2).selected)
-                            inventory.selected = inventory.toolBarList.get(2);
+                        if (inventory.useBarList.get(2).selected)
+                            inventory.selected = inventory.useBarList.get(2);
                     }
 
                 }
@@ -261,13 +261,13 @@ System.out.println("Lugte");
                 case '4': {
                     if (pressed == true) {
                         if (inventory.itemList.size() > 4)
-                            inventory.toolBarList.get(3).selected = !inventory.toolBarList.get(3).selected;
+                            inventory.useBarList.get(3).selected = !inventory.useBarList.get(3).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 3)
-                                inventory.toolBarList.get(i).selected = false;
+                                inventory.useBarList.get(i).selected = false;
                         }
-                        if (inventory.toolBarList.get(3).selected)
-                            inventory.selected = inventory.toolBarList.get(3);
+                        if (inventory.useBarList.get(3).selected)
+                            inventory.selected = inventory.useBarList.get(3);
                     }
 
 
@@ -276,13 +276,13 @@ System.out.println("Lugte");
                 case '5': {
                     if (pressed == true) {
                         if (inventory.itemList.size() > 5)
-                            inventory.toolBarList.get(4).selected = !inventory.toolBarList.get(4).selected;
+                            inventory.useBarList.get(4).selected = !inventory.useBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 4)
-                                inventory.toolBarList.get(i).selected = false;
+                                inventory.useBarList.get(i).selected = false;
                         }
-                        if (inventory.toolBarList.get(4).selected)
-                            inventory.selected = inventory.toolBarList.get(4);
+                        if (inventory.useBarList.get(4).selected)
+                            inventory.selected = inventory.useBarList.get(4);
                     }
                 }
                 break;
@@ -337,6 +337,9 @@ System.out.println("Lugte");
                 case TAB:{
                     System.out.println("Bruh");
                     if(pressed) {
+                        for(int i=0;i <inventory.useBarList.size();i++)
+                        inventory.useBarList.get(i).selected = false;
+
                         if (location == LocationType.shop) {
                             buildMode = !buildMode;
                             System.out.println(buildMode);
