@@ -99,7 +99,7 @@ public class Player {
 
 
            p.stroke(0);
-           p.strokeWeight(1);
+
 
        }
    }
@@ -200,9 +200,6 @@ if(running == false) {
 }
 else{
     runningspeed.set(4,4);
-
-       // if(running) {
-        //position.add(runningspeed);
 
 
     }
