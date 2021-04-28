@@ -40,9 +40,12 @@ void movebullet() {
 boolean check() {
         return pos.x > p.width | pos.x < 0 | pos.y > p.height | pos.y < 0;
 }
+
     void hit(ArrayList<Bullet> bullets, Enemy enemy, int i) {
         if(bulletlocation.x <= enemy.getEnemyposition.x && bulletlocation.x >= enemy.getEnemyposition.x && bulletlocation.y <= enemy.getEnemyposition.y && bulletlocation.y >= enemy.getEnemyposition.y) {
-            enemy.health -= -1;
+            int hitdamage = (int) p.random(10,20);
+            //enemy.health -= -10;
+            enemy.health -= hitdamage;
             bullets.remove(i);
         }
 
@@ -52,6 +55,8 @@ void script() {
 
         drawbullet();
         movebullet();
+
+
         //hit();
         //return isShooting;
 
