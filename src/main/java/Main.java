@@ -31,7 +31,6 @@ public class Main extends PApplet {
     }
 
 
-    Camera camera = new Camera(this);
 
 
     public void setup() {
