@@ -19,8 +19,7 @@ public class Main extends PApplet {
     Dungeon dungeon;
     Location location;
     Player player;
-
-
+    Camera camera;
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -44,12 +43,12 @@ public class Main extends PApplet {
         player = new Player(this,bullets,inventory);
         grid = gridCreate.createGrid(width, height, this, imgLoad, inventory);
         shop = new Shop(furnitureList, grid);
-        dungeon = new Dungeon(this,player,enemies);
+        camera = new Camera(this,player.position,player);
+        dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
         location = new Location(shop, dungeon,gUI);
         inventory.furnitureList.add(new WallItem(imgLoad));
         inventory.furnitureList.add(new DoorItem(imgLoad));
-
     }
 
     @Override
@@ -57,7 +56,7 @@ public class Main extends PApplet {
 
         clear();
         background(0);
-        camera.changeAngle();
+        //camera.changeAngle();
         location.functions(this);
         player.draw();
 

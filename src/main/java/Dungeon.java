@@ -9,26 +9,31 @@ public class Dungeon {
     Player player;
 
     ArrayList<Enemy> enemies;
-
+    Camera camera;
     int level;
     int DIAMETER = 80;
     int hastighed = 4;
 
 
+    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera){
 
-    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies){
     this.p = p;
     this.player = player;
     this.enemies = enemies;
+    this.camera = camera;
 
     }
 
-   void functions(){
+   void functions() {
 
-   playerFunctions();
-   enemyFunctions();
+       playerFunctions();
+       enemyFunctions();
+       cameraFunctions();
 
 
+   }
+   void cameraFunctions(){
+        camera.changeAngle();
    }
 
    void playerFunctions(){
@@ -40,6 +45,8 @@ public class Dungeon {
        player.showStamina();
 
 
+
+
        p.mouseClicked();
 
 
@@ -48,8 +55,9 @@ public class Dungeon {
            player.bullets.get(bls).script();
            for(int i=0; i<enemies.size();i++)
             if (player.bullets.get(bls).hit(player.bullets, enemies.get(i))) {
+                
                 enemies.get(i).followingPlayer =true;
-                System.out.println("Mathias er ikke cool");
+              
                 player.bullets.remove(bls);
                 break;
             }
