@@ -21,6 +21,7 @@ public class Main extends PApplet {
     Player player;
 
 
+
     public static void main(String[] args) {
         PApplet.main("Main");
     }
@@ -48,6 +49,7 @@ public class Main extends PApplet {
         location = new Location(shop, dungeon,gUI);
         inventory.furnitureList.add(new WallItem(imgLoad));
         inventory.furnitureList.add(new DoorItem(imgLoad));
+
     }
 
     @Override
@@ -55,9 +57,9 @@ public class Main extends PApplet {
 
         clear();
         background(0);
-        player.draw();
         camera.changeAngle();
-        location.functions();
+        location.functions(this);
+        player.draw();
 
     }
 

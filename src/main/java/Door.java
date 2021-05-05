@@ -9,4 +9,10 @@ Door(PImage img){
 
 }
 
+@Override
+    void function(Main m) {
+
+    if(!m.player.buildMode)
+    m.location.location=LocationType.dungeon;
+    }
 }

@@ -22,13 +22,19 @@ PImage img;
      p.image(img,x,y);
 
 
-     };
-     void function(){
+     }
+     void function(Main m){
 
 
-     };
-     void playerNearby(){
+     }
+     float playerNearby(Player player,float x,float y){
+         float distance = -1;
 
-
-     };
+          float distanceX = player.position.x - x;
+          float distanceY = player.position.y - y;
+          float  distanceTemp = (float)Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
+          if(distanceTemp <=75)
+               distance = distanceTemp;
+          return distance;
+     }
 }

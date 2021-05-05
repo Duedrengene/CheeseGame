@@ -2,26 +2,37 @@ import java.util.ArrayList;
 
 public class Shop {
 
-ArrayList<Furniture> furnitureList;
+    ArrayList<Furniture> furnitureList;
     ArrayList<GridSpace> grid;
 
-    Shop(ArrayList<Furniture> furnitureList,ArrayList<GridSpace> grid){
+
+    Shop(ArrayList<Furniture> furnitureList, ArrayList<GridSpace> grid) {
         this.furnitureList = furnitureList;
         this.grid = grid;
 
 
     }
 
-    void shopFunction(){/*
-        for(int i = 0; i< furnitureList.size(); i++){
-            furnitureList.get(i).display();
-        }
-*/
-        for(int i=0;grid.size()>i;i++){
+    void shopFunction(Main m) {
+
+        float nearestFurniture= 75;
+        int furnitureCount =-1;
+        for (int i = 0; grid.size() > i; i++) {
 
             grid.get(i).display();
+            if(grid.get(i).furniture != null){
+            float temp = grid.get(i).furniture.playerNearby(m.player,m.player.position.x,m.player.position.y);
+            if (temp !=-1&&temp<nearestFurniture) {
+                nearestFurniture = temp;
+                furnitureCount = i;
 
-        }
+            }
+
+        }}
+        if (m.player.activate&&furnitureCount!=-1)
+            grid.get(furnitureCount).furniture.function(m);
+
+        m.player.activate = false;
 
     }
 }

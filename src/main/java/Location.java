@@ -12,15 +12,15 @@ public class Location {
     }
 
 
-    LocationType location = LocationType.dungeon;
+    LocationType location = LocationType.shop;
 
 
-    void functions(){
+    void functions(Main m){
 
         switch (location) {
 
             case shop: {
-                shop.shopFunction();
+                shop.shopFunction(m);
                 gUI.displayShop();
 
             }
@@ -37,7 +37,7 @@ public class Location {
 
     }
 
-    void changeShop(LocationType location){
+    void changeLocation(LocationType location){
         this.location = location;
 
 
