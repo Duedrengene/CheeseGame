@@ -12,7 +12,7 @@ public class Location {
     }
 
 
-    LocationType location = LocationType.shop;
+    LocationType location = LocationType.dungeon;
 
 
     void functions(){

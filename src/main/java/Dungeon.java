@@ -8,7 +8,7 @@ public class Dungeon {
     int hastighed = 4;
     PApplet p;
     Player player;
-    ArrayList<Enemy> enemies = new ArrayList<>();
+    ArrayList<Enemy> enemies;
 
     Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies){
     this.p = p;
@@ -38,8 +38,16 @@ public class Dungeon {
 
 
        int bls = player.bullets.size();
-       while (bls-- != 0)
+       while (bls-- != 0) {
            player.bullets.get(bls).script();
+           for(int i=0; i<enemies.size();i++)
+            if (player.bullets.get(bls).hit(player.bullets, enemies.get(i))) {
+                enemies.get(i).followingplayer=true;
+                System.out.println("Mathias er ikke cool");
+                player.bullets.remove(bls);
+                break;
+            }
+       }
 
 
    }
@@ -51,8 +59,10 @@ public class Dungeon {
        for (int i = 0; i < enemies.size(); i++) {
            enemies.get(i).update();
            enemies.get(i).display();
-
-
+           if(enemies.get(i).health<0){
+enemies.remove(i);
+i--;
+           }
        }
 
    }

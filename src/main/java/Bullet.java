@@ -14,9 +14,11 @@ public class Bullet {
  //boolean isShooting;
 
  int bullettype;
+ int bulletDiameter =10;
 
     Bullet(PApplet p,PVector bulletlocation, PVector velocity) {
         this.p = p;
+        this.bulletlocation = bulletlocation;
         bullettarget(bulletlocation,velocity);
     }
 
@@ -29,7 +31,7 @@ public class Bullet {
 void drawbullet() {
 
          p.fill(250,150,150);
-        p.ellipse(pos.x,pos.y,10,10);
+        p.ellipse(pos.x,pos.y,bulletDiameter,bulletDiameter);
 
 }
 void movebullet() {
@@ -41,21 +43,20 @@ boolean check() {
         return pos.x > p.width | pos.x < 0 | pos.y > p.height | pos.y < 0;
 }
 
-    void hit(ArrayList<Bullet> bullets, Enemy enemy, int i) {
-        if(bulletlocation.x <= enemy.getEnemyposition.x && bulletlocation.x >= enemy.getEnemyposition.x && bulletlocation.y <= enemy.getEnemyposition.y && bulletlocation.y >= enemy.getEnemyposition.y) {
-            int hitdamage = (int) p.random(10,20);
+    boolean hit(ArrayList<Bullet> bullets, Enemy enemy) {
+        if(((pos.x <= enemy.enemyPosition.x+ enemy.enemyDiameter && pos.x >= enemy.enemyPosition.x) ||(pos.x+bulletDiameter <= enemy.enemyPosition.x+ enemy.enemyDiameter && pos.x+bulletDiameter >= enemy.enemyPosition.x)) && (((pos.y <= enemy.enemyPosition.y+ enemy.enemyDiameter && pos.y >= enemy.enemyPosition.y))|| (pos.y+ bulletDiameter <= enemy.enemyPosition.y+ enemy.enemyDiameter && pos.y+bulletDiameter >= enemy.enemyPosition.y))) {
+            int hitdamage = (int) p.random(10,21);
             //enemy.health -= -10;
             enemy.health -= hitdamage;
-            bullets.remove(i);
+            return true;
         }
-
+return false;
     }
 void script() {
 
 
         drawbullet();
         movebullet();
-
 
         //hit();
         //return isShooting;

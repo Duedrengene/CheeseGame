@@ -12,7 +12,7 @@ public class Enemy {
     boolean dead = false;
     int hastighed;
     PApplet p;
-    PVector getEnemyposition = new PVector();
+    PVector enemyPosition = new PVector();
     float maximumhealth = 100;
     float healthbarWidth = 100;
     float healthbarHeight = 20;
@@ -25,14 +25,14 @@ public class Enemy {
     float maxforce = 1;
     boolean enemyslashrange = false;
 
-    float Playeradius = 10;
-    float Enemyradius = 10;
+    float playerDiameter = 10;
+    float enemyDiameter = 10;
     PVector position;
 
 
     Enemy(float xPos, float yPos, int hastighed, int DIAMETER, PVector position, PApplet p, Player player) {
-        getEnemyposition.x = xPos;
-        getEnemyposition.y = yPos;
+        enemyPosition.x = xPos;
+        enemyPosition.y = yPos;
         this.hastighed = hastighed;
         this.p = p;
         this.position = position;
@@ -51,28 +51,28 @@ public class Enemy {
             targetVector.y = position.y;
             // Fjendens position forhold til playeren.
             PVector enemychase = new PVector();
-            enemychase.x = getEnemyposition.x;
-            enemychase.y = getEnemyposition.y;
+            enemychase.x = enemyPosition.x;
+            enemychase.y = enemyPosition.y;
 
             PVector direction = PVector.sub(targetVector, enemychase);
             //for at lave det til en normalvektor med en længde på 1.
             direction.normalize();
 
             direction.mult(movespeed);
-            getEnemyposition.x += direction.x;
-            getEnemyposition.y += direction.y;
+            enemyPosition.x += direction.x;
+            enemyPosition.y += direction.y;
 
             direction.limit(movespeed);
             //getGetEnemyvelocity.limit(movespeed);
 
-            getEnemyposition.add(getGetEnemyvelocity);
-            PVector steerforce = PVector.sub(direction,getGetEnemyvelocity);
+            enemyPosition.add(getGetEnemyvelocity);
+            PVector steerforce = PVector.sub(direction, getGetEnemyvelocity);
             //PVector steerforce = PVector.sub(direction,enemychase);
             steerforce.limit(maxforce);
 
             //getGetEnemyvelocity.limit(movespeed);
             //p.println(steerforce);
-
+        }
             if (health < 50) {
                 p.fill(175, 215, 0);
             } else if (health > 50) {
@@ -80,20 +80,20 @@ public class Enemy {
             } else if (health < 25) {
                 p.fill(0, 255, 0);
             }
-        }
+
     }
 
     public void display() {
 
-        p.ellipse(getEnemyposition.x, getEnemyposition.y, Enemyradius, Enemyradius);
+        p.ellipse(enemyPosition.x, enemyPosition.y, enemyDiameter, enemyDiameter);
 
         //Laver enemies Healthbar.
 
         float calculateHP = (health / maximumhealth) * healthbarWidth;
 
         p.stroke(153);
-        p.rect(getEnemyposition.x - 50, getEnemyposition.y - 50, calculateHP, healthbarHeight);
-        boolean hit = pointRadius(position.x, position.y, Playeradius, getEnemyposition.x, getEnemyposition.y, Enemyradius);
+        p.rect(enemyPosition.x - 50, enemyPosition.y - 50, calculateHP, healthbarHeight);
+        boolean hit = pointRadius(position.x, position.y, playerDiameter, enemyPosition.x, enemyPosition.y, enemyDiameter);
 
         if (hit) {
             p.fill(255, 150, 0);
@@ -110,8 +110,8 @@ public class Enemy {
     }
 
     boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {
-        float distanceX = position.x - getEnemyposition.x;
-        float distanceY = position.y - getEnemyposition.y;
+        float distanceX = position.x - enemyPosition.x;
+        float distanceY = position.y - enemyPosition.y;
         float distance = p.sqrt((distanceX * distanceX) + (distanceY * distanceY));
         Activeradius = 350;
         if (distance <= Activeradius) {
