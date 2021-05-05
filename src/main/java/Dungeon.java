@@ -3,12 +3,18 @@ import processing.core.PApplet;
 import java.util.ArrayList;
 
 public class Dungeon {
+
+    PApplet p;
+
+    Player player;
+
+    ArrayList<Enemy> enemies;
+
     int level;
     int DIAMETER = 80;
     int hastighed = 4;
-    PApplet p;
-    Player player;
-    ArrayList<Enemy> enemies;
+
+
 
     Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies){
     this.p = p;
@@ -42,7 +48,7 @@ public class Dungeon {
            player.bullets.get(bls).script();
            for(int i=0; i<enemies.size();i++)
             if (player.bullets.get(bls).hit(player.bullets, enemies.get(i))) {
-                enemies.get(i).followingplayer=true;
+                enemies.get(i).followingPlayer =true;
                 System.out.println("Mathias er ikke cool");
                 player.bullets.remove(bls);
                 break;

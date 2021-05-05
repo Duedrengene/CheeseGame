@@ -6,63 +6,47 @@ import static processing.core.PConstants.*;
 
 public class Player {
 
+    PApplet p;
 
     ArrayList<Bullet> bullets;
 
-    PApplet p;
-
+    Inventory inventory;
 
     PVector position = new PVector();
     PVector velocity = new PVector();
-
-    PVector bodydash = new PVector();
-    float playerspd = 20;
-    PVector bulletspeed = new PVector();
-    PVector runningspeed = new PVector(1,1);
-
-
+    PVector bodyDash = new PVector();
+    PVector bulletSpeed = new PVector();
+    PVector runningSpeed = new PVector(1,1);
 
     boolean isShooting = false;
     boolean showAim = false;
     boolean cooldown = false;
     boolean check = true;
-
-    Inventory inventory;
-
     boolean down,up,left,right = false;
     boolean ready = true;
     boolean open = false;
-
-
     boolean running = false;
     boolean notAbleToRun = false;
-
     boolean buildMode = false;
+
+    float playerSpd = 20;
+    float maximumHealth = 100;
+    float healthbarWidth = 200;
+    float healthbarHeight = 40;
+    float playerHealth = 100;
+    float maxMagasineUpgrade;
+    float maximumStamina = 100;
+    float staminaLoss = 0.5f;
+    float passiveStamina = 0.10f;
+    float stamina = maximumStamina;
+
     int playerWidth = 10;
     int playerHeight = 10;
 
 
 
-
-    float maximumhealth = 100;
-    float healthbarWidth = 200;
-    float healthbarHeight = 40;
-    float playerhealth = 100;
-    float maxmagasineupgrade;
-
-
-    float maximumstamina = 100;
-    float staminaloss = 0.5f;
-    float passivestamina = 0.10f;
-
-    float stamina = maximumstamina;
-
-
-
-
-
     Player(PApplet p, ArrayList<Bullet> bullets,Inventory inventory) {
-        this.playerhealth = playerhealth;
+        this.playerHealth = playerHealth;
         this.p = p;
         this.bullets = bullets;
         //this.bulletpool = bulletpool;
@@ -76,7 +60,7 @@ public class Player {
     void changePosition() {
 
         PVector speed = new PVector(velocity.x,velocity.y);
-                speed.mult(runningspeed.x);
+        speed.mult(runningSpeed.x);
         position.add(speed);
 
         position.x = p.constrain(position.x, 0, p.width - playerWidth);
@@ -113,29 +97,29 @@ public class Player {
 
     }
      void addBullet() {
-        bulletspeed.set(p.mouseX,p.mouseY,0);
-        bulletspeed.sub(position);
-        bulletspeed.normalize();
-        bulletspeed.mult(Bullet.VEL);
+        bulletSpeed.set(p.mouseX,p.mouseY,0);
+        bulletSpeed.sub(position);
+        bulletSpeed.normalize();
+        bulletSpeed.mult(Bullet.VEL);
         Magasine();
 
     }
     void Magasine() {
-            bullets.add(new Bullet(p,position,bulletspeed));
+            bullets.add(new Bullet(p,position, bulletSpeed));
         }
 
     void showHealth() {
-        if (playerhealth < 50) {
+        if (playerHealth < 50) {
             p.fill(175, 215, 0);
         }
-        else if ( playerhealth > 50) {
+        else if ( playerHealth > 50) {
             p.fill(0,255,0);
         }
-        else if ( playerhealth < 25) {
+        else if ( playerHealth < 25) {
             p.fill(0,255,0);
         }
 
-        float calculateplayerHP = (playerhealth/maximumhealth)* healthbarWidth;
+        float calculateplayerHP = (playerHealth / maximumHealth)* healthbarWidth;
 
         //der er 2 rect tilstede grundet til at der skal være en omkreds om cirkel (da det andet areal/længde går nedad når den mister liv).
 
@@ -156,7 +140,7 @@ public class Player {
     }
  void useStamina() {
      if (running == true) {
-         stamina -= staminaloss;
+         stamina -= staminaLoss;
          if (stamina < 0) {
              stamina = 0.f;
 
@@ -171,8 +155,8 @@ public class Player {
  }
 void regainStamina() {
     if (running == false) {
-        stamina += passivestamina;
-        if (stamina > maximumstamina) {
+        stamina += passiveStamina;
+        if (stamina > maximumStamina) {
             stamina = 100.f;
         }
     }
@@ -195,10 +179,10 @@ void regainStamina() {
     //PVector runningspeed = new PVector();
 
 if(running == false) {
-    runningspeed.set(1,1);
+    runningSpeed.set(1,1);
 }
 else{
-    runningspeed.set(4,4);
+    runningSpeed.set(4,4);
 
 
     }

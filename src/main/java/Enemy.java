@@ -6,36 +6,44 @@ import java.util.ArrayList;
 
 public class Enemy {
 
+    PApplet p;
+
     ArrayList<Bullet> bullets;
 
-    boolean followingplayer = false;
-    boolean dead = false;
-    int hastighed;
-    PApplet p;
+    Player player;
+
+    PVector playerPosition;
     PVector enemyPosition = new PVector();
-    float maximumhealth = 100;
+    PVector getGetEnemyVelocity = new PVector(0,0);
+    PVector acceleration;
+
+
+    boolean followingPlayer = false;
+    boolean dead = false;
+    boolean enemySlashRange = false;
+
+    int hastighed;
+
+    float maximumHealth = 100;
     float healthbarWidth = 100;
     float healthbarHeight = 20;
     float health = 100;
-    Player player;
-    //float calculateHP;
-    PVector getGetEnemyvelocity = new PVector(0,0);
-    PVector acceleration;
-    float movespeed = 4;
-    float maxforce = 1;
-    boolean enemyslashrange = false;
-
+    float moveSpeed = 4;
+    float maxForce = 1;
     float playerDiameter = 10;
     float enemyDiameter = 10;
-    PVector position;
+    //float calculateHP;
 
 
-    Enemy(float xPos, float yPos, int hastighed, int DIAMETER, PVector position, PApplet p, Player player) {
+
+
+
+    Enemy(float xPos, float yPos, int hastighed, int DIAMETER, PVector playerPosition, PApplet p, Player player) {
         enemyPosition.x = xPos;
         enemyPosition.y = yPos;
         this.hastighed = hastighed;
         this.p = p;
-        this.position = position;
+        this.playerPosition = playerPosition;
         this.player = player;
         this.bullets = player.bullets;
 
@@ -43,12 +51,12 @@ public class Enemy {
 
     }
     void update() {
-        if (followingplayer) {
+        if (followingPlayer) {
             //Identificere spillerens lokation.
             PVector targetVector = new PVector();
 
-            targetVector.x = position.x;
-            targetVector.y = position.y;
+            targetVector.x = playerPosition.x;
+            targetVector.y = playerPosition.y;
             // Fjendens position forhold til playeren.
             PVector enemychase = new PVector();
             enemychase.x = enemyPosition.x;
@@ -58,17 +66,17 @@ public class Enemy {
             //for at lave det til en normalvektor med en længde på 1.
             direction.normalize();
 
-            direction.mult(movespeed);
+            direction.mult(moveSpeed);
             enemyPosition.x += direction.x;
             enemyPosition.y += direction.y;
 
-            direction.limit(movespeed);
+            direction.limit(moveSpeed);
             //getGetEnemyvelocity.limit(movespeed);
 
-            enemyPosition.add(getGetEnemyvelocity);
-            PVector steerforce = PVector.sub(direction, getGetEnemyvelocity);
+            enemyPosition.add(getGetEnemyVelocity);
+            PVector steerforce = PVector.sub(direction, getGetEnemyVelocity);
             //PVector steerforce = PVector.sub(direction,enemychase);
-            steerforce.limit(maxforce);
+            steerforce.limit(maxForce);
 
             //getGetEnemyvelocity.limit(movespeed);
             //p.println(steerforce);
@@ -89,20 +97,20 @@ public class Enemy {
 
         //Laver enemies Healthbar.
 
-        float calculateHP = (health / maximumhealth) * healthbarWidth;
+        float calculateHP = (health / maximumHealth) * healthbarWidth;
 
         p.stroke(153);
         p.rect(enemyPosition.x - 50, enemyPosition.y - 50, calculateHP, healthbarHeight);
-        boolean hit = pointRadius(position.x, position.y, playerDiameter, enemyPosition.x, enemyPosition.y, enemyDiameter);
+        boolean hit = pointRadius(playerPosition.x, playerPosition.y, playerDiameter, enemyPosition.x, enemyPosition.y, enemyDiameter);
 
         if (hit) {
             p.fill(255, 150, 0);
             p.text("u dead now",200,200);
-            player.playerhealth -=10;
+            player.playerHealth -=10;
 
-            if(player.playerhealth < 0) {
+            if(player.playerHealth < 0) {
                 p.text("Press to Respawn",250,50);
-                player.playerhealth =0;
+                player.playerHealth =0;
             }
 
         }
@@ -110,25 +118,25 @@ public class Enemy {
     }
 
     boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {
-        float distanceX = position.x - enemyPosition.x;
-        float distanceY = position.y - enemyPosition.y;
+        float distanceX = playerPosition.x - enemyPosition.x;
+        float distanceY = playerPosition.y - enemyPosition.y;
         float distance = p.sqrt((distanceX * distanceX) + (distanceY * distanceY));
         Activeradius = 350;
         if (distance <= Activeradius) {
-            followingplayer = true;
+            followingPlayer = true;
 
             if(distance < 35) {
-                enemyslashrange = true;
-                if (enemyslashrange = true) ;
+                enemySlashRange = true;
+                if (enemySlashRange = true) ;
 
                 float slowdown = 1.6f;
-                movespeed = slowdown;
+                moveSpeed = slowdown;
             }
                  else
 
                      //HIT FUCKTION HERE WHEN ATTACKING.
-                     movespeed =4;
-                     enemyslashrange = false;
+                     moveSpeed =4;
+                     enemySlashRange = false;
 
 
                 //getGetEnemyvelocity = ();
