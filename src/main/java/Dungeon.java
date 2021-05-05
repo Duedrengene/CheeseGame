@@ -10,17 +10,12 @@ public class Dungeon {
 
     ArrayList<Enemy> enemies;
     Camera camera;
-
-
-    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera){
-
     int level;
     int DIAMETER = 80;
     int hastighed = 4;
 
 
-
-    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies){
+    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera){
 
     this.p = p;
     this.player = player;
@@ -60,10 +55,7 @@ public class Dungeon {
            player.bullets.get(bls).script();
            for(int i=0; i<enemies.size();i++)
             if (player.bullets.get(bls).hit(player.bullets, enemies.get(i))) {
-
-                enemies.get(i).followingplayer=true;
-
-
+                
                 enemies.get(i).followingPlayer =true;
               
                 player.bullets.remove(bls);
