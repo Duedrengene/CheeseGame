@@ -11,7 +11,7 @@ public class WallItem implements Item {
     WallItem(ImageLoader iL){
         image = iL.wall;
         this.il = iL;
-        connectedFurniture = new Wall(iL);
+        connectedFurniture = new Wall(iL.wall);
 
     }
 

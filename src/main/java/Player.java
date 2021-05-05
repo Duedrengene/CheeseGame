@@ -148,7 +148,6 @@ public class Player {
         p.rect(740,25,calculateplayerHP,healthbarHeight);
         p.noFill();
         p.rect(740,25,healthbarWidth,healthbarHeight);
-        p.println(calculateplayerHP);
         //Til at vise den maximale HP bar stadig selvom HP forsvinder.
 
         p.fill(255);
@@ -331,14 +330,12 @@ else{
                 }break;
 
                 case TAB:{
-                    System.out.println("Bruh");
                     if(pressed) {
                         for(int i=0;i <inventory.useBarList.size();i++)
                         inventory.useBarList.get(i).selected = false;
 
                         if (location == LocationType.shop) {
                             buildMode = !buildMode;
-                            System.out.println(buildMode);
 
                         }
 
@@ -389,7 +386,6 @@ else{
                     if((pressed)) {
                         if (ready)
                             running = true;
-                        System.out.println(running);
                     }
                     else {
                         running = false;

@@ -12,7 +12,7 @@ public class DoorItem implements Item {
         DoorItem(ImageLoader iL){
             image = iL.door;
             this.il = iL;
-            connectedFurniture = new Door(iL);
+            connectedFurniture = new Door(iL.door);
 
         }
 

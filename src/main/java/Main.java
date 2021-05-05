@@ -59,8 +59,9 @@ public class Main extends PApplet {
         camera.changeAngle();
         location.functions();
 
-
     }
+
+
 
 
     public void keyPressed(){

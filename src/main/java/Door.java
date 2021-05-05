@@ -1,22 +1,12 @@
-public class Door implements Furniture {
+import processing.core.PImage;
+
+public class Door extends Furniture {
 
 
-    ImageLoader imgLoad;
-
-    Door(ImageLoader imgLoad){}
-
-    public void display(){
+Door(PImage img){
+    this.img= img;
 
 
-    }
-    public void function(){
-
-
-    }
-
-    public void playerNearby(){
-
-
-    }
+}
 
 }

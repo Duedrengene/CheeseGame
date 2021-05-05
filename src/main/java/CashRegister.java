@@ -1,2 +1,2 @@
-public class CashRegister {
+public class CashRegister extends Furniture {
 }

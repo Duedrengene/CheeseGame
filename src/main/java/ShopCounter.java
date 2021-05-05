@@ -1,17 +1,5 @@
-public class ShopCounter implements Furniture {
-
-    public void display(){
+public class ShopCounter extends Furniture {
 
 
-    }
-    public void function(){
-
-
-    }
-
-    public void playerNearby(){
-
-
-    }
 
 }

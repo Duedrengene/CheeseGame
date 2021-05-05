@@ -1,29 +1,16 @@
+import processing.core.PImage;
+
 import java.awt.*;
 
-public class Wall implements Furniture {
+public class Wall extends Furniture {
 
-    ImageLoader imgLoad;
 
-    Wall(ImageLoader imgLoad){
-
+    Wall(PImage img){
+        this.img = img;
 
 
     }
 
-
-public void display(){
-
-
-}
-public void function(){
-
-
-}
-
-public void playerNearby(){
-
-
-}
 
 
 }

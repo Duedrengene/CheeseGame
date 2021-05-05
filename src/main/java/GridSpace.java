@@ -7,6 +7,7 @@ PApplet p;
 boolean pressed = false;
 
 FurnitureTypes gridType = FurnitureTypes.empty;
+Furniture furniture;
 ImageLoader imgLoad;
 
 
@@ -25,7 +26,32 @@ void changeGridType(FurnitureTypes newGridType){
 
 gridType = newGridType;
 
+switch (gridType) {
 
+    case empty:{
+
+        furniture = null;
+
+    }break;
+
+    case door:{
+        furniture= new Door(imgLoad.door);
+
+    }break;
+
+    case cashRegister:{
+        furniture= new CashRegister();
+
+    }break;
+
+    case shopCounter:{
+        furniture = new ShopCounter();
+    }break;
+
+    case wall:{}
+    furniture = new Wall(imgLoad.wall);
+
+}
 
 }
     void pressed(boolean check,float mX,float mY,Inventory inventory){
@@ -47,36 +73,13 @@ gridType = newGridType;
 void display(){
 
 
+if(gridType != FurnitureTypes.empty)
+    furniture.display(p,x,y);
+else
+    p.rect(x,y,width,height);
 
 
 
-
-
-    switch(gridType){
-        case empty:{
-            p.rect(x,y,width,height);
-
-        }break;
-
-        case door:{
-            p.image(imgLoad.door,x,y,width,height);
-
-        }break;
-
-        case wall:{
-            p.image(imgLoad.wall,x,y,width,height);
-
-        }break;
-
-        case shopCounter:{
-            p.image(imgLoad.shopCounter,x,y,width,height);
-
-        }break;
-
-        case cashRegister:{
-            p.image(imgLoad.cashRegister,x,y,width,height);
-
-        }break;
 
 
 
@@ -94,4 +97,4 @@ void display(){
 
 
 
-}
+
