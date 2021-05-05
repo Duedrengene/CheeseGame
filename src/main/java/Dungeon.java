@@ -3,15 +3,25 @@ import processing.core.PApplet;
 import java.util.ArrayList;
 
 public class Dungeon {
-    int level;
-    int DIAMETER = 80;
-    int hastighed = 4;
+
     PApplet p;
+
     Player player;
+
     ArrayList<Enemy> enemies;
     Camera camera;
 
+
     Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera){
+
+    int level;
+    int DIAMETER = 80;
+    int hastighed = 4;
+
+
+
+    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies){
+
     this.p = p;
     this.player = player;
     this.enemies = enemies;
@@ -50,8 +60,12 @@ public class Dungeon {
            player.bullets.get(bls).script();
            for(int i=0; i<enemies.size();i++)
             if (player.bullets.get(bls).hit(player.bullets, enemies.get(i))) {
+
                 enemies.get(i).followingplayer=true;
 
+
+                enemies.get(i).followingPlayer =true;
+              
                 player.bullets.remove(bls);
                 break;
             }

@@ -5,26 +5,29 @@ import java.util.ArrayList;
 public class Bullet {
 
  PApplet p;
- PVector bulletlocation;
 
+ PVector bulletLocation;
  PVector pos = new PVector();
- PVector bulletspeed = new PVector();
- static final short FREQUENCY=2;
- static final short VEL = 5;
- //boolean isShooting;
+ PVector bulletSpeed = new PVector();
 
- int bullettype;
- int bulletDiameter =10;
+    static final short FREQUENCY=2;
+    static final short VEL = 5;
 
-    Bullet(PApplet p,PVector bulletlocation, PVector velocity) {
+    int bullettype;
+    int bulletDiameter =10;
+
+    //boolean isShooting;
+
+
+    Bullet(PApplet p, PVector bulletLocation, PVector velocity) {
         this.p = p;
-        this.bulletlocation = bulletlocation;
-        bullettarget(bulletlocation,velocity);
+        this.bulletLocation = bulletLocation;
+        bullettarget(bulletLocation,velocity);
     }
 
     void bullettarget(PVector bulletlocation, PVector velocity) {
         pos.set(bulletlocation);
-        bulletspeed.set(velocity);
+        bulletSpeed.set(velocity);
         //isShooting = false;
     }
 
@@ -36,7 +39,7 @@ void drawbullet() {
 }
 void movebullet() {
 
-    pos.add(bulletspeed);
+    pos.add(bulletSpeed);
 
 }
 boolean check() {
