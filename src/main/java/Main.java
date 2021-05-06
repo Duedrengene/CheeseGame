@@ -1,5 +1,4 @@
 import processing.core.PApplet;
-import processing.core.PVector;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ public class Main extends PApplet {
     Location location;
     Player player;
     Camera camera;
-    Deathrealm deathrealm;
+    Deathrealm deathRealm;
     DeathReaper deathReaper;
 
     public static void main(String[] args) {
@@ -47,9 +46,9 @@ public class Main extends PApplet {
         camera = new Camera(this,player.position,player);
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
-
-        deathrealm = new Deathrealm(this,player,deathReaper);
-        location = new Location(shop, dungeon,gUI,deathrealm);
+        deathReaper = new DeathReaper(this,width/2,height/2);
+        deathRealm = new Deathrealm(this,player,deathReaper);
+        location = new Location(shop, dungeon,gUI, deathRealm);
 
         inventory.furnitureList.add(new WallItem(imgLoad));
         inventory.furnitureList.add(new DoorItem(imgLoad));
@@ -62,7 +61,7 @@ public class Main extends PApplet {
         background(0);
         //camera.changeAngle();
         location.functions(this);
-        player.draw();
+        player.draw(location);
 
     }
 

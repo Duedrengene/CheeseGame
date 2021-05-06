@@ -29,6 +29,7 @@ public class Player {
     boolean notAbleToRun = false;
     boolean buildMode = false;
     boolean activate = false;
+    boolean dead = false;
 
     float playerSpd = 20;
     float maximumHealth = 100;
@@ -88,14 +89,19 @@ public class Player {
 
        }
    }
-    void draw() {
+    void draw(Location location) {
         changePosition();
         p.fill(255);
         p.stroke(204, 102, 0);
         p.rect(position.x, position.y, playerWidth, playerHeight);
-
         inventory.display(buildMode);
 
+        if (playerHealth < 0) {
+            playerHealth = 0;
+dead = true;
+location.changeLocation(LocationType.deathrealm);
+
+        }
     }
      void addBullet() {
         bulletSpeed.set(p.mouseX,p.mouseY,0);
@@ -108,6 +114,13 @@ public class Player {
     void Magasine() {
             bullets.add(new Bullet(p,position, bulletSpeed));
         }
+
+    void gameoverscreen(boolean gameoverscreen) {
+        if(dead ==true) {
+            // Just for right now.
+
+        }
+    }
 
     void showHealth() {
         if (playerHealth < 50) {

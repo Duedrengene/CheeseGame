@@ -5,6 +5,7 @@ public class Location {
     GUI gUI;
     Deathrealm deathrealm;
 
+
     Location(Shop shop,Dungeon dungeon,GUI gUI,Deathrealm deathrealm){
     this.shop = shop;
     this.dungeon = dungeon;
@@ -35,6 +36,7 @@ public class Location {
 
             case deathrealm:{
                 deathrealm.deathrealmFunctions();
+
             }
            break;
             }

@@ -23,6 +23,8 @@ public class Deathrealm {
     }
     void deathrealmFunctions() {
         playerFunctions();
+        p.text("You died Scumb <:)", 960,85);
+        p.fill(133);
 
 
     }

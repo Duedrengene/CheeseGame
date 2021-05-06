@@ -19,7 +19,6 @@ public class Enemy {
 
 
     boolean followingPlayer = false;
-    boolean  gameover = false;
     boolean enemySlashRange = false;
 
 
@@ -109,22 +108,12 @@ public class Enemy {
             p.text("u dead now", 200, 200);
             player.playerHealth -= 10;
 
-            if (player.playerHealth < 0) {
-                this.gameover = true;
-                p.text("Press to Respawn", 250, 50);
-                player.playerHealth = 0;
 
-            }
 
         }
+
     }
-    void gameoverscreen(boolean gameoverscreen) {
-            if(gameover =true) {
-            PApplet var10001 = this.p;
-            this.p.text("You died Scumb <:)", 960,85);
-            this.p.fill(133);
-            }
-        }
+
 
 
     boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {
