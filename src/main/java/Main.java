@@ -9,7 +9,7 @@ public class Main extends PApplet {
     ArrayList<GridSpaceDefault> inventoryGrid = new ArrayList<>();
     ArrayList<Furniture> furnitureList = new ArrayList<>();
 
-    ArrayList<PasswordPillar> pillarArray = new ArrayList<>();
+    ArrayList<PasswordPillar> pillars = new ArrayList<>();
 
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
@@ -26,6 +26,8 @@ public class Main extends PApplet {
     Camera camera;
     Deathrealm deathRealm;
     DeathReaper deathReaper;
+
+
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -53,12 +55,13 @@ public class Main extends PApplet {
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
         deathReaper = new DeathReaper(this,width/2,height/2);
-        deathRealm = new Deathrealm(this,player,deathReaper);
+        deathRealm = new Deathrealm(this,player, pillars, deathReaper);
         location = new Location(shop, dungeon,gUI, deathRealm);
 
 
         inventory.furnitureList.add(new WallItem(imgLoad.wall));
         inventory.furnitureList.add(new DoorItem(imgLoad.door));
+
     }
 
     @Override
@@ -69,7 +72,7 @@ public class Main extends PApplet {
         //camera.changeAngle();
         location.functions(this);
         player.draw(inventoryGrid,location);
-
+        //player.draw(location);
     }
 
 
