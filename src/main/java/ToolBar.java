@@ -1,7 +1,6 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 public class ToolBar {
@@ -43,7 +42,7 @@ public class ToolBar {
             p.strokeWeight(0);
 
         if(useList.size() >toolBarCount) {
-            p.image(useList.get(toolBarCount).getImage(), position.x, p.height - 101);
+            p.image(useList.get(toolBarCount).getImg(), position.x, p.height - 101);
 
         }
 

@@ -2,81 +2,58 @@ import processing.core.PApplet;
 
 public class GridSpace {
 
-float x,y,width,height;
-PApplet p;
-boolean pressed = false;
 
-FurnitureTypes gridType = FurnitureTypes.empty;
-Furniture furniture;
-ImageLoader imgLoad;
+    float x,y,width,height;
+    PApplet p;
+    boolean pressed = false;
 
+    boolean hasFurniture ;
 
-GridSpace(float x, float y, float width, float height, PApplet p, ImageLoader imgLoad,Inventory inventory){
-this.x = x;
-    this.y = y;
-this.width = width;
-this.height = height;
-this.p=p;
-this.imgLoad = imgLoad;
-
-}
+    Items itemGridType = Items.empty;
+    FurnitureTypes furnitureGridType = FurnitureTypes.empty;
+    Furniture furniture;
+    Item item;
+    ImageLoader imgLoad;
+    Inventory inventory;
 
 
-void changeGridType(FurnitureTypes newGridType){
+    void changeGridType(Items newGridType) {
 
-gridType = newGridType;
+    }
 
-switch (gridType) {
-
-    case empty:{
-
-        furniture = null;
-
-    }break;
-
-    case door:{
-        furniture= new Door(imgLoad.door);
-
-    }break;
-
-    case cashRegister:{
-        furniture= new CashRegister();
-
-    }break;
-
-    case shopCounter:{
-        furniture = new ShopCounter();
-    }break;
-
-    case wall:{}
-    furniture = new Wall(imgLoad.wall);
-
-}
-
-}
-    void pressed(boolean check,float mX,float mY,Inventory inventory){
+    void pressed(boolean check,float mX,float mY){
         if(check) {
             if(((mX <(x+width)) && ((x< mX)) )&& ((mY < y + height) && (mY > y))){
-                for (int i = 0; i<inventory.buildBarList.size();i++ )
-                    if(inventory.buildBarList.get(i).selected == true)
-                        if(gridType != inventory.furnitureList.get(i).getType())
-             changeGridType(inventory.furnitureList.get(i).getType());
-                        else
-                            changeGridType(FurnitureTypes.empty);
-             }
+                function();
+            }
 
 
         }
 
     }
 
-void display(){
+
+    void function(){
+
+    }
 
 
-if(gridType != FurnitureTypes.empty)
-    furniture.display(p,x,y);
-else
-    p.rect(x,y,width,height);
+    void display(){
+
+if(hasFurniture) {
+    if (furnitureGridType != FurnitureTypes.empty)
+        furniture.display(p, x, y);
+    else
+        p.rect(x,y,width,height);
+
+}else{
+    if (itemGridType != Items.empty)
+        item.display(p, x, y);
+    else
+        p.rect(x,y,width,height);
+
+}
+
 
 
 
@@ -84,17 +61,4 @@ else
 
 
     }
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
+}

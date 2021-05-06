@@ -3,10 +3,10 @@ import java.util.ArrayList;
 public class Shop {
 
     ArrayList<Furniture> furnitureList;
-    ArrayList<GridSpace> grid;
+    ArrayList<GridSpaceDefault> grid;
 
 
-    Shop(ArrayList<Furniture> furnitureList, ArrayList<GridSpace> grid) {
+    Shop(ArrayList<Furniture> furnitureList, ArrayList<GridSpaceDefault> grid) {
         this.furnitureList = furnitureList;
         this.grid = grid;
 
@@ -18,7 +18,7 @@ public class Shop {
         float nearestFurniture= 75;
         int furnitureCount =-1;
         for (int i = 0; grid.size() > i; i++) {
-
+        m.player.p.fill(0);
             grid.get(i).display();
             if(grid.get(i).furniture != null){
             float temp = grid.get(i).furniture.playerNearby(m.player,m.player.position.x,m.player.position.y);

@@ -12,11 +12,15 @@ public class Player {
 
     Inventory inventory;
 
+    ImageLoader imgLoad;
+
     PVector position = new PVector();
     PVector velocity = new PVector();
     PVector bodyDash = new PVector();
     PVector bulletSpeed = new PVector();
     PVector runningSpeed = new PVector(1,1);
+
+
 
     boolean isShooting = false;
     boolean showAim = false;
@@ -29,6 +33,8 @@ public class Player {
     boolean notAbleToRun = false;
     boolean buildMode = false;
     boolean activate = false;
+    boolean immobile = false;
+    boolean inventoryOpen = false;
 
     float playerSpd = 20;
     float maximumHealth = 100;
@@ -46,12 +52,11 @@ public class Player {
 
 
 
-    Player(PApplet p, ArrayList<Bullet> bullets,Inventory inventory) {
+    Player(PApplet p, ArrayList<Bullet> bullets,Inventory inventory,ImageLoader imgLoad) {
         this.playerHealth = playerHealth;
         this.p = p;
         this.bullets = bullets;
-        //this.bulletpool = bulletpool;
-
+        this.imgLoad = imgLoad;
         this.inventory = inventory;
 
         position.set(100, this.p.height / 2);
@@ -88,13 +93,13 @@ public class Player {
 
        }
    }
-    void draw() {
+    void draw(ArrayList<GridSpaceDefault> inventoryGridList) {
         changePosition();
         p.fill(255);
         p.stroke(204, 102, 0);
         p.rect(position.x, position.y, playerWidth, playerHeight);
 
-        inventory.display(buildMode);
+        inventory.display(buildMode,this,inventoryGridList);
 
     }
      void addBullet() {
@@ -226,7 +231,7 @@ else{
                 break;
                 case '3': {
                     if (pressed == true) {
-                        if (inventory.itemList.size() > 3)
+                        if (inventory.itemToolBarList.size() > 3)
                             inventory.useBarList.get(2).selected = !inventory.useBarList.get(2).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 2)
@@ -240,7 +245,7 @@ else{
                 break;
                 case '4': {
                     if (pressed == true) {
-                        if (inventory.itemList.size() > 4)
+                        if (inventory.itemToolBarList.size() > 4)
                             inventory.useBarList.get(3).selected = !inventory.useBarList.get(3).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 3)
@@ -255,7 +260,7 @@ else{
                 break;
                 case '5': {
                     if (pressed == true) {
-                        if (inventory.itemList.size() > 5)
+                        if (inventory.itemToolBarList.size() > 5)
                             inventory.useBarList.get(4).selected = !inventory.useBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 4)
@@ -267,12 +272,35 @@ else{
                 }
                 break;
 
+                case 'o':
+                case 'O':{
+                    if(pressed && check){
+                        if(!inventoryOpen)
+                        inventory.open(this);
+                        else
+                            inventory.close(this);
+                        check = false;
+                    }else{
+                        check = true;
+                    }
+
+
+
+                }   break;
+
+
+                case 'l':
+                case 'L':{
+                    inventory.add(new PizzaTopping(imgLoad),10);
+
+                }break;
+
                 case 'E':
                 case 'e':{
                     if(location == LocationType.shop&&pressed == true)
                     activate=true;
 
-                }
+                }break;
 
 
                 case 'F':
@@ -400,7 +428,7 @@ else{
         }
 
 
-     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpace> grid) {
+     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpaceDefault> grid) {
         if(location==LocationType.dungeon) {
             if(pressed)
                if(check) {
@@ -418,7 +446,7 @@ else{
              if (pressed)
              if(buildMode) {
                  for (int i = 0; i < grid.size(); i++)
-                     grid.get(i).pressed(true, mouseX, mouseY, inventory);
+                     grid.get(i).pressed(true, mouseX, mouseY);
              }
              inventory.selector(true, mouseX, mouseY, inventory);
          }

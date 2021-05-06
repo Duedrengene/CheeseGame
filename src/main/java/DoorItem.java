@@ -1,18 +1,15 @@
 import processing.core.PImage;
 
-public class DoorItem implements Item {
+public class DoorItem extends Item {
 
 
-        PImage image;
-        ImageLoader il;
-        Furniture connectedFurniture;
 
-        FurnitureTypes type = FurnitureTypes.door;
 
-        DoorItem(ImageLoader iL){
-            image = iL.door;
-            this.il = iL;
-            connectedFurniture = new Door(iL.door);
+
+        DoorItem(PImage image){
+            img = image;
+            connectedFurniture = new Door(image);
+             type = FurnitureTypes.door;
 
         }
 
@@ -23,11 +20,6 @@ public class DoorItem implements Item {
 
 
 
-        public PImage getImage() {
-            return image;
-        }
-
-        public FurnitureTypes getType(){return type; }
 
 
 }

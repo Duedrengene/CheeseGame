@@ -1,11 +1,11 @@
 import processing.core.PApplet;
-import processing.core.PVector;
 
 import java.util.ArrayList;
 
 public class Main extends PApplet {
 
-    ArrayList<GridSpace> grid = new ArrayList<>();
+    ArrayList<GridSpaceDefault> grid = new ArrayList<>();
+    ArrayList<GridSpaceDefault> inventoryGrid = new ArrayList<>();
     ArrayList<Furniture> furnitureList = new ArrayList<>();
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
@@ -39,15 +39,16 @@ public class Main extends PApplet {
 
         imgLoad.loadTheImages();
         inventory = new Inventory(this);
-        player = new Player(this,bullets,inventory);
-        grid = gridCreate.createGrid(width, height, this, imgLoad, inventory);
+        player = new Player(this,bullets,inventory,imgLoad);
+        grid = gridCreate.createGrid(width, height, this, imgLoad, inventory,10,true,0);
+        inventoryGrid = gridCreate.createGrid(500,500,this,imgLoad,inventory,5,false,250);
         shop = new Shop(furnitureList, grid);
         camera = new Camera(this,player.position,player);
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
         location = new Location(shop, dungeon,gUI);
-        inventory.furnitureList.add(new WallItem(imgLoad));
-        inventory.furnitureList.add(new DoorItem(imgLoad));
+        inventory.furnitureList.add(new WallItem(imgLoad.wall));
+        inventory.furnitureList.add(new DoorItem(imgLoad.door));
     }
 
     @Override
@@ -57,7 +58,7 @@ public class Main extends PApplet {
         background(0);
         //camera.changeAngle();
         location.functions(this);
-        player.draw();
+        player.draw(inventoryGrid);
 
     }
 

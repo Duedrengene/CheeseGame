@@ -1,10 +1,28 @@
+import processing.core.PApplet;
 import processing.core.PImage;
 
-public interface Item {
+public class Item {
 
-    void function();
+    PImage img;
+    FurnitureTypes type;
+    ImageLoader il;
+    Furniture connectedFurniture;
 
-    PImage getImage();
+    void function(){
 
-    FurnitureTypes getType();
+
+    }
+
+    public void display(PApplet p, float x, float y){
+        p.image(img,x,y);
+
+
+    }
+
+    public PImage getImg() {
+        return img;
+    }
+
+    public FurnitureTypes getType(){return type; }
+
 }

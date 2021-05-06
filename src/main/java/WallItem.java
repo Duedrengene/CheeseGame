@@ -1,17 +1,14 @@
 import processing.core.PImage;
 
-public class WallItem implements Item {
+public class WallItem extends Item {
 
-    PImage image;
-    ImageLoader il;
-    Furniture connectedFurniture;
 
-    FurnitureTypes type = FurnitureTypes.wall;
 
-    WallItem(ImageLoader iL){
-        image = iL.wall;
-        this.il = iL;
-        connectedFurniture = new Wall(iL.wall);
+
+    WallItem(PImage image){
+        img = image;
+        connectedFurniture = new Wall(img);
+        type = FurnitureTypes.wall;
 
     }
 
@@ -22,9 +19,5 @@ public class WallItem implements Item {
 
 
 
-    public PImage getImage() {
-        return image;
-    }
 
-    public FurnitureTypes getType(){return type; }
 }
