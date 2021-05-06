@@ -32,7 +32,6 @@ public class Camera {
         break;
     }
         p.pushMatrix();
-
     perspective = PVector.lerp(player.position,player.position,0);
     //perspective = PVector.lerp(player.position,player.position,0);
 

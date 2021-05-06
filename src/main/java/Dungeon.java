@@ -55,7 +55,7 @@ public class Dungeon {
            player.bullets.get(bls).script();
            for(int i=0; i<enemies.size();i++)
             if (player.bullets.get(bls).hit(player.bullets, enemies.get(i))) {
-                
+
                 enemies.get(i).followingPlayer =true;
               
                 player.bullets.remove(bls);

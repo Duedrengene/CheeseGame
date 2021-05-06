@@ -1,7 +1,8 @@
 public enum LocationType {
     shop,
     dungeon,
-    outside
 
+    deathrealm,
+    outside
 
 }
