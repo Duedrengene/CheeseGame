@@ -21,6 +21,7 @@ public class Main extends PApplet {
     Player player;
     Camera camera;
     Deathrealm deathrealm;
+    DeathReaper deathReaper;
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -47,7 +48,7 @@ public class Main extends PApplet {
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
 
-        deathrealm = new Deathrealm(this,player);
+        deathrealm = new Deathrealm(this,player,deathReaper);
         location = new Location(shop, dungeon,gUI,deathrealm);
 
         inventory.furnitureList.add(new WallItem(imgLoad));
