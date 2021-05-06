@@ -28,6 +28,7 @@ public class Player {
     boolean running = false;
     boolean notAbleToRun = false;
     boolean buildMode = false;
+    boolean activate = false;
 
     float playerSpd = 20;
     float maximumHealth = 100;
@@ -265,6 +266,15 @@ else{
                     }
                 }
                 break;
+
+                case 'E':
+                case 'e':{
+                    if(location == LocationType.shop&&pressed == true)
+                    activate=true;
+
+                }
+
+
                 case 'F':
                 case 'f': {
                     if ((pressed == false) && (ready))
