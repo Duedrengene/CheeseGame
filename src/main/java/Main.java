@@ -6,6 +6,9 @@ public class Main extends PApplet {
 
     ArrayList<GridSpace> grid = new ArrayList<>();
     ArrayList<Furniture> furnitureList = new ArrayList<>();
+
+    ArrayList<PasswordPillar> pillarArray = new ArrayList<>();
+
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
     ArrayList<Bullet> bullets = new ArrayList<>();
@@ -52,6 +55,7 @@ public class Main extends PApplet {
 
         inventory.furnitureList.add(new WallItem(imgLoad));
         inventory.furnitureList.add(new DoorItem(imgLoad));
+
     }
 
     @Override
@@ -75,6 +79,7 @@ public class Main extends PApplet {
 
     public void keyReleased() {
         player.controls(key, keyCode, false,location.location);
+        camera.setPerspective(key,keyCode,false,location.location);
     }
 
 

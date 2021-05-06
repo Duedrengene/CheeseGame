@@ -19,11 +19,10 @@ public class Deathrealm {
         this.player = player;
         this.deathReaper = deathReaper;
 
-
     }
     void deathrealmFunctions() {
         playerFunctions();
-        p.text("You died Scumb <:)", 960,85);
+        p.text("What is the Key to the Odor?", 480,85);
         p.fill(133);
 
 
@@ -33,7 +32,7 @@ public class Deathrealm {
      player.regainStamina();
      player.useStamina();
      deathReaper.drawDeathReaper();
-
+     deathReaper.ReaperPillars();
 
     }
 
