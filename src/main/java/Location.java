@@ -3,16 +3,19 @@ public class Location {
     Shop shop;
     Dungeon dungeon;
     GUI gUI;
+    Deathrealm deathrealm;
 
-    Location(Shop shop,Dungeon dungeon,GUI gUI){
+
+    Location(Shop shop,Dungeon dungeon,GUI gUI,Deathrealm deathrealm){
     this.shop = shop;
     this.dungeon = dungeon;
     this.gUI = gUI;
+    this.deathrealm = deathrealm;
 
     }
 
 
-    LocationType location = LocationType.shop;
+    LocationType location = LocationType.dungeon;
 
 
     void functions(Main m){
@@ -31,11 +34,17 @@ public class Location {
 
             }break;
 
+            case deathrealm:{
+                deathrealm.deathrealmFunctions();
+
+            }
+           break;
+            }
         }
 
 
 
-    }
+
 
     void changeLocation(LocationType location){
         this.location = location;

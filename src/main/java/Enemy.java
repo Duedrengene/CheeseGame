@@ -19,8 +19,8 @@ public class Enemy {
 
 
     boolean followingPlayer = false;
-    boolean dead = false;
     boolean enemySlashRange = false;
+
 
     int hastighed;
 
@@ -105,17 +105,16 @@ public class Enemy {
 
         if (hit) {
             p.fill(255, 150, 0);
-            p.text("u dead now",200,200);
-            player.playerHealth -=10;
+            p.text("u dead now", 200, 200);
+            player.playerHealth -= 10;
 
-            if(player.playerHealth < 0) {
-                p.text("Press to Respawn",250,50);
-                player.playerHealth =0;
-            }
+
 
         }
 
     }
+
+
 
     boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {
         float distanceX = playerPosition.x - enemyPosition.x;

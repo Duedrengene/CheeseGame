@@ -12,6 +12,7 @@ public class Camera {
     PVector startpos = new PVector(250,250);
     PApplet p;
     PVector position;
+    boolean ready;
 
     public Camera( PApplet p, PVector position,Player player) {
         this.p = p;
@@ -32,22 +33,21 @@ public class Camera {
         break;
     }
         p.pushMatrix();
-
-    perspective = PVector.lerp(player.position,player.position,0);
+        //Lerp er en matematisk lineær interpolation, som er til at lave en kurvetilpasning. Dette virker for kameraet, da det konstruerer ny data ved center af skærmen ud fra hvor playeren går(playerens perspective.)
+    perspective = PVector.lerp(player.position,player.position,0.0F);
     //perspective = PVector.lerp(player.position,player.position,0);
 
     //p.translate(-player.position.x,-player.position.y);
     //p.noFill();
-
     //perspective = PVector.lerp(perspective,perspective,0);
 
-    //player.changeposition();
-        //player.showHealth();
     p.popMatrix();
 
     }
-    void setPerspective(char key, int keyCode, boolean b, LocationType location) {
+    void setPerspective(char key, int keyCode, boolean pressed, LocationType location) {
         if(key==CODED) {
+            if(pressed == true)
+
             if(keyCode == 'k') {
                 mode= (mode+1)%2;
             }

@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PVector;
 
 import java.util.ArrayList;
 
@@ -7,6 +8,9 @@ public class Main extends PApplet {
     ArrayList<GridSpaceDefault> grid = new ArrayList<>();
     ArrayList<GridSpaceDefault> inventoryGrid = new ArrayList<>();
     ArrayList<Furniture> furnitureList = new ArrayList<>();
+
+    ArrayList<PasswordPillar> pillarArray = new ArrayList<>();
+
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
     ArrayList<Bullet> bullets = new ArrayList<>();
@@ -20,6 +24,8 @@ public class Main extends PApplet {
     Location location;
     Player player;
     Camera camera;
+    Deathrealm deathRealm;
+    DeathReaper deathReaper;
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -46,7 +52,11 @@ public class Main extends PApplet {
         camera = new Camera(this,player.position,player);
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
-        location = new Location(shop, dungeon,gUI);
+        deathReaper = new DeathReaper(this,width/2,height/2);
+        deathRealm = new Deathrealm(this,player,deathReaper);
+        location = new Location(shop, dungeon,gUI, deathRealm);
+
+
         inventory.furnitureList.add(new WallItem(imgLoad.wall));
         inventory.furnitureList.add(new DoorItem(imgLoad.door));
     }
@@ -58,7 +68,7 @@ public class Main extends PApplet {
         background(0);
         //camera.changeAngle();
         location.functions(this);
-        player.draw(inventoryGrid);
+        player.draw(inventoryGrid,location);
 
     }
 
@@ -72,6 +82,7 @@ public class Main extends PApplet {
 
     public void keyReleased() {
         player.controls(key, keyCode, false,location.location);
+        camera.setPerspective(key,keyCode,false,location.location);
     }
 
 

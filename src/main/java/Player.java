@@ -35,6 +35,7 @@ public class Player {
     boolean activate = false;
     boolean immobile = false;
     boolean inventoryOpen = false;
+    boolean dead = false;
 
     float playerSpd = 20;
     float maximumHealth = 100;
@@ -93,7 +94,7 @@ public class Player {
 
        }
    }
-    void draw(ArrayList<GridSpaceDefault> inventoryGridList) {
+    void draw(ArrayList<GridSpaceDefault> inventoryGridList,location) {
         changePosition();
         p.fill(255);
         p.stroke(204, 102, 0);
@@ -101,6 +102,12 @@ public class Player {
 
         inventory.display(buildMode,this,inventoryGridList);
 
+        if (playerHealth < 0) {
+            playerHealth = 0;
+dead = true;
+location.changeLocation(LocationType.deathrealm);
+
+        }
     }
      void addBullet() {
         bulletSpeed.set(p.mouseX,p.mouseY,0);
@@ -113,6 +120,13 @@ public class Player {
     void Magasine() {
             bullets.add(new Bullet(p,position, bulletSpeed));
         }
+
+    void gameoverscreen(boolean gameoverscreen) {
+        if(dead ==true) {
+            // Just for right now.
+
+        }
+    }
 
     void showHealth() {
         if (playerHealth < 50) {
