@@ -45,6 +45,7 @@ public class Deathrealm {
 void deathReaperFunctions() {
     deathReaper.drawDeathReaper();
     deathReaper.ReaperPillars();
+    player.display();
     // Tilføj Circulation effect?
 
 
