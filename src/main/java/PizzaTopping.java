@@ -1,9 +1,9 @@
 public class PizzaTopping extends Item{
 
-    PizzaTopping(ImageLoader iL){
-        img = iL.wall;
-        this.il = iL;
-        connectedFurniture = new Wall(iL.wall);
+    PizzaTopping(ImageLoader imgLoad){
+        img = imgLoad.wall;
+        this.il = imgLoad;
+        connectedFurniture = new Wall(imgLoad.wall);
         type = FurnitureTypes.wall;
 
     }

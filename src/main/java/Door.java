@@ -14,5 +14,6 @@ Door(PImage img){
 
     if(!m.player.buildMode)
     m.location.location=LocationType.dungeon;
+
     }
 }

@@ -1,0 +1,19 @@
+Index: src/main/java/ToolBar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import processing.core.PApplet;\r\nimport processing.core.PVector;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class ToolBar {\r\n\r\n    PApplet p;\r\n\r\n    PVector position;\r\n\r\n    ArrayList<Item> itemList = new ArrayList<>();\r\n\r\n    int width = 100;\r\n    int height = 100;\r\n    int toolBarCount;\r\n\r\n    boolean selected = false;\r\n\r\n    ToolBar(ArrayList<Item> itemList, int toolBarCount, PApplet p) {\r\n        this.p = p;\r\n        this.toolBarCount = toolBarCount;\r\n        this.itemList = itemList;\r\n        this.position = new PVector((p.width / 2) - 300 + (toolBarCount * 100), p.height - 101);\r\n        System.out.println(p.height);\r\n\r\n    }\r\n\r\n\r\n    void displayToolBar() {\r\n\r\n        p.strokeWeight(5);\r\n        p.stroke(255, 0, 0);\r\n        p.noFill();\r\n        if (itemList.size() > toolBarCount)\r\n            p.fill(255, 255, 255);\r\n        p.rect(position.x, position.y, width, height);\r\n        p.noFill();\r\n        p.stroke(0);\r\n        p.strokeWeight(0);\r\n\r\n        if (itemList.size() > toolBarCount) {\r\n            p.image(itemList.get(toolBarCount).getImage(), position.x , position.y);\r\n        }\r\n    }\r\n\r\n    boolean checkClicked(int x, int y) {\r\n     /*   if (x < position.x + width && x > position.x &&) {\r\n        }\r\n*/\r\nreturn false;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/ToolBar.java	(revision 14dbf52ed6acb08ba851a359409ec1098153941c)
++++ src/main/java/ToolBar.java	(date 1618819119593)
+@@ -47,7 +47,7 @@
+     boolean checkClicked(int x, int y) {
+      /*   if (x < position.x + width && x > position.x &&) {
+         }
+-*/
++*/  
+ return false;
+     }
+ }
+\ No newline at end of file

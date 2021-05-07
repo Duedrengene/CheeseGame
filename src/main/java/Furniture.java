@@ -27,14 +27,19 @@ PImage img;
 
 
      }
-     float playerNearby(Player player,float x,float y){
+
+     float playerNearby(Player player,float x,float y,int playerWidth,int playerHeight,float gridWidth,float gridHeight){
          float distance = -1;
 
-          float distanceX = player.position.x - x;
-          float distanceY = player.position.y - y;
+          float distanceX = player.position.x+playerWidth/2 - x-gridWidth/2;
+          float distanceY = player.position.y+playerHeight/2 - y-gridHeight/2;
           float  distanceTemp = (float)Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-          if(distanceTemp <=75)
-               distance = distanceTemp;
-          return distance;
+          if(distanceTemp <=75) {
+              distance = distanceTemp;
+
+          }
+         System.out.println("このすば"+distanceTemp);
+
+         return distance;
      }
 }

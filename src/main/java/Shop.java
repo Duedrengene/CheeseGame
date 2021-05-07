@@ -21,7 +21,7 @@ public class Shop {
         m.player.p.fill(0);
             grid.get(i).display();
             if(grid.get(i).furniture != null){
-            float temp = grid.get(i).furniture.playerNearby(m.player,m.player.position.x,m.player.position.y);
+            float temp = grid.get(i).furniture.playerNearby(m.player,grid.get(i).x,grid.get(i).y,m.player.width,m.player.height,grid.get(i).width,grid.get(i).height);
             if (temp !=-1&&temp<nearestFurniture) {
                 nearestFurniture = temp;
                 furnitureCount = i;
