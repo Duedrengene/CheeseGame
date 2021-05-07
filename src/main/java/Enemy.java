@@ -14,13 +14,16 @@ public class Enemy {
 
     PVector playerPosition;
     PVector enemyPosition = new PVector();
-    PVector getGetEnemyVelocity = new PVector(0,0);
+    PVector getGetEnemyVelocity = new PVector(0, 0);
     PVector acceleration;
 
 
     boolean followingPlayer = false;
     boolean enemySlashRange = false;
+    boolean ret;
 
+    int time =-1;
+    int t0 = 0;
 
     int hastighed;
 
@@ -32,6 +35,7 @@ public class Enemy {
     float maxForce = 1;
     float playerDiameter = 10;
     float enemyDiameter = 10;
+
     //float calculateHP;
 
     Enemy(float xPos, float yPos, int hastighed, int DIAMETER, PVector playerPosition, PApplet p, Player player) {
@@ -43,9 +47,10 @@ public class Enemy {
         this.player = player;
         this.bullets = player.bullets;
 
-        acceleration = new PVector(0,0);
+        acceleration = new PVector(0, 0);
 
     }
+
     void update() {
         if (followingPlayer) {
             //Identificere spillerens lokation.
@@ -77,13 +82,13 @@ public class Enemy {
             //getGetEnemyvelocity.limit(movespeed);
             //p.println(steerforce);
         }
-            if (health < 50) {
-                p.fill(175, 215, 0);
-            } else if (health > 50) {
-                p.fill(0, 255, 0);
-            } else if (health < 25) {
-                p.fill(0, 255, 0);
-            }
+        if (health < 50) {
+            p.fill(175, 215, 0);
+        } else if (health > 50) {
+            p.fill(0, 255, 0);
+        } else if (health < 25) {
+            p.fill(0, 255, 0);
+        }
 
     }
 
@@ -105,9 +110,15 @@ public class Enemy {
             player.playerHealth -= 10;
 
 
-
         }
 
+    }
+void timerreset() {
+        time = p.millis();
+}
+    boolean invincibilityFrame(int seconds) {
+        //int delta =p.millis();
+return (p.millis() - time > 1000 *seconds);
     }
 
 
