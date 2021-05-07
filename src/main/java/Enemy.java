@@ -20,7 +20,7 @@ public class Enemy {
 
     boolean followingPlayer = false;
     boolean enemySlashRange = false;
-    boolean ret;
+    boolean knockback = false;
 
     int time =-1;
     int t0 = 0;
@@ -81,6 +81,11 @@ public class Enemy {
 
             //getGetEnemyvelocity.limit(movespeed);
             //p.println(steerforce);
+            if(knockback ==true) {
+               enemyPosition.add(-direction.x*50,-direction.y*50);
+                knockback =false;
+            }
+
         }
         if (health < 50) {
             p.fill(175, 215, 0);
@@ -105,22 +110,31 @@ public class Enemy {
         boolean hit = pointRadius(playerPosition.x, playerPosition.y, playerDiameter, enemyPosition.x, enemyPosition.y, enemyDiameter);
 
         if (hit) {
+           timerReset();
             p.fill(255, 150, 0);
             p.text("u dead now", 200, 200);
             player.playerHealth -= 10;
-
+            //playerPosition.add()
 
         }
 
     }
-void timerreset() {
+void timerReset() {
         time = p.millis();
+        p.println(time);
 }
     boolean invincibilityFrame(int seconds) {
         //int delta =p.millis();
-return (p.millis() - time > 1000 *seconds);
+    return (p.millis() - time > 1000 * seconds);
     }
 
+    void timerFunction() {
+        for(int i =1; i<3;i++) {
+            if(invincibilityFrame(i)) {
+
+            }
+        }
+    }
 
 
     boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {

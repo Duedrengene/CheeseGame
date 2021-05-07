@@ -25,11 +25,12 @@ public class Dungeon {
     }
 
    void functions() {
-
+        p.pushMatrix();
+       cameraFunctions();
+       player.display();
        playerFunctions();
        enemyFunctions();
-       cameraFunctions();
-
+       p.popMatrix();
 
    }
    void cameraFunctions(){
@@ -37,12 +38,12 @@ public class Dungeon {
    }
 
    void playerFunctions(){
-       player.showHealth();
-       player.setAim();
+
        player.runAbility();
        player.regainStamina();
        player.useStamina();
-       player.showStamina();
+       player.showAim(camera);
+
 
 
 

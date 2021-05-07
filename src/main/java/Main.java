@@ -54,7 +54,7 @@ public class Main extends PApplet {
         camera = new Camera(this,player.position,player);
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
-        deathReaper = new DeathReaper(this,width/2,height/2);
+        deathReaper = new DeathReaper(this,width/2,height/2,imgLoad);
         deathRealm = new Deathrealm(this,player, pillars, deathReaper);
         location = new Location(shop, dungeon,gUI, deathRealm);
 
@@ -72,29 +72,28 @@ public class Main extends PApplet {
         //camera.changeAngle();
         location.functions(this);
         player.draw(inventoryGrid,location);
-        //player.draw(location);
     }
 
 
 
 
     public void keyPressed(){
-        player.controls(key,keyCode,true,location.location);
+        player.controls(key,keyCode,true,location.location,camera);
 
     }
 
     public void keyReleased() {
-        player.controls(key, keyCode, false,location.location);
-        camera.setPerspective(key,keyCode,false,location.location);
+        player.controls(key, keyCode, false,location.location,camera);
+       // camera.setPerspective(key,keyCode,false,location.location);
     }
 
 
    public void mousePressed() {
-        player.mouseControls(mouseX,mouseY, true,location.location,grid);
+        player.mouseControls(mouseX,mouseY, true,location.location,grid,camera);
 
    }
    public void mouseReleased(){
-        player.mouseControls(mouseX,mouseY,false,location.location,grid);
+        player.mouseControls(mouseX,mouseY,false,location.location,grid,camera);
 
    }
 
