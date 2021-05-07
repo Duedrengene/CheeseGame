@@ -14,7 +14,6 @@ public class Shop {
     }
 
     void shopFunction(Main m) {
-m.player.display();
         float nearestFurniture= 75;
         int furnitureCount =-1;
         for (int i = 0; grid.size() > i; i++) {
@@ -33,6 +32,7 @@ m.player.display();
             grid.get(furnitureCount).furniture.function(m);
 
         m.player.activate = false;
+        m.player.display();
 
     }
 }
