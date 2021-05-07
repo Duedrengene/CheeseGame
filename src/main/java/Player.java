@@ -110,9 +110,9 @@ System.out.println(camera.translateX);
         if (playerHealth < 0) {
             playerHealth = 0;
             dead = true;
-            position.set(960, 890);
+            //position.set(960, 890);
         location.changeLocation(LocationType.deathrealm);
-
+            position.set(960, 890);
         }
     }
     void display(){
