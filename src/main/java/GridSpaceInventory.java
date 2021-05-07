@@ -1,10 +1,12 @@
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 public class GridSpaceInventory extends GridSpace {
 
+int count;
 
-
-    GridSpaceInventory(float x, float y, float width, float height, PApplet p, ImageLoader imgLoad, Inventory inventory){
+    GridSpaceInventory(float x, float y, float width, float height, PApplet p, ImageLoader imgLoad, Inventory inventory,int i){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -12,9 +14,9 @@ public class GridSpaceInventory extends GridSpace {
         this.p=p;
         this.imgLoad = imgLoad;
         this.inventory = inventory;
-
+        count = i;
         hasFurniture = false;
-
+        changeGridType();
 
     }
 
@@ -24,9 +26,11 @@ public class GridSpaceInventory extends GridSpace {
     checkPress();
     }
 
-    void changeGridType(Items newGridType){
-
-        itemGridType = newGridType;
+    void changeGridType(){
+        if(inventory.itemList.size()>count)
+if(inventory.itemList.get(count).itemType!= null)
+        itemGridType = inventory.itemList.get(count).itemType;
+System.out.println(count);
 
         switch (itemGridType) {
 
@@ -50,25 +54,32 @@ public class GridSpaceInventory extends GridSpace {
                 item = new ShopCounterItem();
             }break;
 
-            case wallItem:{}
-            item = new WallItem(imgLoad.wall);
+            case wallItem: {
+                item = new WallItem(imgLoad.wall);
+            }break;
+
+            case pizzaTopping:{
+                item = new PizzaTopping(imgLoad);
+            }break;
+
 
         }
+
 
     }
 
     void checkPress(){
         int pressCount = 2;
         int[] gridSpaces = new int[2];
-        for(int i = 0; i<inventory.inventoryGrid.size();i++){
-            if(inventory.inventoryGrid.get(i).pressed) {
+        for(int i = 0; i<inventory.m.inventoryGrid.size();i++){
+            if(inventory.m.inventoryGrid.get(i).pressed) {
                 pressCount--;
                 gridSpaces[pressCount] = i;
             }
             if(pressCount ==0){
                 inventory.move(gridSpaces[1],gridSpaces[0],inventory.itemList);
-                inventory.inventoryGrid.get(gridSpaces[0]).pressed = false;
-                inventory.inventoryGrid.get(gridSpaces[1]).pressed = false;
+                inventory.m.inventoryGrid.get(gridSpaces[0]).pressed = false;
+                inventory.m.inventoryGrid.get(gridSpaces[1]).pressed = false;
 
             }
 

@@ -5,8 +5,10 @@ public class Item {
 
     PImage img;
     FurnitureTypes type;
+    Items itemType;
     ImageLoader il;
     Furniture connectedFurniture;
+
 
     void function(){
 

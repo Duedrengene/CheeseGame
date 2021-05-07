@@ -47,10 +47,13 @@ if(hasFurniture) {
         p.rect(x,y,width,height);
 
 }else{
-    if (itemGridType != Items.empty)
+   // System.out.println("Ture");
+    p.rect(x,y,width,height);
+    if (itemGridType != Items.empty) {
         item.display(p, x, y);
-    else
-        p.rect(x,y,width,height);
+   //     System.out.println("true");
+    }
+
 
 }
 

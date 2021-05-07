@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Main extends PApplet {
 
     ArrayList<GridSpaceDefault> grid = new ArrayList<>();
-    ArrayList<GridSpaceDefault> inventoryGrid = new ArrayList<>();
+    ArrayList<GridSpaceInventory> inventoryGrid = new ArrayList<>();
     ArrayList<Furniture> furnitureList = new ArrayList<>();
 
     ArrayList<PasswordPillar> pillars = new ArrayList<>();
@@ -46,10 +46,10 @@ public class Main extends PApplet {
         super.setup();
 
         imgLoad.loadTheImages();
-        inventory = new Inventory(this);
+        inventory = new Inventory(this,this);
         player = new Player(this,bullets,inventory,imgLoad);
-        grid = gridCreate.createGrid(width, height, this, imgLoad, inventory,10,true,0);
-        inventoryGrid = gridCreate.createGrid(500,500,this,imgLoad,inventory,5,false,250);
+        grid = gridCreate.createGrid(width, height, this, imgLoad, inventory,20,12,true,0);
+        inventoryGrid = gridCreate.createGridInventory(500,500,this,imgLoad,inventory,5,5,false,250);
         shop = new Shop(furnitureList, grid);
         camera = new Camera(this,player.position,player);
         dungeon = new Dungeon(this,player,enemies,camera);

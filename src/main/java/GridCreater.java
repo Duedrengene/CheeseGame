@@ -7,17 +7,40 @@ ImageLoader imgLoad;
 
 
 
-    ArrayList<GridSpaceDefault> createGrid(int width, int height, PApplet p, ImageLoader imgLoad, Inventory inventory, int gridNumber, boolean fill , int offset){
+    ArrayList<GridSpaceDefault> createGrid(int width, int height, PApplet p, ImageLoader imgLoad, Inventory inventory, int gridNumberX,int gridNumberY, boolean fill , int offset){
         this.imgLoad = imgLoad;
 
         ArrayList<GridSpaceDefault> grid = new ArrayList<>();
-        for(int i =0;i<gridNumber;i++){
-        grid.add(new GridSpaceDefault(offset+(width/gridNumber)*i,offset+(offset+height/gridNumber)*0,width/gridNumber,height/gridNumber,p,imgLoad,inventory));
-        for(int i2 = 1;i2<gridNumber ;i2++)
-            grid.add(new GridSpaceDefault(offset+(width/gridNumber)*i,offset+(height/gridNumber)*i2,width/gridNumber,height/gridNumber,p,imgLoad,inventory));
+
+        for(int i =0;i<gridNumberX;i++){
+        grid.add(new GridSpaceDefault(offset+(width/gridNumberX)*i,offset+(offset+height/gridNumberX)*0,width/gridNumberX,height/gridNumberX,p,imgLoad,inventory));
+        for(int i2 = 1;i2<gridNumberY ;i2++)
+            grid.add(new GridSpaceDefault(offset+(width/gridNumberX)*i,offset+(height/gridNumberY)*i2,width/gridNumberX,height/gridNumberY,p,imgLoad,inventory));
         }
 
     return grid;
+
+
+
+
+    }
+
+    ArrayList<GridSpaceInventory> createGridInventory(int width, int height, PApplet p, ImageLoader imgLoad, Inventory inventory, int gridNumberX,int gridNumberY, boolean fill , int offset){
+        this.imgLoad = imgLoad;
+        int count = 0;
+
+        ArrayList<GridSpaceInventory> grid = new ArrayList<>();
+
+        for(int i =0;i<gridNumberX;i++){
+            grid.add(new GridSpaceInventory(offset+(width/gridNumberX)*i,offset+(offset+height/gridNumberX)*0,width/gridNumberX,height/gridNumberX,p,imgLoad,inventory,count));
+            count++;
+            for(int i2 = 1;i2<gridNumberY ;i2++) {
+                grid.add(new GridSpaceInventory(offset + (width / gridNumberX) * i, offset + (height / gridNumberY) * i2, width / gridNumberX, height / gridNumberY, p, imgLoad, inventory, count));
+                count++;
+            }
+        }
+
+        return grid;
 
 
 

@@ -38,7 +38,7 @@ PImage img;
               distance = distanceTemp;
 
           }
-         System.out.println("このすば"+distanceTemp);
+        // System.out.println("このすば"+distanceTemp);
 
          return distance;
      }

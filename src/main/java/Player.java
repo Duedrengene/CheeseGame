@@ -93,7 +93,7 @@ public class Player {
 
        }
    }
-    void draw(ArrayList<GridSpaceDefault> inventoryGridList,Location location) {
+    void draw(ArrayList<GridSpaceInventory> inventoryGridList,Location location) {
         //void draw(location) {
         changePosition();
         p.fill(255);
@@ -306,10 +306,14 @@ else{
 
 
                 case 'l':
-                case 'L':{
-                    inventory.add(new PizzaTopping(imgLoad),10);
+                case 'L': {
+                    if (pressed) {
+                        inventory.add(new PizzaTopping(imgLoad), 10);
+                        System.out.println(inventory.itemList);
+                    }
 
-                }break;
+                }
+                break;
 
                 case 'E':
                 case 'e':{

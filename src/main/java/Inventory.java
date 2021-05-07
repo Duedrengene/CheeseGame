@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Inventory {
 
     PApplet p;
+Main m;
 
     ArrayList<Item> itemList = new ArrayList<>();
     ArrayList<Item> itemToolBarList = new ArrayList<>();
@@ -12,16 +13,15 @@ public class Inventory {
     ArrayList<ToolBar> toolBarList = new ArrayList<>();
     ArrayList<ToolBar> buildBarList = new ArrayList<>();
     ArrayList<ToolBar> useBarList = new ArrayList<>();
-    ArrayList<GridSpaceDefault> inventoryGrid = new ArrayList<>();
 
     ToolBar selected;
 
 
 
 
-    Inventory(PApplet p){
+    Inventory(PApplet p,Main m ){
         this.p = p;
-
+        this.m =m;
         for(int i = 0;i< 5;i++ ){
             toolBarList.add(new ToolBar(itemToolBarList, i,p));
             buildBarList.add(new ToolBar(furnitureList, i,p));
@@ -36,8 +36,12 @@ public class Inventory {
 
     void add(Item item,int number){
 
-    for(int i=0;i<number;i++)
+    for(int i=0;i<number;i++) {
         itemList.add(item);
+    }
+for(int i = 0; i<m.inventoryGrid.size();i++) {
+    m.inventoryGrid.get(i).changeGridType();
+}
 
     }
 
@@ -64,7 +68,7 @@ public class Inventory {
 
     }
 
-    void display(boolean buildMode,Player player,ArrayList<GridSpaceDefault> inventoryGridList){
+    void display(boolean buildMode,Player player,ArrayList<GridSpaceInventory> inventoryGridList){
         if(player.inventoryOpen) {
             p.fill(255);
             for(int i = 0; i<inventoryGridList.size();i++)
