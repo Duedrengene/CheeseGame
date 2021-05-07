@@ -51,6 +51,7 @@ boolean check() {
             int hitdamage = (int) p.random(10,21);
 
             enemy.health -= hitdamage;
+            enemy.knockback=true;
             return true;
         }
 return false;

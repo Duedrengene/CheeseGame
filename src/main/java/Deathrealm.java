@@ -34,7 +34,6 @@ public class Deathrealm {
         p.text("What is the Key to your suffering?", 1055,65);
 
 
-
     }
     void playerFunctions() {
      player.runAbility();

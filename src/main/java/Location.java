@@ -15,7 +15,7 @@ public class Location {
     }
 
 
-    LocationType location = LocationType.shop;
+    LocationType location = LocationType.dungeon;
 
 
     void functions(Main m){
@@ -31,6 +31,7 @@ public class Location {
 
             case dungeon:{
                 dungeon.functions();
+                gUI.displayDungeon();
 
             }break;
 

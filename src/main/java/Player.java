@@ -21,7 +21,6 @@ public class Player {
     PVector runningSpeed = new PVector(1,1);
 
 
-
     boolean isShooting = false;
     boolean showAim = false;
     boolean cooldown = false;
@@ -79,7 +78,7 @@ public class Player {
         position.y = p.constrain(position.y, 0, p.height - height);
 
         PVector dir = new PVector(position.x,position.y);
-
+//Tilføj direction knockback.
         Walk(dir);
     }
 
@@ -87,13 +86,13 @@ public class Player {
         //PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
     }
 
-   void setAim() {
+   void showAim(Camera camera) {
 
         if (showAim) {
            p.stroke(255, 0, 0, 180);
            p.strokeWeight(3);
-           p.line(p.mouseX, p.mouseY, position.x, position.y);
-
+           p.line(p.mouseX-camera.translateX, p.mouseY-camera.translateY, position.x, position.y);
+System.out.println(camera.translateX);
            p.stroke(0);
 
 
@@ -102,11 +101,7 @@ public class Player {
     void draw(ArrayList<GridSpaceDefault> inventoryGridList,Location location) {
         //void draw(location) {
         changePosition();
-        p.fill(255);
-        p.stroke(204, 102, 0);
 
-        //p.rect(position.x, position.y, playerWidth, playerHeight);
-        p.image(imgLoad.forward1,position.x,position.y,width,height);
 
 
 
@@ -120,8 +115,18 @@ public class Player {
 
         }
     }
-     void addBullet() {
-        bulletSpeed.set(p.mouseX,p.mouseY,0);
+    void display(){
+        p.fill(255);
+        p.stroke(204, 102, 0);
+
+        //p.rect(position.x, position.y, playerWidth, playerHeight);
+        p.image(imgLoad.forward1,position.x,position.y,width,height);
+
+
+    }
+
+     void addBullet(Camera camera) {
+        bulletSpeed.set(p.mouseX-camera.translateX,p.mouseY-camera.translateY,0);
         bulletSpeed.sub(position);
         bulletSpeed.normalize();
         bulletSpeed.mult(Bullet.VEL);
@@ -222,7 +227,7 @@ else{
     void interact(){
 
     }
-    void controls(char key, int keyCode,  boolean pressed,LocationType location) {
+    void controls(char key, int keyCode,  boolean pressed,LocationType location,Camera camera) {
         velocity.set(0, 0);
 
 
@@ -331,14 +336,9 @@ else{
 
                 case 'F':
                 case 'f': {
-                    if ((pressed == false) && (ready))
-                        showAim = true;
+                    if ((pressed == true) )
+                        showAim = !showAim;
 
-                        //setAim();
-                    else{
-                        //else if ((pressed == true) && (ready = false))
-                        showAim = false;
-                }
 
 
             }break;
@@ -366,6 +366,15 @@ else{
                         left=false;
 
                 }break;
+                case 'k':
+                case 'K' :{
+                    if (pressed)
+                        camera.mode = (camera.mode + 1) % 2;
+
+                    }break;
+
+
+
                 case 'D':
                 case 'd': {
                     if((pressed) &&(ready))
@@ -454,13 +463,13 @@ else{
         }
 
 
-     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpaceDefault> grid) {
+     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpaceDefault> grid,Camera camera) {
         if(location==LocationType.dungeon) {
             if(pressed)
                if(check) {
                 check=false;
 
-                   addBullet();
+                   addBullet(camera);
                }
             else {
                 check=true;

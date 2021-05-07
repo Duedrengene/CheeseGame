@@ -72,29 +72,28 @@ public class Main extends PApplet {
         //camera.changeAngle();
         location.functions(this);
         player.draw(inventoryGrid,location);
-        //player.draw(location);
     }
 
 
 
 
     public void keyPressed(){
-        player.controls(key,keyCode,true,location.location);
+        player.controls(key,keyCode,true,location.location,camera);
 
     }
 
     public void keyReleased() {
-        player.controls(key, keyCode, false,location.location);
-        camera.setPerspective(key,keyCode,false,location.location);
+        player.controls(key, keyCode, false,location.location,camera);
+       // camera.setPerspective(key,keyCode,false,location.location);
     }
 
 
    public void mousePressed() {
-        player.mouseControls(mouseX,mouseY, true,location.location,grid);
+        player.mouseControls(mouseX,mouseY, true,location.location,grid,camera);
 
    }
    public void mouseReleased(){
-        player.mouseControls(mouseX,mouseY,false,location.location,grid);
+        player.mouseControls(mouseX,mouseY,false,location.location,grid,camera);
 
    }
 

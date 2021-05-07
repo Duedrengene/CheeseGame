@@ -31,4 +31,10 @@ this.player=player;
 
     }
 
+    void displayDungeon(){
+        player.showHealth();
+        player.showStamina();
+    }
+
+
 }
