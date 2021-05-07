@@ -31,7 +31,7 @@ public class Deathrealm {
         deathReaperFunctions();
         passwordPillarFunctions();
         p.fill(178);
-        p.text("What is the Key to the Odor?", 1055,65);
+        p.text("What is the Key to your suffering?", 1055,65);
 
 
 

@@ -54,7 +54,7 @@ public class Main extends PApplet {
         camera = new Camera(this,player.position,player);
         dungeon = new Dungeon(this,player,enemies,camera);
         gUI = new GUI(this,player);
-        deathReaper = new DeathReaper(this,width/2,height/2);
+        deathReaper = new DeathReaper(this,width/2,height/2,imgLoad);
         deathRealm = new Deathrealm(this,player, pillars, deathReaper);
         location = new Location(shop, dungeon,gUI, deathRealm);
 

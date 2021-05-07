@@ -48,8 +48,8 @@ public class Player {
     float passiveStamina = 0.10f;
     float stamina = maximumStamina;
 
-    int playerWidth = 10;
-    int playerHeight = 10;
+    int playerWidth = 63;
+    int playerHeight = 63;
 
 
 
@@ -69,7 +69,6 @@ public class Player {
         PVector speed = new PVector(velocity.x,velocity.y);
         speed.mult(runningSpeed.x);
         position.add(speed);
-
         position.x = p.constrain(position.x, 0, p.width - playerWidth);
         position.y = p.constrain(position.y, 0, p.height - playerHeight);
         PVector dir = new PVector(position.x,position.y);
@@ -98,15 +97,15 @@ public class Player {
         changePosition();
         p.fill(255);
         p.stroke(204, 102, 0);
-        p.rect(position.x, position.y, playerWidth, playerHeight);
-
+        //p.rect(position.x, position.y, playerWidth, playerHeight);
+        p.image(imgLoad.forward1,position.x,position.y,playerWidth,playerHeight);
         inventory.display(buildMode,this,inventoryGridList);
 
         if (playerHealth < 0) {
             playerHealth = 0;
-dead = true;
+            dead = true;
             position.set(960, 890);
-location.changeLocation(LocationType.deathrealm);
+        location.changeLocation(LocationType.deathrealm);
 
         }
     }

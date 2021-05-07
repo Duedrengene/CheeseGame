@@ -49,7 +49,7 @@ boolean check() {
     boolean hit(ArrayList<Bullet> bullets, Enemy enemy) {
         if(((pos.x <= enemy.enemyPosition.x+ enemy.enemyDiameter && pos.x >= enemy.enemyPosition.x) ||(pos.x+bulletDiameter <= enemy.enemyPosition.x+ enemy.enemyDiameter && pos.x+bulletDiameter >= enemy.enemyPosition.x)) && (((pos.y <= enemy.enemyPosition.y+ enemy.enemyDiameter && pos.y >= enemy.enemyPosition.y))|| (pos.y+ bulletDiameter <= enemy.enemyPosition.y+ enemy.enemyDiameter && pos.y+bulletDiameter >= enemy.enemyPosition.y))) {
             int hitdamage = (int) p.random(10,21);
-            //enemy.health -= -10;
+
             enemy.health -= hitdamage;
             return true;
         }
