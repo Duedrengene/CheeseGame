@@ -48,8 +48,8 @@ public class Player {
     float passiveStamina = 0.10f;
     float stamina = maximumStamina;
 
-    int playerWidth = 10;
-    int playerHeight = 10;
+    int width = 10;
+    int height = 10;
 
 
 
@@ -70,8 +70,8 @@ public class Player {
         speed.mult(runningSpeed.x);
         position.add(speed);
 
-        position.x = p.constrain(position.x, 0, p.width - playerWidth);
-        position.y = p.constrain(position.y, 0, p.height - playerHeight);
+        position.x = p.constrain(position.x, 0, p.width - width);
+        position.y = p.constrain(position.y, 0, p.height - height);
         PVector dir = new PVector(position.x,position.y);
 
         Walk(dir);
@@ -99,7 +99,7 @@ public class Player {
         changePosition();
         p.fill(255);
         p.stroke(204, 102, 0);
-        p.rect(position.x, position.y, playerWidth, playerHeight);
+        p.rect(position.x, position.y, width, height);
 
         inventory.display(buildMode,this,inventoryGridList);
 
