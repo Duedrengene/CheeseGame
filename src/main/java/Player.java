@@ -88,7 +88,6 @@ public class Player {
            p.strokeWeight(3);
            p.line(p.mouseX, p.mouseY, position.x, position.y);
 
-
            p.stroke(0);
 
 
@@ -106,6 +105,7 @@ public class Player {
         if (playerHealth < 0) {
             playerHealth = 0;
 dead = true;
+            position.set(960, 890);
 location.changeLocation(LocationType.deathrealm);
 
         }
@@ -124,6 +124,7 @@ location.changeLocation(LocationType.deathrealm);
 
     void gameoverscreen(boolean gameoverscreen) {
         if(dead ==true) {
+
             // Just for right now.
 
         }

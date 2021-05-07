@@ -23,10 +23,10 @@ DeathReaper(PApplet p,float posX,float posY) {
 }
 void drawDeathReaper() {
     p.fill(133);
-    p.rect(250,250,250,250);
+    p.rect(940,65,96,96);
     if(this.playerNearby) {
         this.p.fill(133);
-        this.p.text(" You have came here to Suffer?",this.position.x - 20.0F, this.position.y-20.0F);
+        this.p.text(" You have came here to Suffer?",this.position.x - 20.0f, this.position.y-20.0f);
     talkOpen = true;
     }
 }

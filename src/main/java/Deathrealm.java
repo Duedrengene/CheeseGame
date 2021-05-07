@@ -24,14 +24,15 @@ public class Deathrealm {
         this.player = player;
         this.deathReaper = deathReaper;
         this.pillars=pillars;
-
+        //position.set(1400, this.p.height / 2);
     }
     void deathrealmFunctions() {
         playerFunctions();
         deathReaperFunctions();
         passwordPillarFunctions();
-        p.text("What is the Key to the Odor?", 480,85);
-        p.fill(133);
+        p.fill(178);
+        p.text("What is the Key to the Odor?", 1055,65);
+
 
 
     }
