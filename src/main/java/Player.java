@@ -60,7 +60,7 @@ public class Player {
         this.imgLoad = imgLoad;
         this.inventory = inventory;
 
-        position.set(100, this.p.height / 2);
+        position.set(1400, this.p.height / 2);
     }
 
 
@@ -150,14 +150,14 @@ location.changeLocation(LocationType.deathrealm);
 
         p.strokeWeight(3);
 
-        p.rect(740,25,calculateplayerHP,healthbarHeight);
+        p.rect(1660,25,calculateplayerHP,healthbarHeight);
         p.noFill();
-        p.rect(740,25,healthbarWidth,healthbarHeight);
+        p.rect(1660,25,healthbarWidth,healthbarHeight);
         //Til at vise den maximale HP bar stadig selvom HP forsvinder.
 
         p.fill(255);
         p.textSize(20);
-        p.text((int)calculateplayerHP/2+" HP",805,50);
+        p.text((int)calculateplayerHP/2+" HP",1725,50);
     }
  void useStamina() {
      if (running == true) {
@@ -187,13 +187,13 @@ void regainStamina() {
    p.fill(244,35,3);
    p.noStroke();
    float displaystamina = stamina *2;
-   p.rect(740,75,displaystamina,40);
+   p.rect(1660,75,displaystamina,40);
 
 
    p.stroke(0);
 
    p.fill(255);
-   p.text((int)stamina+" S",805,110);
+   p.text((int)stamina+" S",1725,110);
    }
 
     void runAbility(){
