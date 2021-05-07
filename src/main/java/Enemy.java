@@ -34,10 +34,6 @@ public class Enemy {
     float enemyDiameter = 10;
     //float calculateHP;
 
-
-
-
-
     Enemy(float xPos, float yPos, int hastighed, int DIAMETER, PVector playerPosition, PApplet p, Player player) {
         enemyPosition.x = xPos;
         enemyPosition.y = yPos;

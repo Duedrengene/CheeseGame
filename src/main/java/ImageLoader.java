@@ -21,6 +21,7 @@ public class ImageLoader {
     PImage enemy;
     PImage cheeseGolem;
     PImage cheeseDemon;
+    PImage grimReaper;
 
 
     //only player
@@ -37,6 +38,7 @@ public class ImageLoader {
     PImage door;
     PImage shopCounter;
     PImage cashRegister;
+    PImage pillar;
 
 
     float scaleW = 1;
@@ -52,10 +54,12 @@ public class ImageLoader {
         //scaleH = (float) w/1920;
         //scaleW = (float) h/1080;
 
+//Structure
         wall= p.loadImage("wall.png");
         door = p.loadImage("door.png");
         shopCounter = p.loadImage("shopCounter.png");
         cashRegister = p.loadImage("cashRegister.png");
+        pillar = p.loadImage("Pillar.png");
 
 
         //Loaditemsmodel
@@ -75,6 +79,8 @@ public class ImageLoader {
         forward1 = p.loadImage("Playerforward1.png");
         forward2 = p.loadImage("forwardplayer2.png");
 
+        //Model 3/4 perspective playermodels.
+        grimReaper = p.loadImage("GrimR.png");
 
 
     }

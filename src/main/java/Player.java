@@ -94,7 +94,8 @@ public class Player {
 
        }
    }
-    void draw(ArrayList<GridSpaceDefault> inventoryGridList,location) {
+    void draw(ArrayList<GridSpaceDefault> inventoryGridList,Location location) {
+        //void draw(location) {
         changePosition();
         p.fill(255);
         p.stroke(204, 102, 0);

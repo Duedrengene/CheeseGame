@@ -11,6 +11,9 @@ boolean talkOpen;
 boolean playerNearby;
 Deathrealm deathrealm;
 
+    int amount = 8;
+    int count;
+
 
 
 DeathReaper(PApplet p,float posX,float posY) {
