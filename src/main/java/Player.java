@@ -1,5 +1,6 @@
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 import java.util.ArrayList;
 import static processing.core.PConstants.*;
@@ -47,12 +48,13 @@ public class Player {
     float passiveStamina = 0.10f;
     float stamina = maximumStamina;
 
-
+    PImage[] imgs = new PImage[2];
 
     int width = 63;
     int height = 63;
 
-    int facelooking;
+    String tens = "forward";
+
 
 
 
@@ -124,10 +126,13 @@ System.out.println(camera.translateX);
 
         if(down)
             //forward
-        p.image(imgLoad.forward1,position.x,position.y,width,height);
-        if(up )
+
+                //imgs = imgs[i-1];
+    //            p.image(imgLoad.forward1, position.x, position.y, width, height);
+            p.image(imgLoad.frontImgs[p.frameCount%2], position.x, position.y, width, height);
+            if(up )
         //behind
-        p.image(imgLoad.behindplayer,position.x,position.y,width,height);
+        p.image(imgLoad.behindImgs[p.frameCount%2],position.x,position.y,width,height);
         //Right
         if(right)
         p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);
@@ -135,7 +140,7 @@ System.out.println(camera.translateX);
             //Left.
         p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
         if(!up && !down && !left && !right) {
-        //if(up && down && left && right == false) {
+        //Standing Still.
             p.image(imgLoad.forward1,position.x,position.y,width,height);
         }
     }
