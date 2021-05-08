@@ -82,7 +82,7 @@ public class Enemy {
             //getGetEnemyvelocity.limit(movespeed);
             //p.println(steerforce);
             if(knockback ==true) {
-               enemyPosition.add(-direction.x*50,-direction.y*50);
+               enemyPosition.add(-direction.x*12,-direction.y*12);
                 knockback =false;
             }
 

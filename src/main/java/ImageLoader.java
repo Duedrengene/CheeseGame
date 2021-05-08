@@ -39,6 +39,7 @@ public class ImageLoader {
     PImage shopCounter;
     PImage cashRegister;
     PImage pillar;
+    PImage deathRealm;
 
 
     float scaleW = 1;
@@ -60,6 +61,7 @@ public class ImageLoader {
         shopCounter = p.loadImage("shopCounter.png");
         cashRegister = p.loadImage("cashRegister.png");
         pillar = p.loadImage("Pillar.png");
+        deathRealm = p.loadImage("deathrealm.png");
 
 
         //Loaditemsmodel
