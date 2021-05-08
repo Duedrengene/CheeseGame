@@ -52,6 +52,8 @@ public class Player {
     int width = 63;
     int height = 63;
 
+    int facelooking;
+
 
 
 
@@ -68,22 +70,18 @@ public class Player {
 
     void changePosition() {
 
-        PVector speed = new PVector(velocity.x,velocity.y);
+        PVector speed = new PVector(velocity.x, velocity.y);
         speed.mult(runningSpeed.x);
         position.add(speed);
 
-        
+        // Currently constrain for DeathRealm and Dungeon and shop.
+        // Se efter dead text
 
-        position.x = p.constrain(position.x, 10, p.width - width-10);
-        position.y = p.constrain(position.y, 50, p.height - height-10);
+            position.x = p.constrain(position.x, 10, p.width - width - 10);
+            position.y = p.constrain(position.y, 50, p.height - height - 10);
 
-        PVector dir = new PVector(position.x,position.y);
-//Tilføj direction knockback.
-        Walk(dir);
-    }
 
-    public void Walk(PVector dir) {
-        //PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
+
     }
 
    void showAim(Camera camera) {
@@ -113,6 +111,9 @@ System.out.println(camera.translateX);
             //position.set(960, 890);
         location.changeLocation(LocationType.deathrealm);
             position.set(960, 890);
+            //position.x = p.constrain(position.x, 10, p.width - width - 10);
+            //position.y = p.constrain(position.y, 50, p.height - height - 10);
+
         }
     }
     void display(){
@@ -120,9 +121,23 @@ System.out.println(camera.translateX);
         p.stroke(204, 102, 0);
 
         //p.rect(position.x, position.y, playerWidth, playerHeight);
+
+        if(down)
+            //forward
         p.image(imgLoad.forward1,position.x,position.y,width,height);
-
-
+        if(up )
+        //behind
+        p.image(imgLoad.behindplayer,position.x,position.y,width,height);
+        //Right
+        if(right)
+        p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);
+        if(left)
+            //Left.
+        p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
+        if(!up && !down && !left && !right) {
+        //if(up && down && left && right == false) {
+            p.image(imgLoad.forward1,position.x,position.y,width,height);
+        }
     }
 
      void addBullet(Camera camera) {
@@ -386,6 +401,7 @@ else{
                 case 'd': {
                     if((pressed) &&(ready))
                         right=true;
+
                     else
                         right=false;
 

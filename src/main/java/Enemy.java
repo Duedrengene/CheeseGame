@@ -111,8 +111,6 @@ public class Enemy {
 
         if (hit) {
            timerReset();
-            p.fill(255, 150, 0);
-            p.text("u dead now", 200, 200);
             player.playerHealth -= 10;
             //playerPosition.add()
 
