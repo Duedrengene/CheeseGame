@@ -21,7 +21,8 @@ int count;
     }
 
     @Override
-    void function() {
+    public void function() {
+        System.out.println("Check");
     pressed    = !pressed;
     checkPress();
     }
@@ -51,7 +52,7 @@ System.out.println(count);
             }break;
 
             case shopCounterItem:{
-                item = new ShopCounterItem();
+                item = new ShopCounterItem(imgLoad.shopCounter);
             }break;
 
             case wallItem: {
@@ -59,7 +60,17 @@ System.out.println(count);
             }break;
 
             case pizzaTopping:{
-                item = new PizzaTopping(imgLoad);
+                item = new PizzaTopping(imgLoad.pizzatopping);
+            }break;
+            case cheddar:{
+                item = new Cheddar(imgLoad.cheddar);
+
+
+            }break;
+            case primadonna:{
+
+                item = new Primadonna(imgLoad.primadonna);
+
             }break;
 
 
@@ -69,6 +80,7 @@ System.out.println(count);
     }
 
     void checkPress(){
+        System.out.println("check");
         int pressCount = 2;
         int[] gridSpaces = new int[2];
         for(int i = 0; i<inventory.m.inventoryGrid.size();i++){
@@ -80,7 +92,10 @@ System.out.println(count);
                 inventory.move(gridSpaces[1],gridSpaces[0],inventory.itemList);
                 inventory.m.inventoryGrid.get(gridSpaces[0]).pressed = false;
                 inventory.m.inventoryGrid.get(gridSpaces[1]).pressed = false;
+                for (int i2 = 0;inventory.m.inventoryGrid.size()>i2;i2++)
+                inventory.m.inventoryGrid.get(i2).changeGridType();
 
+                break;
             }
 
         }

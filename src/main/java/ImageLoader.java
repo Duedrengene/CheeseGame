@@ -12,7 +12,7 @@ public class ImageLoader {
     PApplet p;
     PImage parmesan;
     PImage cheddar;
-    PImage madonna;
+    PImage primadonna;
     PImage pizzatopping;
 
     //Player models
@@ -65,7 +65,7 @@ public class ImageLoader {
         //Loaditemsmodel
         pizzatopping = p.loadImage("pizza topping.png");
         cheddar = p.loadImage("cheddar.png");
-        madonna = p.loadImage("Primadonna-export.png");
+        primadonna = p.loadImage("Primadonna-export.png");
         //Characters & Mobs
         captaincheese = p.loadImage("Kaptajn Ost.png");
         cheeseGolem = p.loadImage("cheesemob.png");

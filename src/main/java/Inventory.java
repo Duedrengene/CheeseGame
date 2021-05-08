@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Inventory {
 
     PApplet p;
-Main m;
+    Main m;
 
-    ArrayList<Item> itemList = new ArrayList<>();
+    ArrayList<Item> itemList = new ArrayList<>(50);
     ArrayList<Item> itemToolBarList = new ArrayList<>();
     ArrayList<Item> furnitureList = new ArrayList<>();
     ArrayList<ToolBar> toolBarList = new ArrayList<>();
@@ -19,11 +19,11 @@ Main m;
 
 
 
-    Inventory(PApplet p,Main m ){
+    Inventory(PApplet p, Main m ){
         this.p = p;
         this.m =m;
         for(int i = 0;i< 5;i++ ){
-            toolBarList.add(new ToolBar(itemToolBarList, i,p));
+            toolBarList.add(new ToolBar(itemList, i,p));
             buildBarList.add(new ToolBar(furnitureList, i,p));
         }
     }
@@ -37,7 +37,9 @@ Main m;
     void add(Item item,int number){
 
     for(int i=0;i<number;i++) {
+        if(itemList.size()<50)
         itemList.add(item);
+        else break;
     }
 for(int i = 0; i<m.inventoryGrid.size();i++) {
     m.inventoryGrid.get(i).changeGridType();
@@ -61,8 +63,21 @@ for(int i = 0; i<m.inventoryGrid.size();i++) {
 
 
     void move(int from, int to, ArrayList<Item> itemList){
-        Item temp = itemList.get(to);
-         itemList.set(to,itemList.get(from));
+        Item temp = null;
+        try{
+            temp = itemList.get(to);
+
+        }catch (Exception exception){
+            System.out.println(exception);
+        }
+        try{
+            itemList.set(to,itemList.get(from));
+
+        }catch (Exception exception){
+            System.out.println(exception);
+        }
+
+        if (temp!= null)
         itemList.set(from,temp);
 
 

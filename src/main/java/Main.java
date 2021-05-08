@@ -48,7 +48,7 @@ public class Main extends PApplet {
         imgLoad.loadTheImages();
         inventory = new Inventory(this,this);
         player = new Player(this,bullets,inventory,imgLoad);
-        grid = gridCreate.createGrid(width, height, this, imgLoad, inventory,20,12,true,0);
+        grid = gridCreate.createGrid(width, height, this, imgLoad, inventory,20,12,true,0,player);
         inventoryGrid = gridCreate.createGridInventory(500,500,this,imgLoad,inventory,5,5,false,250);
         shop = new Shop(furnitureList, grid);
         camera = new Camera(this,player.position,player);
@@ -61,6 +61,7 @@ public class Main extends PApplet {
 
         inventory.furnitureList.add(new WallItem(imgLoad.wall));
         inventory.furnitureList.add(new DoorItem(imgLoad.door));
+        inventory.furnitureList.add(new ShopCounterItem(imgLoad.shopCounter));
 
     }
 
@@ -89,11 +90,11 @@ public class Main extends PApplet {
 
 
    public void mousePressed() {
-        player.mouseControls(mouseX,mouseY, true,location.location,grid,camera);
+        player.mouseControls(mouseX,mouseY, true,location.location,grid,inventoryGrid,camera);
 
    }
    public void mouseReleased(){
-        player.mouseControls(mouseX,mouseY,false,location.location,grid,camera);
+        player.mouseControls(mouseX,mouseY,false,location.location,grid,inventoryGrid,camera);
 
    }
 
