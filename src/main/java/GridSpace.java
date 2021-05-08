@@ -21,11 +21,12 @@ public class GridSpace {
 
     }
 
-    void pressed(boolean check,float mX,float mY){
-        if(check) {
-            if(((mX <(x+width)) && ((x< mX)) )&& ((mY < y + height) && (mY > y))){
-                function();
-            }
+    void pressed(float mX,float mY){
+        if(((mX <(x+width)) && ((x< mX)) )&& ((mY < y + height) && (mY > y))){
+            System.out.println("New Check");
+
+            function();
+
 
 
         }
@@ -39,7 +40,12 @@ public class GridSpace {
 
 
     void display(){
-
+        if(pressed) {
+            p.stroke(255, 0, 0);
+        p.strokeWeight(5);
+        }
+        else p.stroke(0,0,0);
+        p.strokeWeight(1);
 if(hasFurniture) {
     if (furnitureGridType != FurnitureTypes.empty)
         furniture.display(p, x, y);

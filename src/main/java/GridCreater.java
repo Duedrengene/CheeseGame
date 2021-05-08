@@ -4,18 +4,19 @@ import java.util.ArrayList;
 
 public class GridCreater {
 ImageLoader imgLoad;
+Player player;
 
 
 
-    ArrayList<GridSpaceDefault> createGrid(int width, int height, PApplet p, ImageLoader imgLoad, Inventory inventory, int gridNumberX,int gridNumberY, boolean fill , int offset){
+    ArrayList<GridSpaceDefault> createGrid(int width, int height, PApplet p, ImageLoader imgLoad, Inventory inventory, int gridNumberX,int gridNumberY, boolean fill , int offset,Player player){
         this.imgLoad = imgLoad;
-
+this.player = player;
         ArrayList<GridSpaceDefault> grid = new ArrayList<>();
 
         for(int i =0;i<gridNumberX;i++){
-        grid.add(new GridSpaceDefault(offset+(width/gridNumberX)*i,offset+(offset+height/gridNumberX)*0,width/gridNumberX,height/gridNumberX,p,imgLoad,inventory));
+        grid.add(new GridSpaceDefault(offset+(width/gridNumberX)*i,offset+(height/gridNumberX)*0,width/gridNumberX,height/gridNumberY,p,imgLoad,inventory,player));
         for(int i2 = 1;i2<gridNumberY ;i2++)
-            grid.add(new GridSpaceDefault(offset+(width/gridNumberX)*i,offset+(height/gridNumberY)*i2,width/gridNumberX,height/gridNumberY,p,imgLoad,inventory));
+            grid.add(new GridSpaceDefault(offset+(width/gridNumberX)*i,offset+(height/gridNumberY)*i2,width/gridNumberX,height/gridNumberY,p,imgLoad,inventory,player));
         }
 
     return grid;

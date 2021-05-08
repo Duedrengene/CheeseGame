@@ -236,6 +236,7 @@ else{
 
                 case '1': {
                     if (pressed == true) {
+                        if (inventory.useBarList.size() > 0)
                         inventory.useBarList.get(0).selected = !inventory.useBarList.get(0).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 0)
@@ -249,6 +250,7 @@ else{
                 break;
                 case '2': {
                     if (pressed == true) {
+                        if (inventory.useBarList.size() > 1)
                         inventory.useBarList.get(1).selected = !inventory.useBarList.get(1).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 1)
@@ -262,7 +264,7 @@ else{
                 break;
                 case '3': {
                     if (pressed == true) {
-                        if (inventory.itemToolBarList.size() > 3)
+                        if (inventory.useBarList.size() > 2)
                             inventory.useBarList.get(2).selected = !inventory.useBarList.get(2).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 2)
@@ -276,7 +278,7 @@ else{
                 break;
                 case '4': {
                     if (pressed == true) {
-                        if (inventory.itemToolBarList.size() > 4)
+                        if (inventory.useBarList.size() > 3)
                             inventory.useBarList.get(3).selected = !inventory.useBarList.get(3).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 3)
@@ -291,7 +293,7 @@ else{
                 break;
                 case '5': {
                     if (pressed == true) {
-                        if (inventory.itemToolBarList.size() > 5)
+                        if (inventory.useBarList.size() > 4)
                             inventory.useBarList.get(4).selected = !inventory.useBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 4)
@@ -323,7 +325,8 @@ else{
                 case 'l':
                 case 'L': {
                     if (pressed) {
-                        inventory.add(new PizzaTopping(imgLoad), 10);
+                        inventory.add(new PizzaTopping(imgLoad.pizzatopping), 5);
+                        inventory.add(new Cheddar(imgLoad.cheddar),5);
                         System.out.println(inventory.itemList);
                     }
 
@@ -467,7 +470,7 @@ else{
         }
 
 
-     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpaceDefault> grid,Camera camera) {
+     void mouseControls(int mouseX, int mouseY,boolean pressed,LocationType location,ArrayList<GridSpaceDefault> grid,ArrayList<GridSpaceInventory> gridInventory,Camera camera) {
         if(location==LocationType.dungeon) {
             if(pressed)
                if(check) {
@@ -482,10 +485,11 @@ else{
         }
 
          if(location == LocationType.shop) {
-             if (pressed)
-             if(buildMode) {
+             if (pressed) {
                  for (int i = 0; i < grid.size(); i++)
-                     grid.get(i).pressed(true, mouseX, mouseY);
+                     grid.get(i).pressed(mouseX, mouseY);
+                 for (int i = 0; i < gridInventory.size(); i++)
+                     gridInventory.get(i).pressed(mouseX, mouseY);
              }
              inventory.selector(true, mouseX, mouseY, inventory);
          }
