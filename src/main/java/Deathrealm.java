@@ -37,8 +37,7 @@ public class Deathrealm {
         passwordPillarFunctions();
         passwordLoop();
 
-        p.fill(178);
-        p.text("What is the Key to your suffering?", 1055, 65);
+
 
 
     }
@@ -54,6 +53,7 @@ public class Deathrealm {
     void deathReaperFunctions() {
         deathReaper.drawDeathReaper();
         deathReaper.ReaperPillars();
+        deathReaper.detectPlayer(player);
         player.display();
         // Tilføj Circulation effect?
 

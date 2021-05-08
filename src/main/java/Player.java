@@ -74,8 +74,8 @@ public class Player {
 
         
 
-        position.x = p.constrain(position.x, 0, p.width - width);
-        position.y = p.constrain(position.y, 0, p.height - height);
+        position.x = p.constrain(position.x, 10, p.width - width-10);
+        position.y = p.constrain(position.y, 50, p.height - height-10);
 
         PVector dir = new PVector(position.x,position.y);
 //Tilføj direction knockback.
