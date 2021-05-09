@@ -129,10 +129,17 @@ System.out.println(camera.translateX);
 
                 //imgs = imgs[i-1];
     //            p.image(imgLoad.forward1, position.x, position.y, width, height);
-            p.image(imgLoad.frontImgs[p.frameCount%2], position.x, position.y, width, height);
+        if(running)
+            p.image(imgLoad.frontImgs[p.frameCount/8 %2], position.x, position.y, width, height);
+        else
+            p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
+
             if(up )
         //behind
-        p.image(imgLoad.behindImgs[p.frameCount%2],position.x,position.y,width,height);
+                if(running)
+        p.image(imgLoad.behindImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.behindImgs[p.frameCount/18 %2],position.x,position.y,width,height);
         //Right
         if(right)
         p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);

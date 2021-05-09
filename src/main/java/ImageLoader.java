@@ -27,7 +27,7 @@ public class ImageLoader {
 
 
     //only player
-   
+
     PImage leftsideplayer;
     PImage rightsideplayer;
     PImage forward1;
