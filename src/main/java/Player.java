@@ -124,6 +124,8 @@ System.out.println(camera.translateX);
 
         //p.rect(position.x, position.y, playerWidth, playerHeight);
 
+        // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
+
         if(down)
             //forward
 

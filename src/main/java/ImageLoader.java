@@ -42,6 +42,7 @@ public class ImageLoader {
     PImage cashRegister;
     PImage pillar;
     PImage deathRealm;
+    PImage cavebackground;
 
 
 
@@ -66,6 +67,7 @@ public class ImageLoader {
         cashRegister = p.loadImage("cashRegister.png");
         pillar = p.loadImage("Pillar.png");
         deathRealm = p.loadImage("deathrealm.png");
+        cavebackground = p.loadImage("Caveground.png");
 
 
         //Loaditemsmodel
