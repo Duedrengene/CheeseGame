@@ -78,7 +78,7 @@ public class Player {
         PVector speed = new PVector(velocity.x, velocity.y);
         speed.mult(runningSpeed.x);
         position.add(speed);
-
+        //p.println(velocity);
         // Currently constrain for DeathRealm and Dungeon and shop.
         // Se efter dead text
         if (inDungeon== true)
@@ -86,8 +86,8 @@ public class Player {
         position.y = p.constrain(position.y, 50, 2920);
 
     if(inDungeon == false) {
-        position.x = p.constrain(position.x, 10, p.width - width - 10);
-        position.y = p.constrain(position.y, 50, p.height - height - 10);
+        position.x = p.constrain(position.x, 50, p.width - width - 10);
+        position.y = p.constrain(position.y, 90, p.height - height - 10);
     }
     }
     void entranceDetect() {
@@ -130,13 +130,13 @@ public class Player {
 
         }
     }
-    void display(){
+    void display() {
         p.fill(255);
         p.stroke(204, 102, 0);
-        if(entrance== true) {
+        if (entrance == true) {
             this.p.fill(0, 255, 199);
             this.p.text(" Accept fate?(interact with me)", 405, 100);
-        }else{
+        } else {
             p.fill(178);
             p.text("Want to go back to shop? Go through the portal.", 405, 65);
 
@@ -145,6 +145,98 @@ public class Player {
 
         // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
         p.imageMode(CENTER);
+        //   p.println(velocity);
+
+
+        String s = Integer.toString((int) velocity.x) + Integer.toString((int) velocity.y);
+//System.out.println(s);
+        switch (s) {
+
+            case "-1-1": {
+//Skrot til venstre.
+                //System.out.println("-1-1");
+                System.out.println("SkrotvenstreOpad");
+
+
+            }
+            break;
+
+            case "-10": {
+                //Venstre.
+//                System.out.println("-1-0");
+                //System.out.println("Venstre");
+                p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
+
+
+            }
+            break;
+            case "10": {
+//Højre
+                //System.out.println("1+0");
+                //System.out.println("højre");
+                p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);
+
+            }
+            break;
+            case "11": {
+
+                // System.out.println("1+1");
+                System.out.println("skrotnedadhøjre");
+
+            }
+            break;
+
+            case "0-1": {
+//Opad
+                //System.out.println("0-1");
+                System.out.println("Opad");
+                if(running)
+                    p.image(imgLoad.behindImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.behindImgs[p.frameCount/18 %2],position.x,position.y,width,height);
+            }
+            break;
+            case "01": {
+//nedad,
+                //  System.out.println("0+1");
+                if(running)
+                    p.image(imgLoad.frontImgs[p.frameCount/8 %2], position.x, position.y, width, height);
+                else
+                    p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
+
+                System.out.println("nedad");
+
+            }
+            break;
+            case "-11": {
+                //Skrot Venstre nedad.
+
+                //System.out.println("-11");
+                System.out.println("Skrotvenstrenedad");
+
+            }
+            break;
+
+            case "1-1": {
+                //Skrot Venstre nedad.
+
+                //System.out.println("-11");
+                System.out.println("Skrothøjreopad");
+
+            }
+            break;
+            case "00": {
+                //Skrot Venstre nedad.
+
+
+                System.out.println("stille");
+                p.image(imgLoad.forward1,position.x,position.y,width,height);
+            }
+            break;
+
+        }
+        p.imageMode(0);
+       /*
         if(down)
             //forward
 
@@ -174,7 +266,8 @@ public class Player {
         p.imageMode(0);
 
     }
-
+'*/
+    }
      void addBullet(Camera camera) {
         bulletSpeed.set(p.mouseX-camera.translateX,p.mouseY-camera.translateY,0);
         bulletSpeed.sub(position);

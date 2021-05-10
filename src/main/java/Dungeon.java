@@ -38,7 +38,7 @@ Door portal;
        player.display();
        playerFunctions();
        enemyFunctions();
-       System.out.println(portal.playerNearby(player,portalX,portalY,player.width,player.height,100,100));
+       //System.out.println(portal.playerNearby(player,portalX,portalY,player.width,player.height,100,100));
        if(portal.playerNearby(player,portalX,portalY,player.width,player.height,100,100)!=-1)
        if(player.activate)
            portal.function(m);
