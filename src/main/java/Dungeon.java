@@ -2,6 +2,8 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 
+import static processing.core.PConstants.CENTER;
+
 public class Dungeon {
 
     PApplet p;
@@ -35,7 +37,9 @@ Door portal;
 
        cameraFunctions();
        p.image(imgLoad.cavebackground,0,0);
+       p.imageMode(CENTER);
        player.display();
+       p.imageMode(0);
        playerFunctions();
        enemyFunctions();
        //System.out.println(portal.playerNearby(player,portalX,portalY,player.width,player.height,100,100));

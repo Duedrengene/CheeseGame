@@ -21,7 +21,6 @@ public class Player {
     PVector bulletSpeed = new PVector();
     PVector runningSpeed = new PVector(1,1);
 
-
     boolean isShooting = false;
     boolean showAim = false;
     boolean cooldown = false;
@@ -53,7 +52,7 @@ public class Player {
 
     int width = 63;
     int height = 63;
-
+    int money = 100;
 
 
     float constrainLow;
@@ -144,7 +143,6 @@ public class Player {
         //p.rect(position.x, position.y, playerWidth, playerHeight);
 
         // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
-        p.imageMode(CENTER);
         //   p.println(velocity);
 
 
@@ -218,7 +216,7 @@ public class Player {
                 else
                     p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
 
-                System.out.println("nedad");
+               // System.out.println("nedad");
 
             }
             break;
@@ -231,7 +229,7 @@ public class Player {
 
 
                 //System.out.println("-11");
-                System.out.println("Skrotvenstrenedad");
+              //  System.out.println("Skrotvenstrenedad");
 
             }
             break;
@@ -244,7 +242,7 @@ public class Player {
                     p.image(imgLoad.rightUpImgs[p.frameCount/18 %2],position.x,position.y,width,height);
 
                 //System.out.println("-11");
-                System.out.println("Skrothøjreopad");
+             //   System.out.println("Skrothøjreopad");
 
             }
             break;
@@ -252,7 +250,7 @@ public class Player {
                 //Skrot Venstre nedad.
 
 
-                System.out.println("stille");
+             //   System.out.println("stille");
                 p.image(imgLoad.forward1,position.x,position.y,width,height);
             }
             break;
@@ -503,6 +501,7 @@ else{
                     if (pressed) {
                         inventory.add(new PizzaTopping(imgLoad.pizzatopping), 5);
                         inventory.add(new Cheddar(imgLoad.cheddar),5);
+                        inventory.add(new Primadonna(imgLoad.primadonna),5);
                  //       System.out.println(inventory.itemList);
                     }
 

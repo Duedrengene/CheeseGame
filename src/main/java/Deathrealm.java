@@ -2,6 +2,8 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 
+import static processing.core.PConstants.CENTER;
+
 
 public class Deathrealm {
     PApplet p;
@@ -49,7 +51,9 @@ public class Deathrealm {
         deathReaper.drawDeathReaper();
         deathReaper.ReaperPillars();
         deathReaper.detectPlayer(player);
+        p.imageMode(CENTER);
         player.display();
+        p.imageMode(0);
         // Tilføj Circulation effect?
 
 

@@ -59,6 +59,7 @@ public class ShopCounter extends Furniture {
 
                         }
                         m.inventory.useBarList.get(i).useList.remove(i);
+                        m.inventory.useBarList.get(i).selected = false;
 
 
                     }
@@ -76,7 +77,7 @@ m.inventoryGrid.get(i).changeGridType();
     void display(PApplet p, float x, float y) {
         super.display(p, x, y);
         if(itemType != Items.empty){
-            p.image(itemImg,x,y);
+            p.image(itemImg,x+20,y+20);
 
 
 
