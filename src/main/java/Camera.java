@@ -31,8 +31,8 @@ public class Camera {
             }
             break;
             case 1: {
-                translateX = p.width / 2 - player.position.x;
-                translateY = p.height / 2 - player.position.y;
+                translateX = p.width / 2 - player.position.x-player.width/2;
+                translateY = p.height / 2 - player.position.y-player.height/2;
                 //  p.translate(p.width / 2, p.height / 2);
                 //  p.translate(-perspective.x, -perspective.y);
 

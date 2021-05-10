@@ -6,6 +6,7 @@ public class Dungeon {
 
     PApplet p;
 
+    ImageLoader imgLoad;
     Player player;
 
     ArrayList<Enemy> enemies;
@@ -15,18 +16,22 @@ public class Dungeon {
     int hastighed = 4;
 
 
-    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera){
+    Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera,ImageLoader imgLoad){
 
     this.p = p;
     this.player = player;
     this.enemies = enemies;
     this.camera = camera;
+    this.imgLoad = imgLoad;
 
     }
 
    void functions() {
+
         p.pushMatrix();
+
        cameraFunctions();
+       p.image(imgLoad.cavebackground,0,0);
        player.display();
        playerFunctions();
        enemyFunctions();

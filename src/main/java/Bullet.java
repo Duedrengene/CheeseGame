@@ -14,7 +14,7 @@ public class Bullet {
     static final short VEL = 5;
 
     int bullettype;
-    int bulletDiameter =10;
+    int bulletDiameter =17;
 
     //boolean isShooting;
 

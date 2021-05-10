@@ -45,7 +45,7 @@ public class Player {
     float maxMagasineUpgrade;
     float maximumStamina = 100;
     float staminaLoss = 0.5f;
-    float passiveStamina = 0.10f;
+    float passiveStamina = 1.15f;
     float stamina = maximumStamina;
 
     PImage[] imgs = new PImage[2];
@@ -53,9 +53,11 @@ public class Player {
     int width = 63;
     int height = 63;
 
-    String tens = "forward";
 
 
+    float constrainLow;
+    float constrainHigh;
+    Boolean inDungeon = true;
 
 
 
@@ -78,9 +80,16 @@ public class Player {
 
         // Currently constrain for DeathRealm and Dungeon and shop.
         // Se efter dead text
+        if (inDungeon== true)
+            position.x = p.constrain(position.x, 130, 2882);
+        position.y = p.constrain(position.y, 50, 2920);
 
-            position.x = p.constrain(position.x, 10, p.width - width - 10);
-            position.y = p.constrain(position.y, 50, p.height - height - 10);
+    if(inDungeon == false) {
+        position.x = p.constrain(position.x, 10, p.width - width - 10);
+        position.y = p.constrain(position.y, 50, p.height - height - 10);
+    }
+
+
 
 
 
@@ -112,6 +121,7 @@ System.out.println(camera.translateX);
             dead = true;
             //position.set(960, 890);
         location.changeLocation(LocationType.deathrealm);
+        inDungeon = false;
             position.set(960, 890);
             //position.x = p.constrain(position.x, 10, p.width - width - 10);
             //position.y = p.constrain(position.y, 50, p.height - height - 10);
@@ -125,7 +135,7 @@ System.out.println(camera.translateX);
         //p.rect(position.x, position.y, playerWidth, playerHeight);
 
         // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
-
+        p.imageMode(CENTER);
         if(down)
             //forward
 
@@ -152,6 +162,8 @@ System.out.println(camera.translateX);
         //Standing Still.
             p.image(imgLoad.forward1,position.x,position.y,width,height);
         }
+        p.imageMode(0);
+
     }
 
      void addBullet(Camera camera) {

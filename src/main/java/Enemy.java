@@ -33,7 +33,7 @@ public class Enemy {
     float health = 100;
     float moveSpeed = 4;
     float maxForce = 1;
-    float playerDiameter = 10;
+    float playerDiameter = 17;
     float enemyDiameter = 10;
 
     //float calculateHP;
@@ -147,7 +147,7 @@ void timerReset() {
                 enemySlashRange = true;
                 if (enemySlashRange = true) ;
 
-                float slowdown = 1.6f;
+                float slowdown = 0.4f;
                 moveSpeed = slowdown;
             }
                  else
