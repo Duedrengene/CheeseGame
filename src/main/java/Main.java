@@ -62,6 +62,7 @@ public class Main extends PApplet {
         inventory.furnitureList.add(new WallItem(imgLoad.wall));
         inventory.furnitureList.add(new DoorItem(imgLoad.door));
         inventory.furnitureList.add(new ShopCounterItem(imgLoad.shopCounter));
+        inventory.furnitureList.add(new CashRegisterItem(imgLoad.cashRegister));
 
     }
 
@@ -73,6 +74,7 @@ public class Main extends PApplet {
         //camera.changeAngle();
         location.functions(this);
         player.draw(inventoryGrid,location);
+    //    System.out.println(inventoryGrid);
     }
 
 

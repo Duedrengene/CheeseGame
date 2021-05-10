@@ -7,7 +7,7 @@ public class GridSpace {
     PApplet p;
     boolean pressed = false;
 
-    boolean hasFurniture ;
+    boolean hasFurniture = false ;
 
     Items itemGridType = Items.empty;
     FurnitureTypes furnitureGridType = FurnitureTypes.empty;
@@ -21,9 +21,11 @@ public class GridSpace {
 
     }
 
+
+
     void pressed(float mX,float mY){
         if(((mX <(x+width)) && ((x< mX)) )&& ((mY < y + height) && (mY > y))){
-            System.out.println("New Check");
+           // System.out.println("New Check");
 
             function();
 

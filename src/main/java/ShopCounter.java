@@ -2,8 +2,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class ShopCounter extends Furniture {
-Items itemType = Items.empty;
-PImage itemImg = null;
+
     ShopCounter(PImage img){
         this.img = img;
 

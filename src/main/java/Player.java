@@ -53,7 +53,7 @@ public class Player {
 
     int width = 63;
     int height = 63;
-
+    int money = 100;
 
 
     float constrainLow;
@@ -155,7 +155,7 @@ public class Player {
             case "-1-1": {
 //Skrot til venstre.
                 //System.out.println("-1-1");
-                System.out.println("SkrotvenstreOpad");
+             //   System.out.println("SkrotvenstreOpad");
 
 
             }
@@ -181,7 +181,7 @@ public class Player {
             case "11": {
 
                 // System.out.println("1+1");
-                System.out.println("skrotnedadhøjre");
+             //   System.out.println("skrotnedadhøjre");
 
             }
             break;
@@ -189,7 +189,7 @@ public class Player {
             case "0-1": {
 //Opad
                 //System.out.println("0-1");
-                System.out.println("Opad");
+             //   System.out.println("Opad");
                 if(running)
                     p.image(imgLoad.behindImgs[p.frameCount/8 %2],position.x,position.y,width,height);
                 else
@@ -204,7 +204,7 @@ public class Player {
                 else
                     p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
 
-                System.out.println("nedad");
+             //   System.out.println("nedad");
 
             }
             break;
@@ -212,7 +212,7 @@ public class Player {
                 //Skrot Venstre nedad.
 
                 //System.out.println("-11");
-                System.out.println("Skrotvenstrenedad");
+               // System.out.println("Skrotvenstrenedad");
 
             }
             break;
@@ -221,7 +221,7 @@ public class Player {
                 //Skrot Venstre nedad.
 
                 //System.out.println("-11");
-                System.out.println("Skrothøjreopad");
+             //   System.out.println("Skrothøjreopad");
 
             }
             break;
@@ -229,7 +229,7 @@ public class Player {
                 //Skrot Venstre nedad.
 
 
-                System.out.println("stille");
+              //  System.out.println("stille");
                 p.image(imgLoad.forward1,position.x,position.y,width,height);
             }
             break;
@@ -340,6 +340,13 @@ void regainStamina() {
             stamina = 100.f;
         }
     }
+}
+
+void showMoney(){
+
+        p.text(money,20,20);
+
+
 }
 
    void showStamina(){
@@ -470,7 +477,7 @@ else{
                     if (pressed) {
                         inventory.add(new PizzaTopping(imgLoad.pizzatopping), 5);
                         inventory.add(new Cheddar(imgLoad.cheddar),5);
-                        System.out.println(inventory.itemList);
+                 //       System.out.println(inventory.itemList);
                     }
 
                 }

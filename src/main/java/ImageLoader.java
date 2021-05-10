@@ -43,6 +43,7 @@ public class ImageLoader {
     PImage pillar;
     PImage deathRealm;
     PImage cavebackground;
+    PImage floor;
 
 
 
@@ -63,8 +64,9 @@ public class ImageLoader {
 //Structure
         wall = p.loadImage("wall.png");
         door = p.loadImage("door.png");
+        floor = p.loadImage("floor.png");
         shopCounter = p.loadImage("shopCounter.png");
-        cashRegister = p.loadImage("cashRegister.png");
+        cashRegister = p.loadImage("CashRegister.png");
         pillar = p.loadImage("Pillar.png");
         deathRealm = p.loadImage("deathrealm.png");
         cavebackground = p.loadImage("Caveground.png");

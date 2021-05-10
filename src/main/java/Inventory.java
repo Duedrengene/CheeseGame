@@ -68,13 +68,13 @@ for(int i = 0; i<m.inventoryGrid.size();i++) {
             temp = itemList.get(to);
 
         }catch (Exception exception){
-            System.out.println(exception);
+         //   System.out.println(exception);
         }
         try{
             itemList.set(to,itemList.get(from));
 
         }catch (Exception exception){
-            System.out.println(exception);
+         //   System.out.println(exception);
         }
 
         if (temp!= null)

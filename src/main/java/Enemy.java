@@ -120,7 +120,7 @@ public class Enemy {
     }
 void timerReset() {
         time = p.millis();
-        p.println(time);
+       // p.println(time);
 }
     boolean invincibilityFrame(int seconds) {
         //int delta =p.millis();

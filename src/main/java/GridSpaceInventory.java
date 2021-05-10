@@ -22,7 +22,7 @@ int count;
 
     @Override
     public void function() {
-        System.out.println("Check");
+      //  System.out.println("Check");
     pressed    = !pressed;
     checkPress();
     }
@@ -33,7 +33,7 @@ int count;
                 itemGridType = inventory.itemList.get(count).itemType;
         }
 else itemGridType =Items.empty;
-System.out.println(count);
+//System.out.println(count);
 
         switch (itemGridType) {
 
@@ -45,7 +45,7 @@ System.out.println(count);
             }break;
 
             case cashRegisterItem:{
-                item= new CashRegisterItem();
+                item= new CashRegisterItem(imgLoad.cashRegister);
 
             }break;
 
@@ -81,7 +81,7 @@ System.out.println(count);
     }
 
     void checkPress(){
-        System.out.println("check");
+      //  System.out.println("check");
         int pressCount = 2;
         int[] gridSpaces = new int[2];
         for(int i = 0; i<inventory.m.inventoryGrid.size();i++){

@@ -3,6 +3,7 @@ public enum FurnitureTypes {
     shopCounter,
     cashRegister,
     door,
-    wall
+    wall,
+    floor
 
 }

@@ -23,7 +23,7 @@ this.player=player;
         if(player.buildMode){
             p.text("BUILD MODE",p.width/2,p.height-200);
 
-
+            player.showMoney();
 
         }
 
@@ -34,6 +34,7 @@ this.player=player;
     void displayDungeon(){
         player.showHealth();
         player.showStamina();
+
     }
 
 

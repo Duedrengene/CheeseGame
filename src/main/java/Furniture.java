@@ -5,7 +5,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Furniture {
-
+    Items itemType = Items.empty;
+    PImage itemImg = null;
 PImage img;
 
      Furniture(){

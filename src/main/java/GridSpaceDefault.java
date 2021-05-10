@@ -35,7 +35,7 @@ GridSpaceDefault(float x, float y, float width, float height, PApplet p, ImageLo
             }break;
 
             case cashRegister:{
-                furniture= new CashRegister();
+                furniture= new CashRegister(imgLoad.cashRegister);
 
             }break;
 
