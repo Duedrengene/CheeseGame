@@ -8,6 +8,10 @@ public class ImageLoader {
     //Animations.
     PImage[] frontImgs = new PImage[2];
     PImage[] behindImgs = new PImage[2];
+    PImage [] rightUpImgs = new PImage[2];
+    PImage [] leftUpImgs = new PImage[2];
+    PImage [] downRightImgs = new PImage[2];
+    PImage [] downLeftImgs = new PImage[2];
 
 
     //items  models.
@@ -31,7 +35,9 @@ public class ImageLoader {
     PImage leftsideplayer;
     PImage rightsideplayer;
     PImage forward1;
-
+    PImage runningright;
+    PImage runningleft;
+    PImage rightup;
 
 
     //Furniture
@@ -83,9 +89,12 @@ public class ImageLoader {
         //Backgrounds
 
 //Player
+        runningright = p.loadImage("runningright.png");
+        runningleft = p.loadImage("runningleft.png");
 
         leftsideplayer = p.loadImage("leftsidecheeseman.png");
         rightsideplayer = p.loadImage("rightsidecheeseman.png");
+        //rightup = p.loadImage("rightup1.png");
 
         //Model 3/4 perspective playermodels.
         grimReaper = p.loadImage("GrimR.png");
@@ -94,6 +103,10 @@ public class ImageLoader {
         for (int i = 1; i <= 2; i++) {
             frontImgs[i-1] = p.loadImage("forwardplayer"+i+".png");
             behindImgs[i-1] = p.loadImage("behindcheeseman"+i+".png");
+            rightUpImgs[i-1] = p.loadImage("rightup"+i+".png");
+            leftUpImgs[i-1] = p.loadImage("leftup"+i+".png");
+            downRightImgs[i-1] = p.loadImage("downright"+i+".png");
+            downLeftImgs[i-1] = p.loadImage("downleft"+i+".png");
         }
     }
 }

@@ -53,7 +53,7 @@ public class Player {
 
     int width = 63;
     int height = 63;
-    int money = 100;
+
 
 
     float constrainLow;
@@ -153,9 +153,14 @@ public class Player {
         switch (s) {
 
             case "-1-1": {
-//Skrot til venstre.
-                //System.out.println("-1-1");
-             //   System.out.println("SkrotvenstreOpad");
+//Skrot til venstreopad.
+
+
+                //System.out.println("SkrotvenstreOpad");
+                if(running)
+                    p.image(imgLoad.leftUpImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.leftUpImgs[p.frameCount/18 %2],position.x,position.y,width,height);
 
 
             }
@@ -163,17 +168,22 @@ public class Player {
 
             case "-10": {
                 //Venstre.
-//                System.out.println("-1-0");
+//
                 //System.out.println("Venstre");
-                p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
+                if(running)
+                    p.image(imgLoad.runningleft,position.x,position.y,width,height);
 
-
+            else
+                    p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
             }
             break;
             case "10": {
 //Højre
                 //System.out.println("1+0");
                 //System.out.println("højre");
+                if(running)
+                    p.image(imgLoad.runningright,position.x,position.y,width,height);
+                else
                 p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);
 
             }
@@ -181,7 +191,11 @@ public class Player {
             case "11": {
 
                 // System.out.println("1+1");
-             //   System.out.println("skrotnedadhøjre");
+                if(running)
+                    p.image(imgLoad.downRightImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.downRightImgs[p.frameCount/18 %2],position.x,position.y,width,height);
+                //System.out.println("skrotnedadhøjre");
 
             }
             break;
@@ -204,24 +218,33 @@ public class Player {
                 else
                     p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
 
-             //   System.out.println("nedad");
+                System.out.println("nedad");
 
             }
             break;
             case "-11": {
                 //Skrot Venstre nedad.
+                if(running)
+                    p.image(imgLoad.downLeftImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.downLeftImgs[p.frameCount/18 %2],position.x,position.y,width,height);
+
 
                 //System.out.println("-11");
-               // System.out.println("Skrotvenstrenedad");
+                System.out.println("Skrotvenstrenedad");
 
             }
             break;
 
             case "1-1": {
-                //Skrot Venstre nedad.
+                //Skrot Venstre opad.
+                if(running)
+                    p.image(imgLoad.rightUpImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.rightUpImgs[p.frameCount/18 %2],position.x,position.y,width,height);
 
                 //System.out.println("-11");
-             //   System.out.println("Skrothøjreopad");
+                System.out.println("Skrothøjreopad");
 
             }
             break;
@@ -229,7 +252,7 @@ public class Player {
                 //Skrot Venstre nedad.
 
 
-              //  System.out.println("stille");
+                System.out.println("stille");
                 p.image(imgLoad.forward1,position.x,position.y,width,height);
             }
             break;
@@ -237,6 +260,9 @@ public class Player {
         }
         p.imageMode(0);
        /*
+
+
+       //PROTOTYPE OG PROBLEMER DOKUMENTERS HER.
         if(down)
             //forward
 
