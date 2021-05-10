@@ -5,7 +5,9 @@ public class ImageLoader {
     PImage cave;
     PImage startup;
 
-
+    //Animations.
+    PImage[] frontImgs = new PImage[2];
+    PImage[] behindImgs = new PImage[2];
 
 
     //items  models.
@@ -25,13 +27,13 @@ public class ImageLoader {
 
 
     //only player
-    PImage behindplayer;
+
     PImage leftsideplayer;
     PImage rightsideplayer;
     PImage forward1;
-    PImage forward2;
 
-	
+
+
     //Furniture
 
     PImage wall;
@@ -39,13 +41,17 @@ public class ImageLoader {
     PImage shopCounter;
     PImage cashRegister;
     PImage pillar;
+    PImage deathRealm;
+    PImage cavebackground;
+
 
 
     float scaleW = 1;
     float scaleH = 1;
 
-    ImageLoader(PApplet p) { this.p = p;}
-
+    ImageLoader(PApplet p) {
+        this.p = p;
+    }
 
 
     void loadTheImages() {
@@ -55,11 +61,13 @@ public class ImageLoader {
         //scaleW = (float) h/1080;
 
 //Structure
-        wall= p.loadImage("wall.png");
+        wall = p.loadImage("wall.png");
         door = p.loadImage("door.png");
         shopCounter = p.loadImage("shopCounter.png");
         cashRegister = p.loadImage("cashRegister.png");
         pillar = p.loadImage("Pillar.png");
+        deathRealm = p.loadImage("deathrealm.png");
+        cavebackground = p.loadImage("Caveground.png");
 
 
         //Loaditemsmodel
@@ -73,16 +81,17 @@ public class ImageLoader {
         //Backgrounds
 
 //Player
-        behindplayer = p.loadImage("behindcheeseman.png");
+
         leftsideplayer = p.loadImage("leftsidecheeseman.png");
         rightsideplayer = p.loadImage("rightsidecheeseman.png");
-        forward1 = p.loadImage("Playerforward1.png");
-        forward2 = p.loadImage("forwardplayer2.png");
 
         //Model 3/4 perspective playermodels.
         grimReaper = p.loadImage("GrimR.png");
+        forward1 = p.loadImage("forwardplayer1.png");
 
-
+        for (int i = 1; i <= 2; i++) {
+            frontImgs[i-1] = p.loadImage("forwardplayer"+i+".png");
+            behindImgs[i-1] = p.loadImage("behindcheeseman"+i+".png");
+        }
     }
-
 }

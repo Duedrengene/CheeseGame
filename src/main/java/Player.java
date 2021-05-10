@@ -1,5 +1,6 @@
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 import java.util.ArrayList;
 import static processing.core.PConstants.*;
@@ -35,6 +36,7 @@ public class Player {
     boolean immobile = false;
     boolean inventoryOpen = false;
     boolean dead = false;
+    boolean entrance = false;
 
     float playerSpd = 20;
     float maximumHealth = 100;
@@ -44,14 +46,19 @@ public class Player {
     float maxMagasineUpgrade;
     float maximumStamina = 100;
     float staminaLoss = 0.5f;
-    float passiveStamina = 0.10f;
+    float passiveStamina = 1.15f;
     float stamina = maximumStamina;
 
-
+    PImage[] imgs = new PImage[2];
 
     int width = 63;
     int height = 63;
 
+
+
+    float constrainLow;
+    float constrainHigh;
+    Boolean inDungeon = true;
 
 
 
@@ -68,23 +75,31 @@ public class Player {
 
     void changePosition() {
 
-        PVector speed = new PVector(velocity.x,velocity.y);
+        PVector speed = new PVector(velocity.x, velocity.y);
         speed.mult(runningSpeed.x);
         position.add(speed);
+        //p.println(velocity);
+        // Currently constrain for DeathRealm and Dungeon and shop.
+        // Se efter dead text
+        if (inDungeon== true)
+            position.x = p.constrain(position.x, 130, 2882);
+        position.y = p.constrain(position.y, 50, 2920);
 
-        
-
-        position.x = p.constrain(position.x, 0, p.width - width);
-        position.y = p.constrain(position.y, 0, p.height - height);
-
-        PVector dir = new PVector(position.x,position.y);
-//Tilføj direction knockback.
-        Walk(dir);
+    if(inDungeon == false) {
+        position.x = p.constrain(position.x, 50, p.width - width - 10);
+        position.y = p.constrain(position.y, 90, p.height - height - 10);
     }
-
-    public void Walk(PVector dir) {
-        //PVector bodydash= new PVector(dir.x*playerspd,dir.y*playerspd);
     }
+    void entranceDetect() {
+            if(20- 64.0f <= position.x + 96.0f && 20 + 160.0f > position.x && 60 - 20.0f <= position.y + 96.0f && 60 + 160.f > position.y) {
+                entrance = true;
+
+            }else{
+                entrance = false;
+
+            }
+        }
+
 
    void showAim(Camera camera) {
 
@@ -92,7 +107,7 @@ public class Player {
            p.stroke(255, 0, 0, 180);
            p.strokeWeight(3);
            p.line(p.mouseX-camera.translateX, p.mouseY-camera.translateY, position.x, position.y);
-System.out.println(camera.translateX);
+
            p.stroke(0);
 
 
@@ -103,8 +118,6 @@ System.out.println(camera.translateX);
         changePosition();
 
 
-
-
         inventory.display(buildMode,this,inventoryGridList);
 
         if (playerHealth < 0) {
@@ -112,19 +125,149 @@ System.out.println(camera.translateX);
             dead = true;
             //position.set(960, 890);
         location.changeLocation(LocationType.deathrealm);
+        inDungeon = false;
             position.set(960, 890);
+
         }
     }
-    void display(){
+    void display() {
         p.fill(255);
         p.stroke(204, 102, 0);
+        if (entrance == true) {
+            this.p.fill(0, 255, 199);
+            this.p.text(" Accept fate?(interact with me)", 405, 100);
+        } else {
+            p.fill(178);
+            p.text("Want to go back to shop? Go through the portal.", 405, 65);
 
+        }
         //p.rect(position.x, position.y, playerWidth, playerHeight);
-        p.image(imgLoad.forward1,position.x,position.y,width,height);
 
+        // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
+        p.imageMode(CENTER);
+        //   p.println(velocity);
+
+
+        String s = Integer.toString((int) velocity.x) + Integer.toString((int) velocity.y);
+//System.out.println(s);
+        switch (s) {
+
+            case "-1-1": {
+//Skrot til venstre.
+                //System.out.println("-1-1");
+                System.out.println("SkrotvenstreOpad");
+
+
+            }
+            break;
+
+            case "-10": {
+                //Venstre.
+//                System.out.println("-1-0");
+                //System.out.println("Venstre");
+                p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
+
+
+            }
+            break;
+            case "10": {
+//Højre
+                //System.out.println("1+0");
+                //System.out.println("højre");
+                p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);
+
+            }
+            break;
+            case "11": {
+
+                // System.out.println("1+1");
+                System.out.println("skrotnedadhøjre");
+
+            }
+            break;
+
+            case "0-1": {
+//Opad
+                //System.out.println("0-1");
+                System.out.println("Opad");
+                if(running)
+                    p.image(imgLoad.behindImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.behindImgs[p.frameCount/18 %2],position.x,position.y,width,height);
+            }
+            break;
+            case "01": {
+//nedad,
+                //  System.out.println("0+1");
+                if(running)
+                    p.image(imgLoad.frontImgs[p.frameCount/8 %2], position.x, position.y, width, height);
+                else
+                    p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
+
+                System.out.println("nedad");
+
+            }
+            break;
+            case "-11": {
+                //Skrot Venstre nedad.
+
+                //System.out.println("-11");
+                System.out.println("Skrotvenstrenedad");
+
+            }
+            break;
+
+            case "1-1": {
+                //Skrot Venstre nedad.
+
+                //System.out.println("-11");
+                System.out.println("Skrothøjreopad");
+
+            }
+            break;
+            case "00": {
+                //Skrot Venstre nedad.
+
+
+                System.out.println("stille");
+                p.image(imgLoad.forward1,position.x,position.y,width,height);
+            }
+            break;
+
+        }
+        p.imageMode(0);
+       /*
+        if(down)
+            //forward
+
+                //imgs = imgs[i-1];
+    //            p.image(imgLoad.forward1, position.x, position.y, width, height);
+        if(running)
+            p.image(imgLoad.frontImgs[p.frameCount/8 %2], position.x, position.y, width, height);
+        else
+            p.image(imgLoad.frontImgs[p.frameCount/18 %2], position.x, position.y, width, height);
+
+            if(up )
+        //behind
+                if(running)
+        p.image(imgLoad.behindImgs[p.frameCount/8 %2],position.x,position.y,width,height);
+                else
+                    p.image(imgLoad.behindImgs[p.frameCount/18 %2],position.x,position.y,width,height);
+        //Right
+        if(right)
+        p.image(imgLoad.rightsideplayer,position.x,position.y,width,height);
+        if(left)
+            //Left.
+        p.image(imgLoad.leftsideplayer,position.x,position.y,width,height);
+        if(!up && !down && !left && !right) {
+        //Standing Still.
+            p.image(imgLoad.forward1,position.x,position.y,width,height);
+        }
+        p.imageMode(0);
 
     }
-
+'*/
+    }
      void addBullet(Camera camera) {
         bulletSpeed.set(p.mouseX-camera.translateX,p.mouseY-camera.translateY,0);
         bulletSpeed.sub(position);
@@ -236,7 +379,7 @@ else{
 
                 case '1': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 0)
+                        if (inventory.useBarList.get(0).useList.size() > 0)
                         inventory.useBarList.get(0).selected = !inventory.useBarList.get(0).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 0)
@@ -250,7 +393,7 @@ else{
                 break;
                 case '2': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 1)
+                        if (inventory.useBarList.get(0).useList.size() > 1)
                         inventory.useBarList.get(1).selected = !inventory.useBarList.get(1).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 1)
@@ -264,7 +407,7 @@ else{
                 break;
                 case '3': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 2)
+                        if (inventory.useBarList.get(0).useList.size() > 2)
                             inventory.useBarList.get(2).selected = !inventory.useBarList.get(2).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 2)
@@ -278,7 +421,7 @@ else{
                 break;
                 case '4': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 3)
+                        if (inventory.useBarList.get(0).useList.size() > 3)
                             inventory.useBarList.get(3).selected = !inventory.useBarList.get(3).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 3)
@@ -293,7 +436,7 @@ else{
                 break;
                 case '5': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 4)
+                        if (inventory.useBarList.get(0).useList.size() > 4)
                             inventory.useBarList.get(4).selected = !inventory.useBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 4)
@@ -335,7 +478,7 @@ else{
 
                 case 'E':
                 case 'e':{
-                    if(location == LocationType.shop&&pressed == true)
+                    if(pressed == true)
                     activate=true;
 
                 }break;
@@ -386,6 +529,7 @@ else{
                 case 'd': {
                     if((pressed) &&(ready))
                         right=true;
+
                     else
                         right=false;
 

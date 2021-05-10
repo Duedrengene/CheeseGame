@@ -52,7 +52,7 @@ public class Main extends PApplet {
         inventoryGrid = gridCreate.createGridInventory(500,500,this,imgLoad,inventory,5,5,false,250);
         shop = new Shop(furnitureList, grid);
         camera = new Camera(this,player.position,player);
-        dungeon = new Dungeon(this,player,enemies,camera);
+        dungeon = new Dungeon(this,player,enemies,camera,imgLoad,this);
         gUI = new GUI(this,player);
         deathReaper = new DeathReaper(this,width/2,height/2,imgLoad);
         deathRealm = new Deathrealm(this,player, pillars, deathReaper);

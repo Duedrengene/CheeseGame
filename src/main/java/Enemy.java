@@ -33,8 +33,8 @@ public class Enemy {
     float health = 100;
     float moveSpeed = 4;
     float maxForce = 1;
-    float playerDiameter = 10;
-    float enemyDiameter = 10;
+    float playerDiameter = 17;
+    float enemyDiameter = 17;
 
     //float calculateHP;
 
@@ -48,7 +48,6 @@ public class Enemy {
         this.bullets = player.bullets;
 
         acceleration = new PVector(0, 0);
-
     }
 
     void update() {
@@ -82,7 +81,7 @@ public class Enemy {
             //getGetEnemyvelocity.limit(movespeed);
             //p.println(steerforce);
             if(knockback ==true) {
-               enemyPosition.add(-direction.x*50,-direction.y*50);
+               enemyPosition.add(-direction.x*12,-direction.y*12);
                 knockback =false;
             }
 
@@ -110,9 +109,9 @@ public class Enemy {
         boolean hit = pointRadius(playerPosition.x, playerPosition.y, playerDiameter, enemyPosition.x, enemyPosition.y, enemyDiameter);
 
         if (hit) {
-           timerReset();
-            p.fill(255, 150, 0);
-            p.text("u dead now", 200, 200);
+           //timerReset();
+
+
             player.playerHealth -= 10;
             //playerPosition.add()
 
@@ -131,10 +130,11 @@ void timerReset() {
     void timerFunction() {
         for(int i =1; i<3;i++) {
             if(invincibilityFrame(i)) {
-
+                }
             }
         }
-    }
+
+
 
 
     boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {
@@ -149,7 +149,7 @@ void timerReset() {
                 enemySlashRange = true;
                 if (enemySlashRange = true) ;
 
-                float slowdown = 1.6f;
+                float slowdown = 0.4f;
                 moveSpeed = slowdown;
             }
                  else

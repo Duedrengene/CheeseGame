@@ -12,8 +12,13 @@ Door(PImage img){
 @Override
     void function(Main m) {
 
-    if(!m.player.buildMode)
+        if(m.location.location == LocationType.shop)
     m.location.location=LocationType.dungeon;
+        else{
+            m.location.location=LocationType.shop;
+
+
+        }
 
     }
 }

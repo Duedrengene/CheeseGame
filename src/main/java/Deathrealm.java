@@ -17,45 +17,77 @@ public class Deathrealm {
     int DIAMETER = 80;
     int hastighed = 4;
     int pillardiameter = 20;
-
-
-    Deathrealm(PApplet p, Player player,ArrayList<PasswordPillar> pillars, DeathReaper deathReaper) {
+    float longlarg = 15;
+    int [] [] gridData = new int [3] [2];
+    int xTemp;
+    int yTemp;
+    Deathrealm(PApplet p, Player player, ArrayList<PasswordPillar> pillars, DeathReaper deathReaper) {
         this.p = p;
         this.player = player;
         this.deathReaper = deathReaper;
-        this.pillars=pillars;
-        //position.set(1400, this.p.height / 2);
+        this.pillars = pillars;
     }
+
     void deathrealmFunctions() {
         playerFunctions();
         deathReaperFunctions();
         passwordPillarFunctions();
-        p.fill(178);
-        p.text("What is the Key to your suffering?", 1055,65);
+        passwordLoop();
 
 
     }
+
     void playerFunctions() {
-     player.runAbility();
-     player.regainStamina();
-     player.useStamina();
+        player.runAbility();
+        player.regainStamina();
+        player.useStamina();
 
 
     }
-void deathReaperFunctions() {
-    deathReaper.drawDeathReaper();
-    deathReaper.ReaperPillars();
-    player.display();
-    // Tilføj Circulation effect?
+
+    void deathReaperFunctions() {
+        deathReaper.drawDeathReaper();
+        deathReaper.ReaperPillars();
+        deathReaper.detectPlayer(player);
+        player.display();
+        // Tilføj Circulation effect?
 
 
     }
-    void passwordPillarFunctions() {
-    if(pillars.size() < 8 )
-        pillars.add(new PasswordPillar((int) p.random(0,1000), (int) p.random(0,1000),pillardiameter,player.position,player,p));
+void passwordLoop() {
+    gridData[1][1] = 1;
+    for (int xTemp = 0; xTemp < 3; xTemp++) {
+        for (int yTemp = 0; yTemp < 2; yTemp++) {
+            if(gridData[xTemp][yTemp]==1)
+                p.rect(xTemp*15,yTemp*15,15,15);
 
-    for(int i=0; i< pillars.size(); i++) {
-        pillars.get(i).display();
-    }
+        }
     }
 }
+    void passwordPillarFunctions() {
+       /*
+        int xTemp = 0;
+        int yTemp = 0;
+        for (yTemp = 0; yTemp < 3; yTemp++) {
+            for (xTemp = 0; xTemp < 2; xTemp++) {
+                gridData[yTemp][xTemp] = 0;
+            }
+            gridData[1][1]=1;
+        }
+*/
+
+
+        if (pillars.size() < 6)
+
+            //pillars.add(new PasswordPillar((int) yTemp, (int) xTemp, pillardiameter, player.position, player, p));
+        pillars.add(new PasswordPillar(xTemp, yTemp, pillardiameter, player.position, player, p));
+
+              //pillars.add(new PasswordPillar((int) p.random(0, 1000), (int) p.random(0, 1000), pillardiameter, player.position, player, p));
+
+        for (int j = 0; j < pillars.size(); j++) {
+            pillars.get(j).display();
+        }
+    }
+    }
+
+

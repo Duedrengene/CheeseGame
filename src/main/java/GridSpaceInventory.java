@@ -28,18 +28,16 @@ int count;
     }
 
     void changeGridType(){
-        if(inventory.itemList.size()>count)
-if(inventory.itemList.get(count).itemType!= null)
-        itemGridType = inventory.itemList.get(count).itemType;
+        if(inventory.itemList.size()>count) {
+            if (inventory.itemList.get(count).itemType != null)
+                itemGridType = inventory.itemList.get(count).itemType;
+        }
+else itemGridType =Items.empty;
 System.out.println(count);
 
         switch (itemGridType) {
 
-            case empty:{
 
-                furniture = null;
-
-            }break;
 
             case doorItem:{
                 item= new DoorItem(imgLoad.door);
@@ -73,7 +71,10 @@ System.out.println(count);
 
             }break;
 
+            default:{
+                furniture = null;
 
+            }break;
         }
 
 
