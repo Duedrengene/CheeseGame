@@ -36,6 +36,7 @@ public class Player {
     boolean immobile = false;
     boolean inventoryOpen = false;
     boolean dead = false;
+    boolean entrance = false;
 
     float playerSpd = 20;
     float maximumHealth = 100;
@@ -88,12 +89,17 @@ public class Player {
         position.x = p.constrain(position.x, 10, p.width - width - 10);
         position.y = p.constrain(position.y, 50, p.height - height - 10);
     }
-
-
-
-
-
     }
+    void entranceDetect() {
+            if(20- 64.0f <= position.x + 96.0f && 20 + 160.0f > position.x && 60 - 20.0f <= position.y + 96.0f && 60 + 160.f > position.y) {
+                entrance = true;
+
+            }else{
+                entrance = false;
+
+            }
+        }
+
 
    void showAim(Camera camera) {
 
@@ -101,7 +107,7 @@ public class Player {
            p.stroke(255, 0, 0, 180);
            p.strokeWeight(3);
            p.line(p.mouseX-camera.translateX, p.mouseY-camera.translateY, position.x, position.y);
-System.out.println(camera.translateX);
+
            p.stroke(0);
 
 
@@ -110,8 +116,6 @@ System.out.println(camera.translateX);
     void draw(ArrayList<GridSpaceInventory> inventoryGridList,Location location) {
         //void draw(location) {
         changePosition();
-
-
 
 
         inventory.display(buildMode,this,inventoryGridList);
@@ -123,15 +127,20 @@ System.out.println(camera.translateX);
         location.changeLocation(LocationType.deathrealm);
         inDungeon = false;
             position.set(960, 890);
-            //position.x = p.constrain(position.x, 10, p.width - width - 10);
-            //position.y = p.constrain(position.y, 50, p.height - height - 10);
 
         }
     }
     void display(){
         p.fill(255);
         p.stroke(204, 102, 0);
+        if(entrance== true) {
+            this.p.fill(0, 255, 199);
+            this.p.text(" Accept fate?(interact with me)", 405, 100);
+        }else{
+            p.fill(178);
+            p.text("Want to go back to shop? Go through the portal.", 405, 65);
 
+        }
         //p.rect(position.x, position.y, playerWidth, playerHeight);
 
         // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
@@ -376,7 +385,7 @@ else{
 
                 case 'E':
                 case 'e':{
-                    if(location == LocationType.shop&&pressed == true)
+                    if(pressed == true)
                     activate=true;
 
                 }break;

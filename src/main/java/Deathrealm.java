@@ -21,14 +21,11 @@ public class Deathrealm {
     int [] [] gridData = new int [3] [2];
     int xTemp;
     int yTemp;
-
-
     Deathrealm(PApplet p, Player player, ArrayList<PasswordPillar> pillars, DeathReaper deathReaper) {
         this.p = p;
         this.player = player;
         this.deathReaper = deathReaper;
         this.pillars = pillars;
-        //position.set(1400, this.p.height / 2);
     }
 
     void deathrealmFunctions() {
@@ -36,8 +33,6 @@ public class Deathrealm {
         deathReaperFunctions();
         passwordPillarFunctions();
         passwordLoop();
-
-
 
 
     }
