@@ -265,7 +265,7 @@ else{
 
                 case '1': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 0)
+                        if (inventory.useBarList.get(0).useList.size() > 0)
                         inventory.useBarList.get(0).selected = !inventory.useBarList.get(0).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 0)
@@ -279,7 +279,7 @@ else{
                 break;
                 case '2': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 1)
+                        if (inventory.useBarList.get(0).useList.size() > 1)
                         inventory.useBarList.get(1).selected = !inventory.useBarList.get(1).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 1)
@@ -293,7 +293,7 @@ else{
                 break;
                 case '3': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 2)
+                        if (inventory.useBarList.get(0).useList.size() > 2)
                             inventory.useBarList.get(2).selected = !inventory.useBarList.get(2).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 2)
@@ -307,7 +307,7 @@ else{
                 break;
                 case '4': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 3)
+                        if (inventory.useBarList.get(0).useList.size() > 3)
                             inventory.useBarList.get(3).selected = !inventory.useBarList.get(3).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 3)
@@ -322,7 +322,7 @@ else{
                 break;
                 case '5': {
                     if (pressed == true) {
-                        if (inventory.useBarList.size() > 4)
+                        if (inventory.useBarList.get(0).useList.size() > 4)
                             inventory.useBarList.get(4).selected = !inventory.useBarList.get(4).selected;
                         for (int i = 0; i < 5; i++) {
                             if (i != 4)

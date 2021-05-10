@@ -15,7 +15,7 @@ public class Location {
     }
 
 
-    LocationType location = LocationType.dungeon;
+    LocationType location = LocationType.shop;
 
 
     void functions(Main m){
