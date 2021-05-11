@@ -166,7 +166,6 @@ public class Player {
             case "-1-1": {
 //Skrot til venstreopad.
 
-
                 //System.out.println("SkrotvenstreOpad");
                 if(running)
                     p.image(imgLoad.leftUpImgs[p.frameCount/8 %2],position.x,position.y,width,height);
@@ -381,7 +380,7 @@ void regainStamina() {
 
 void showMoney(){
 
-        p.text(money,20,20);
+        p.text(money+"￥",20,20);
 
 
 }

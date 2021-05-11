@@ -12,6 +12,7 @@ public class ImageLoader {
     PImage [] leftUpImgs = new PImage[2];
     PImage [] downRightImgs = new PImage[2];
     PImage [] downLeftImgs = new PImage[2];
+    PImage [] cheeseghastImgs = new PImage[2];
 
 
     //items  models.
@@ -107,6 +108,8 @@ public class ImageLoader {
             leftUpImgs[i-1] = p.loadImage("leftup"+i+".png");
             downRightImgs[i-1] = p.loadImage("downright"+i+".png");
             downLeftImgs[i-1] = p.loadImage("downleft"+i+".png");
+
+            cheeseghastImgs[i-1] = p.loadImage("cheeseghast"+i+".png");
         }
     }
 }
