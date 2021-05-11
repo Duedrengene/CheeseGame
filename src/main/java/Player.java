@@ -72,11 +72,24 @@ public class Player {
     }
 
 
-    void changePosition() {
+    void changePosition(ArrayList<GridSpaceDefault> grid) {
 
         PVector speed = new PVector(velocity.x, velocity.y);
         speed.mult(runningSpeed.x);
-        position.add(speed);
+
+        PVector temp = new PVector(position.x,position.y);
+        temp.add(speed);
+        boolean add = true;
+        for (int i =0;i<grid.size();i++) {
+            if (grid.get(i).furnitureGridType == FurnitureTypes.wall) {
+                if (grid.get(i).furniture.collision(this, temp.x, temp.y, grid.get(i).x, grid.get(i).y, grid.get(i).width, grid.get(i).height))
+                add = false;
+            }
+        }
+        if (add == true)
+            position.add(speed);
+
+
         //p.println(velocity);
         // Currently constrain for DeathRealm and Dungeon and shop.
         // Se efter dead text
@@ -112,9 +125,9 @@ public class Player {
 
        }
    }
-    void draw(ArrayList<GridSpaceInventory> inventoryGridList,Location location) {
+    void draw(ArrayList<GridSpaceInventory> inventoryGridList,ArrayList<GridSpaceDefault> grid,Location location) {
         //void draw(location) {
-        changePosition();
+        changePosition(grid);
 
 
         inventory.display(buildMode,this,inventoryGridList);

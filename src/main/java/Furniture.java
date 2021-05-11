@@ -29,6 +29,16 @@ PImage img;
 
      }
 
+     boolean collision(Player player,float tempX,float tempY, float x, float y,float width, float height){
+boolean result = false;
+
+if(((tempX > x && tempX < x+width)||(tempX+player.width> x && tempX+width < x+width)) &&((tempY <y+height&&(tempY >y))||(tempY+player.height>y)&&(tempY+player.height<y+height)))
+    result= true;
+
+
+        return result;
+     }
+
      float playerNearby(Player player,float x,float y,int playerWidth,int playerHeight,float gridWidth,float gridHeight){
          float distance = -1;
 

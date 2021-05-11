@@ -18,7 +18,6 @@ this.y = y;
 
     boolean moneyText(){
     boolean result = false;
-        System.out.println(x+" "+y);
 
             p.fill(0, 122, 0);
 

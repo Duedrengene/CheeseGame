@@ -74,7 +74,7 @@ public class Main extends PApplet {
         background(0);
         //camera.changeAngle();
         location.functions(this);
-        player.draw(inventoryGrid,location);
+        player.draw(inventoryGrid,grid,location);
 
     //    System.out.println(inventoryGrid);
     }

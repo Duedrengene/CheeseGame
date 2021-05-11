@@ -27,7 +27,6 @@ this.textList = textList;
             p.text("BUILD MODE",p.width/2,p.height-200);
 
             player.showMoney();
-                        System.out.println(textList);
 
             for (int i = 0; textList.size()>i;i++) {
                 if(textList.get(i).moneyText()) {
