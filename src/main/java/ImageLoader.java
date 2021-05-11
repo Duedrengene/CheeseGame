@@ -109,7 +109,7 @@ public class ImageLoader {
             downRightImgs[i-1] = p.loadImage("downright"+i+".png");
             downLeftImgs[i-1] = p.loadImage("downleft"+i+".png");
 
-            cheeseghastImgs[i-1] = p.loadImage("cheeseghast"+i+".png");
+            cheeseghastImgs[i-1] = p.loadImage("chesseghast"+i+".png");
         }
     }
 }
