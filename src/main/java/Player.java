@@ -1,7 +1,10 @@
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 import processing.core.PVector;
+
+import java.awt.*;
 import java.util.ArrayList;
 import static processing.core.PConstants.*;
 
@@ -20,6 +23,8 @@ public class Player {
     PVector bodyDash = new PVector();
     PVector bulletSpeed = new PVector();
     PVector runningSpeed = new PVector(1,1);
+
+    FontLoader fontLoad;
 
     boolean isShooting = false;
     boolean showAim = false;
@@ -61,12 +66,13 @@ public class Player {
 
 
 
-    Player(PApplet p, ArrayList<Bullet> bullets,Inventory inventory,ImageLoader imgLoad) {
+    Player(PApplet p, ArrayList<Bullet> bullets,Inventory inventory,ImageLoader imgLoad,FontLoader fontLoad) {
         this.playerHealth = playerHealth;
         this.p = p;
         this.bullets = bullets;
         this.imgLoad = imgLoad;
         this.inventory = inventory;
+        this.fontLoad = fontLoad;
 
         position.set(1400, this.p.height / 2);
     }
@@ -352,8 +358,9 @@ public class Player {
         //Til at vise den maximale HP bar stadig selvom HP forsvinder.
 
         p.fill(255);
-        p.textSize(20);
+        p.pushMatrix();
         p.text((int)calculateplayerHP/2+" HP",1725,50);
+        p.popMatrix();
     }
  void useStamina() {
      if (running == true) {
@@ -381,7 +388,7 @@ void regainStamina() {
 
 void showMoney(){
 
-        p.text(money,20,20);
+        p.text(money  +" $",20,20);
 
 
 }

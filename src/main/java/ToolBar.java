@@ -30,14 +30,15 @@ public class ToolBar {
 
         p.strokeWeight(5);
         if(selected) {
+
             p.stroke(0, 255, 0);
         }else p.stroke(0,0,0);
+        p.noFill();
 
         if (useList.size()-1 < toolBarCount)
             p.fill(255, 255, 255);
         p.rect(position.x, position.y, width, height);
 
-        p.noFill();
             p.stroke(0);
             p.strokeWeight(0);
 

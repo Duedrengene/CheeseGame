@@ -15,7 +15,8 @@ Door(PImage img){
         if(m.location.location == LocationType.shop) {
             m.location.location = LocationType.dungeon;
             m.player.position.x = 20;
-            m.player.position.y=50;
+            m.player.position.y=100;
+            m.camera.mode = 1;
         }
         else{
             m.location.location=LocationType.shop;
@@ -23,6 +24,7 @@ for (int i =0; i<m.grid.size();i++)
     if(m.grid.get(i).furnitureGridType == FurnitureTypes.door){
            m.player.position.x = m.grid.get(i).x+50;
            m.player.position.y = m.grid.get(i).y+50;
+        m.camera.mode = 0;
 
     }
         }

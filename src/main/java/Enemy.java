@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -12,11 +13,14 @@ public class Enemy {
 
     Player player;
 
+    PImage img;
+
     PVector playerPosition;
     PVector enemyPosition = new PVector();
     PVector getGetEnemyVelocity = new PVector(0, 0);
     PVector acceleration;
 
+    Items drop = Items.empty;
 
     boolean followingPlayer = false;
     boolean enemySlashRange = false;
@@ -25,7 +29,7 @@ public class Enemy {
     int time =-1;
     int t0 = 0;
 
-    int hastighed;
+    float hastighed;
 
     float maximumHealth = 100;
     float healthbarWidth = 100;
@@ -33,12 +37,12 @@ public class Enemy {
     float health = 100;
     float moveSpeed = 4;
     float maxForce = 1;
-    float playerDiameter = 17;
-    float enemyDiameter = 17;
+    float playerDiameter = 64;
+    float enemyDiameter = 64;
 
     //float calculateHP;
 
-    Enemy(float xPos, float yPos, int hastighed, int DIAMETER, PVector playerPosition, PApplet p, Player player) {
+    Enemy(float xPos, float yPos, float hastighed, int DIAMETER, PVector playerPosition, PApplet p, Player player) {
         enemyPosition.x = xPos;
         enemyPosition.y = yPos;
         this.hastighed = hastighed;
@@ -97,8 +101,9 @@ public class Enemy {
     }
 
     public void display() {
-
-        p.ellipse(enemyPosition.x, enemyPosition.y, enemyDiameter, enemyDiameter);
+        p.imageMode(3);
+        p.image(img,enemyPosition.x, enemyPosition.y, enemyDiameter, enemyDiameter);
+        p.imageMode(0);
 
         //Laver enemies Healthbar.
 

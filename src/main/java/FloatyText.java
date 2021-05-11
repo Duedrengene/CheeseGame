@@ -21,7 +21,7 @@ this.y = y;
 
             p.fill(0, 122, 0);
 
-        p.text(amount + " ￥", x+35, y);
+        p.text(amount + " $", x+35, y);
             y -= 1;
             p.fill(255, 255, 255);
 

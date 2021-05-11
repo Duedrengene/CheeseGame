@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Main extends PApplet {
 
     ArrayList<Enemy> enemies = new ArrayList<>();
     ImageLoader imgLoad = new ImageLoader(this);
+    FontLoader fontLoad = new FontLoader(this);
     ArrayList<Bullet> bullets = new ArrayList<>();
     GUI gUI;
 
@@ -47,8 +49,9 @@ public class Main extends PApplet {
         super.setup();
 
         imgLoad.loadTheImages();
+        fontLoad.loadFont();
         inventory = new Inventory(this,this);
-        player = new Player(this,bullets,inventory,imgLoad);
+        player = new Player(this,bullets,inventory,imgLoad,fontLoad);
         grid = gridCreate.createGrid(width, height, this, imgLoad, inventory,20,12,true,0,player);
         inventoryGrid = gridCreate.createGridInventory(500,500,this,imgLoad,inventory,5,5,false,250);
         shop = new Shop(furnitureList, grid);
@@ -71,6 +74,7 @@ public class Main extends PApplet {
     public void draw() {
 
         clear();
+        textFont(fontLoad.georgiaFont);
         background(0);
         //camera.changeAngle();
         location.functions(this);

@@ -88,14 +88,34 @@ Door portal;
    }
 
    void enemyFunctions(){
-       if (enemies.size() < 5)
-           enemies.add(new Enemy((int) p.random(2000, 3000), (int) p.random(0, 1000), hastighed, DIAMETER, player.position, p, player));
-
+       if (enemies.size() < 5) {
+           enemies.add(new Golem((int) p.random(2000, 3000), (int) p.random(0, 1000), hastighed, DIAMETER, player.position, p, player));
+           enemies.add(new CheeseDemon((int) p.random(2000, 3000), (int) p.random(0, 1000), hastighed, DIAMETER, player.position, p, player));
+       }
        for (int i = 0; i < enemies.size(); i++) {
            enemies.get(i).update();
            enemies.get(i).display();
            if(enemies.get(i).health<0){
-enemies.remove(i);
+               switch(enemies.get(i).drop){
+
+                   case pizzaTopping:{
+                        player.inventory.add(new PizzaTopping(imgLoad.pizzatopping),1 );
+
+                   }break;
+                   case cheddar:{
+                       player.inventory.add(new Cheddar(imgLoad.cheddar),1 );
+
+
+                   }break;
+                   case primadonna:{
+                       player.inventory.add(new Primadonna(imgLoad.primadonna),1 );
+
+
+                   }break;
+
+
+               }
+               enemies.remove(i);
 i--;
            }
        }
