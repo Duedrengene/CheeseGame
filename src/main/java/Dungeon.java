@@ -17,7 +17,7 @@ Door portal;
         int portalY = 100;
     int level;
     int DIAMETER = 80;
-    int hastighed = 4;
+    int speed;
     Main m ;
 
     Dungeon(PApplet p,Player player,ArrayList<Enemy> enemies,Camera camera,ImageLoader imgLoad,Main m){
@@ -88,10 +88,9 @@ Door portal;
    }
 
    void enemyFunctions(){
-       if (enemies.size() < 5) {
-           enemies.add(new Golem((int) p.random(2000, 3000), (int) p.random(0, 1000), hastighed, DIAMETER, player.position, p, player));
-           enemies.add(new CheeseDemon((int) p.random(2000, 3000), (int) p.random(0, 1000), hastighed, DIAMETER, player.position, p, player));
-       }
+
+
+
        for (int i = 0; i < enemies.size(); i++) {
            enemies.get(i).update();
            enemies.get(i).display();

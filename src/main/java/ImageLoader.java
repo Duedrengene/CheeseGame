@@ -8,11 +8,11 @@ public class ImageLoader {
     //Animations.
     PImage[] frontImgs = new PImage[2];
     PImage[] behindImgs = new PImage[2];
-    PImage [] rightUpImgs = new PImage[2];
-    PImage [] leftUpImgs = new PImage[2];
-    PImage [] downRightImgs = new PImage[2];
-    PImage [] downLeftImgs = new PImage[2];
-    PImage [] cheeseghastImgs = new PImage[2];
+    PImage[] rightUpImgs = new PImage[2];
+    PImage[] leftUpImgs = new PImage[2];
+    PImage[] downRightImgs = new PImage[2];
+    PImage[] downLeftImgs = new PImage[2];
+    PImage[] cheeseGhastImgs = new PImage[2];
 
 
     //items  models.
@@ -84,9 +84,11 @@ public class ImageLoader {
         cheddar = p.loadImage("cheddar.png");
         primadonna = p.loadImage("Primadonna-export.png");
         //Characters & Mobs
+
         captaincheese = p.loadImage("Kaptajn Ost.png");
         cheeseGolem = p.loadImage("cheesemob.png");
         cheeseDemon = p.loadImage("cheesedemon.png");
+
         //Backgrounds
 
 //Player
@@ -108,8 +110,7 @@ public class ImageLoader {
             leftUpImgs[i-1] = p.loadImage("leftup"+i+".png");
             downRightImgs[i-1] = p.loadImage("downright"+i+".png");
             downLeftImgs[i-1] = p.loadImage("downleft"+i+".png");
-
-            cheeseghastImgs[i-1] = p.loadImage("chesseghast"+i+".png");
+            cheeseGhastImgs[i-1] = p.loadImage("cheeseghast"+i+".png");
         }
     }
 }

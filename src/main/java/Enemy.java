@@ -21,6 +21,7 @@ public class Enemy {
     PVector acceleration;
 
     Items drop = Items.empty;
+    ImageLoader imgLoad;
 
     boolean followingPlayer = false;
     boolean enemySlashRange = false;
@@ -29,29 +30,34 @@ public class Enemy {
     int time =-1;
     int t0 = 0;
 
-    float hastighed;
-
-    float maximumHealth = 100;
+    float speed;
+    float activeRadius;
+    float maximumHealth;
     float healthbarWidth = 100;
     float healthbarHeight = 20;
-    float health = 100;
-    float moveSpeed = 4;
+    float health;
+    float moveSpeed;
     float maxForce = 1;
     float playerDiameter = 64;
     float enemyDiameter = 64;
 
+
     //float calculateHP;
 
-    Enemy(float xPos, float yPos, float hastighed, int DIAMETER, PVector playerPosition, PApplet p, Player player) {
+    Enemy(float xPos, float yPos, float speed, float health,float activeRadius, PVector playerPosition, PApplet p, Player player,ImageLoader imgLoad) {
         enemyPosition.x = xPos;
         enemyPosition.y = yPos;
-        this.hastighed = hastighed;
+        this.speed = speed;
         this.p = p;
         this.playerPosition = playerPosition;
         this.player = player;
         this.bullets = player.bullets;
-
+        this.imgLoad = imgLoad;
         acceleration = new PVector(0, 0);
+        moveSpeed = speed;
+        this.activeRadius = activeRadius;
+        this.maximumHealth = health;
+        this.health = maximumHealth;
     }
 
     void update() {
@@ -74,7 +80,7 @@ public class Enemy {
             enemyPosition.x += direction.x;
             enemyPosition.y += direction.y;
 
-            direction.limit(moveSpeed);
+
             //getGetEnemyvelocity.limit(movespeed);
 
             enemyPosition.add(getGetEnemyVelocity);
@@ -111,7 +117,7 @@ public class Enemy {
 
         p.stroke(153);
         p.rect(enemyPosition.x - 50, enemyPosition.y - 50, calculateHP, healthbarHeight);
-        boolean hit = pointRadius(playerPosition.x, playerPosition.y, playerDiameter, enemyPosition.x, enemyPosition.y, enemyDiameter);
+        boolean hit = pointRadius(playerPosition.x, playerPosition.y, enemyPosition.x, enemyPosition.y, enemyDiameter);
 
         if (hit) {
            //timerReset();
@@ -142,25 +148,25 @@ void timerReset() {
 
 
 
-    boolean pointRadius(float positionx, float positiony, float Activeradius, float getEnemypositionx, float timer, float Enemyradius) {
+    boolean pointRadius(float positionx, float positiony,  float getEnemypositionx, float timer, float Enemyradius) {
         float distanceX = playerPosition.x - enemyPosition.x;
         float distanceY = playerPosition.y - enemyPosition.y;
         float distance = p.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-        Activeradius = 350;
-        if (distance <= Activeradius) {
+
+        if (distance <= activeRadius) {
             followingPlayer = true;
 
             if(distance < 35) {
                 enemySlashRange = true;
                 if (enemySlashRange = true) ;
 
-                float slowdown = 0.4f;
+                float slowdown = 0.04f;
                 moveSpeed = slowdown;
             }
                  else
 
                      //HIT FUCKTION HERE WHEN ATTACKING.
-                     moveSpeed =4;
+                     moveSpeed =speed;
                      enemySlashRange = false;
 
 

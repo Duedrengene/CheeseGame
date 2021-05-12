@@ -75,6 +75,7 @@ public class Player {
         this.fontLoad = fontLoad;
 
         position.set(1400, this.p.height / 2);
+
     }
 
 
