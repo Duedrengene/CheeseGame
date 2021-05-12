@@ -10,7 +10,7 @@ public class Dungeon {
 
     ImageLoader imgLoad;
     Player player;
-Door portal;
+    Door portal;
     ArrayList<Enemy> enemies;
     Camera camera;
     int portalX = 70;
@@ -58,8 +58,7 @@ Door portal;
 
    void playerFunctions(){
 
-       player.runAbility();
-       player.regainStamina();
+
        player.useStamina();
        player.entranceDetect();
        player.showAim(camera);

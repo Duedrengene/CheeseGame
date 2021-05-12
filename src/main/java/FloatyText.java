@@ -18,8 +18,10 @@ this.y = y;
 
     boolean moneyText(){
     boolean result = false;
-
+if(amount != 0)
             p.fill(0, 122, 0);
+else
+    p.fill(122,0,0);
 
         p.text(amount + " $", x+35, y);
             y -= 1;

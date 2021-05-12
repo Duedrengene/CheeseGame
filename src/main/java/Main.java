@@ -21,6 +21,7 @@ public class Main extends PApplet {
     GridCreater gridCreate = new GridCreater();
     FloatyText fT;
 
+    StartMenu startMenu;
     Inventory inventory;
     Shop shop;
     Dungeon dungeon;
@@ -60,7 +61,8 @@ public class Main extends PApplet {
         gUI = new GUI(this,player,textList);
         deathReaper = new DeathReaper(this,width/2,height/2,imgLoad);
         deathRealm = new Deathrealm(this,player, pillars, deathReaper);
-        location = new Location(shop, dungeon,gUI, deathRealm);
+        startMenu = new StartMenu(this,player);
+        location = new Location(shop, dungeon,gUI, deathRealm,startMenu);
 
 
         inventory.furnitureList.add(new WallItem(imgLoad.wall));
@@ -98,11 +100,13 @@ public class Main extends PApplet {
 
 
    public void mousePressed() {
+        if(mouseButton == LEFT)
         player.mouseControls(mouseX,mouseY, true,location.location,grid,inventoryGrid,camera);
 
    }
    public void mouseReleased(){
-        player.mouseControls(mouseX,mouseY,false,location.location,grid,inventoryGrid,camera);
+       if(mouseButton == LEFT)
+           player.mouseControls(mouseX,mouseY,false,location.location,grid,inventoryGrid,camera);
 
    }
 

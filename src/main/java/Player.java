@@ -20,19 +20,17 @@ public class Player {
 
     PVector position = new PVector();
     PVector velocity = new PVector();
-    PVector bodyDash = new PVector();
     PVector bulletSpeed = new PVector();
     PVector runningSpeed = new PVector(1,1);
 
     FontLoader fontLoad;
 
+    boolean mouseActivate;
     boolean isShooting = false;
     boolean showAim = false;
-    boolean cooldown = false;
     boolean check = true;
     boolean down,up,left,right = false;
     boolean ready = true;
-    boolean open = false;
     boolean running = false;
     boolean notAbleToRun = false;
     boolean buildMode = false;
@@ -42,27 +40,18 @@ public class Player {
     boolean dead = false;
     boolean entrance = false;
 
-    float playerSpd = 20;
     float maximumHealth = 100;
     float healthbarWidth = 200;
     float healthbarHeight = 40;
     float playerHealth = 100;
-    float maxMagasineUpgrade;
     float maximumStamina = 100;
     float staminaLoss = 0.5f;
     float passiveStamina = 1.15f;
     float stamina = maximumStamina;
 
-    PImage[] imgs = new PImage[2];
-
     int width = 63;
     int height = 63;
     int money = 100;
-
-
-    float constrainLow;
-    float constrainHigh;
-    Boolean inDungeon = true;
 
 
 
@@ -73,26 +62,27 @@ public class Player {
         this.imgLoad = imgLoad;
         this.inventory = inventory;
         this.fontLoad = fontLoad;
-
         position.set(1400, this.p.height / 2);
 
     }
 
 
-    void changePosition(ArrayList<GridSpaceDefault> grid) {
+    void changePosition(ArrayList<GridSpaceDefault> grid,Location location) {
 
         PVector speed = new PVector(velocity.x, velocity.y);
         speed.mult(runningSpeed.x);
 
         PVector temp = new PVector(position.x,position.y);
         temp.add(speed);
+
         boolean add = true;
+        if(location.location == LocationType.shop){
         for (int i =0;i<grid.size();i++) {
             if (grid.get(i).furnitureGridType == FurnitureTypes.wall) {
                 if (grid.get(i).furniture.collision(this, temp.x, temp.y, grid.get(i).x, grid.get(i).y, grid.get(i).width, grid.get(i).height))
                 add = false;
             }
-        }
+        }}
         if (add == true)
             position.add(speed);
 
@@ -100,13 +90,13 @@ public class Player {
         //p.println(velocity);
         // Currently constrain for DeathRealm and Dungeon and shop.
         // Se efter dead text
-        if (inDungeon== true)
+        if (location.location == LocationType.dungeon) {
             position.x = p.constrain(position.x, 130, 2882);
-        position.y = p.constrain(position.y, 50, 2920);
-
-    if(inDungeon == false) {
-        position.x = p.constrain(position.x, 50, p.width - width - 10);
-        position.y = p.constrain(position.y, 90, p.height - height - 10);
+            position.y = p.constrain(position.y, 50, 2920);
+        }
+        else {
+        position.x = p.constrain(position.x, 0, p.width - width - 10);
+        position.y = p.constrain(position.y, 0, p.height - height - 10);
     }
     }
     void entranceDetect() {
@@ -134,7 +124,10 @@ public class Player {
    }
     void draw(ArrayList<GridSpaceInventory> inventoryGridList,ArrayList<GridSpaceDefault> grid,Location location) {
         //void draw(location) {
-        changePosition(grid);
+        runAbility();
+        regainStamina();
+        changePosition(grid,location);
+
 
 
         inventory.display(buildMode,this,inventoryGridList);
@@ -143,23 +136,13 @@ public class Player {
             playerHealth = 0;
             dead = true;
             //position.set(960, 890);
-        location.changeLocation(LocationType.deathrealm);
-        inDungeon = false;
+            location.changeLocation(LocationType.deathrealm);
             position.set(960, 890);
 
         }
     }
     void display() {
-        p.fill(255);
-        p.stroke(204, 102, 0);
-        if (entrance == true) {
-            this.p.fill(0, 255, 199);
-            this.p.text(" Accept fate?(interact with me)", 405, 100);
-        } else {
-            p.fill(178);
-            p.text("Want to go back to shop? Go through the portal.", 405, 65);
 
-        }
         //p.rect(position.x, position.y, playerWidth, playerHeight);
 
         // Se på if(multiple booleans display picture. fx if (down && up) så display kun det her.
@@ -388,7 +371,7 @@ void regainStamina() {
 }
 
 void showMoney(){
-
+        p.fill(255);
         p.text(money  +" $",20,20);
 
 
@@ -689,6 +672,13 @@ else{
                      gridInventory.get(i).pressed(mouseX, mouseY);
              }
              inventory.selector(true, mouseX, mouseY, inventory);
+         }
+
+         if(location == LocationType.shop) {
+
+             if(pressed)
+                 mouseActivate = true;
+
          }
 
 

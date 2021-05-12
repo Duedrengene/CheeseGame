@@ -26,7 +26,7 @@ this.textList = textList;
         if(player.buildMode)
             p.text("BUILD MODE",p.width/2,p.height-200);
 
-            player.showMoney();
+
 
             for (int i = 0; textList.size()>i;i++) {
                 if(textList.get(i).moneyText()) {
@@ -39,13 +39,19 @@ this.textList = textList;
 
 
 
-
+       player.showMoney();
     }
 
-    void displayDungeon(){
+    void displayDungeon() {
         player.showHealth();
         player.showStamina();
 
+        p.fill(255);
+        p.stroke(204, 102, 0);
+        if (player.entrance == true) {
+            this.p.fill(0, 255, 199);
+            p.text("Want to go back to shop? Go through the portal.", p.width/2, p.height/2);
+        }
     }
 
 

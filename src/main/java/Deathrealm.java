@@ -7,7 +7,7 @@ import static processing.core.PConstants.CENTER;
 
 public class Deathrealm {
     PApplet p;
-
+    Door reaper = new Door(null);
     Player player;
     DeathReaper deathReaper;
     ArrayList<PasswordPillar> pillars;
@@ -40,9 +40,7 @@ public class Deathrealm {
     }
 
     void playerFunctions() {
-        player.runAbility();
-        player.regainStamina();
-        player.useStamina();
+
 
 
     }
@@ -54,6 +52,10 @@ public class Deathrealm {
         p.imageMode(CENTER);
         player.display();
         p.imageMode(0);
+
+
+
+
         // Tilføj Circulation effect?
 
 

@@ -20,6 +20,7 @@ PImage img;
      }
 
      void display(PApplet p,float x,float y){
+         if(img !=  null)
      p.image(img,x,y);
 
 

@@ -30,7 +30,11 @@ int money = 0;
 
 
                     }break;
+                    default:{
 
+                        money =0;
+
+                    }
                 }
                 m.textList.add(new FloatyText(m.player.p,money,m.grid.get(i).x,m.grid.get(i).y));
 
