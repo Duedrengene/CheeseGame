@@ -2,8 +2,10 @@ import processing.core.PApplet;
 import processing.core.PImage;
 public class ImageLoader {
     //Backgrounds
-    PImage cave;
-    PImage startup;
+    PImage shopBackground;
+    PImage startUp;
+    PImage cavebackground;
+
 
     //Animations.
     PImage[] frontImgs = new PImage[2];
@@ -49,7 +51,7 @@ public class ImageLoader {
     PImage cashRegister;
     PImage pillar;
     PImage deathRealm;
-    PImage cavebackground;
+
     PImage floor;
 
 
@@ -76,7 +78,7 @@ public class ImageLoader {
         cashRegister = p.loadImage("CashRegister.png");
         pillar = p.loadImage("Pillar.png");
         deathRealm = p.loadImage("deathrealm.png");
-        cavebackground = p.loadImage("Caveground.png");
+
 
 
         //Loaditemsmodel
@@ -90,6 +92,10 @@ public class ImageLoader {
         cheeseDemon = p.loadImage("cheesedemon.png");
 
         //Backgrounds
+        startUp = p.loadImage("cheesegamestartscreen.png");
+        cavebackground = p.loadImage("Caveground.png");
+        shopBackground = p.loadImage("shopbackgrounden.png");
+
 
 //Player
         runningright = p.loadImage("runningright.png");
