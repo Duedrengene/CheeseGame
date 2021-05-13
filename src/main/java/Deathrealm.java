@@ -33,8 +33,8 @@ public class Deathrealm {
     void deathrealmFunctions() {
         playerFunctions();
         deathReaperFunctions();
-        passwordPillarFunctions();
-        passwordLoop();
+        //passwordPillarFunctions();
+        //passwordLoop();
 
 
     }

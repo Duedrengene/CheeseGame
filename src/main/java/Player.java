@@ -47,7 +47,7 @@ public class Player {
     float playerHealth = 100;
     float maximumStamina = 100;
     float staminaLoss = 0.5f;
-    float passiveStamina = 1.15f;
+    float passiveStamina = 0.8f;
     float stamina = maximumStamina;
 
     int width = 63;
@@ -88,7 +88,7 @@ public class Player {
             position.add(speed);
 
 
-        //p.println(velocity);
+
         // Currently constrain for DeathRealm and Dungeon and shop.
         // Se efter dead text
         if (location.location == LocationType.dungeon) {
@@ -96,7 +96,7 @@ public class Player {
             position.y = p.constrain(position.y, 50, 2920);
         }
         else {
-        position.x = p.constrain(position.x, 0, p.width - width - 10);
+        position.x = p.constrain(position.x, 50, p.width - width - 10);
         position.y = p.constrain(position.y, 0, p.height - height - 10);
     }
     }

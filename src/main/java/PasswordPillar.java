@@ -34,19 +34,21 @@ public class PasswordPillar {
     }
 
     void display() {
-        ;
+        //Skulle være et Password Pillar.
+
         //p.fill(135);
         //for (int i = 1; i < 8; i++) {
-        gridData[1][1] = 1;
+        //gridData[1][1] = 1;
 
-        for (int xTemp = 0; xTemp < 3; xTemp++) {
-            for (int yTemp = 0; yTemp < 2; yTemp++) {
+        //for (int xTemp = 0; xTemp < 3; xTemp++) {
+        //for (int yTemp = 0; yTemp < 2; yTemp++) {
 
-                if (gridData[xTemp][yTemp] == 1);
-                    p.fill(255, 2, 2);
-                    p.rect(y+xTemp * 15, x+yTemp * 15, pillarWidth, pillarHeight);
+        // if (gridData[xTemp][yTemp] == 1);
+        // p.fill(255, 2, 2);
+        //  p.rect(y+xTemp * 15, x+yTemp * 15, pillarWidth, pillarHeight);
 
-                }
-            }
-        }
+        //}
+        // }
+
     }
+}

@@ -8,11 +8,11 @@ public class StartMenu {
     ArrayList<Button> buttons = new ArrayList<>();
     Player player;
     PApplet p ;
-    PImage background;
-    StartMenu(PApplet p, Player player, Main m, PImage background){
+    PImage startUp;
+    StartMenu(PApplet p, Player player, Main m, PImage startUp){
         this.p = p;
         this.player = player;
-        this.background = background;
+        this.startUp = startUp;
         buttons.add(new Butt_LocationChange(p,player,m,LocationType.shop,"Start",p.width/2,400));
         buttons.add(new Butt_Info(p,player,m));
         buttons.add(new Butt_Quit(p,player));
@@ -22,7 +22,7 @@ public class StartMenu {
 
 
     void functions(){
-      //  p.background(background);
+        p.background(startUp);
         for(int i =0;i<buttons.size();i++){
             buttons.get(i).checkPressed();
             buttons.get(i).display();
