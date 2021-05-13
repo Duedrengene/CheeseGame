@@ -10,7 +10,7 @@ public class Button  {
     Player player;
 
     PApplet p;
-
+    
     String text;
 
     int width = 200;
@@ -40,7 +40,7 @@ public class Button  {
         p.fill(255);
         p.rect(position.x,position.y,width,height);
         p.fill(122);
-    p.text(text,position.x,position.y+20);
+        p.text(text,position.x,position.y+20);
 
 
 
