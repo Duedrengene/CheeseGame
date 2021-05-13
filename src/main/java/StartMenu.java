@@ -22,7 +22,7 @@ public class StartMenu {
 
 
     void functions(){
-        p.background(background);
+      //  p.background(background);
         for(int i =0;i<buttons.size();i++){
             buttons.get(i).checkPressed();
             buttons.get(i).display();
