@@ -92,7 +92,7 @@ public class ImageLoader {
         cheeseDemon = p.loadImage("cheesedemon.png");
 
         //Backgrounds
-        startUp = p.loadImage("cheesegamestartscreen.png");
+        startUp = p.loadImage("startUp.png");
         cavebackground = p.loadImage("Caveground.png");
         shopBackground = p.loadImage("shopbackgrounden.png");
 
