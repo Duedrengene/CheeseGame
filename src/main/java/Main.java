@@ -1,6 +1,5 @@
 import processing.core.PApplet;
-import processing.core.PFont;
-import processing.core.PVector;
+
 
 import java.util.ArrayList;
 
@@ -26,6 +25,7 @@ public class Main extends PApplet {
     Shop shop;
     Dungeon dungeon;
     Location location;
+    Info info;
     Player player;
     Camera camera;
     Deathrealm deathRealm;
@@ -39,6 +39,7 @@ public class Main extends PApplet {
 
     @Override
     public void settings() {
+        fullScreen();
         size(1920, 1080);
     }
 
@@ -61,8 +62,9 @@ public class Main extends PApplet {
         gUI = new GUI(this,player,textList);
         deathReaper = new DeathReaper(this,width/2,height/2,imgLoad);
         deathRealm = new Deathrealm(this,player, pillars, deathReaper);
-        startMenu = new StartMenu(this,player);
-        location = new Location(shop, dungeon,gUI, deathRealm,startMenu);
+        startMenu = new StartMenu(this,player,this,imgLoad.startUp);
+        info = new Info(this,this,imgLoad.tutorial);
+        location = new Location(shop, dungeon,gUI, deathRealm,startMenu, info);
 
 
         inventory.furnitureList.add(new WallItem(imgLoad.wall));
@@ -77,7 +79,6 @@ public class Main extends PApplet {
 
         clear();
         textFont(fontLoad.georgiaFont);
-        background(0);
         //camera.changeAngle();
         location.functions(this);
         player.draw(inventoryGrid,grid,location);

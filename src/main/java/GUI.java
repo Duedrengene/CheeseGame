@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ this.textList = textList;
 
 
 
-   void displayShop(){
+   void displayShop( ){
         if(player.buildMode)
             p.text("BUILD MODE",p.width/2,p.height-200);
 
@@ -43,6 +44,7 @@ this.textList = textList;
     }
 
     void displayDungeon() {
+
         player.showHealth();
         player.showStamina();
 

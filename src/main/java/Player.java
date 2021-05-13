@@ -39,6 +39,7 @@ public class Player {
     boolean inventoryOpen = false;
     boolean dead = false;
     boolean entrance = false;
+    boolean infoScreen = false;
 
     float maximumHealth = 100;
     float healthbarWidth = 200;
@@ -129,7 +130,7 @@ public class Player {
         changePosition(grid,location);
 
 
-
+        if(location.location != LocationType.menu&&location.location !=LocationType.info)
         inventory.display(buildMode,this,inventoryGridList);
 
         if (playerHealth < 0) {
@@ -674,7 +675,7 @@ else{
              inventory.selector(true, mouseX, mouseY, inventory);
          }
 
-         if(location == LocationType.shop) {
+         if(location == LocationType.menu||location == LocationType.info) {
 
              if(pressed)
                  mouseActivate = true;

@@ -1,3 +1,5 @@
+import processing.core.PApplet;
+
 import java.util.ArrayList;
 
 public class Shop {
@@ -13,10 +15,13 @@ public class Shop {
 
     }
 
-    void shopFunction(Main m) {
+    void shopFunction(Main m, PApplet p) {
+        p.background(m.imgLoad.shopBackground);
+
         float nearestFurniture= 75;
         int furnitureCount =-1;
         for (int i = 0; grid.size() > i; i++) {
+
         m.player.p.fill(0);
             grid.get(i).display();
             if( grid.get(i).furnitureGridType == FurnitureTypes.empty||grid.get(i).furnitureGridType == FurnitureTypes.floor)
@@ -38,6 +43,8 @@ public class Shop {
         }}
         if (m.player.activate&&furnitureCount!=-1)
             grid.get(furnitureCount).furniture.function(m);
+
+
 
         m.player.activate = false;
         m.player.display();

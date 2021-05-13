@@ -13,6 +13,8 @@ public class Button  {
     
     String text;
 
+
+
     int width = 200;
     int height = 50;
 
@@ -29,19 +31,20 @@ public class Button  {
     }
 
     void checkPressed(){
-        if(player.mouseActivate&&(p.mouseX>position.x&&p.mouseX<position.x+width&&p.mouseY>position.y&&p.mouseY<position.y+height))
+        if(player.mouseActivate&&(p.mouseX>position.x-width/2&&p.mouseX<position.x+width/2&&p.mouseY>position.y-height/2&&p.mouseY<position.y+height/2))
         function();
-        System.out.println(player.mouseActivate);
-        player.mouseActivate = false;
 //Mousecontrols bliver ikke kørt
     }
 
     void display(){
+        p.rectMode(3);
         p.fill(255);
         p.rect(position.x,position.y,width,height);
-        p.fill(122);
-        p.text(text,position.x,position.y+20);
-
+        p.fill(0);
+        p.textAlign(3);
+        p.text(text,position.x,position.y);
+        p.rectMode(0);
+        p.textAlign(0);
 
 
     }

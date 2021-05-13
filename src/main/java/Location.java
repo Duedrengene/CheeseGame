@@ -5,14 +5,16 @@ public class Location {
     GUI gUI;
     Deathrealm deathrealm;
     StartMenu startMenu;
+    Info info;
 
 
-    Location(Shop shop,Dungeon dungeon,GUI gUI,Deathrealm deathrealm,StartMenu startMenu){
+    Location(Shop shop,Dungeon dungeon,GUI gUI,Deathrealm deathrealm,StartMenu startMenu,Info info){
     this.shop = shop;
     this.dungeon = dungeon;
     this.gUI = gUI;
     this.deathrealm = deathrealm;
     this.startMenu = startMenu;
+    this.info = info;
 
     }
 
@@ -25,8 +27,10 @@ public class Location {
         switch (location) {
 
             case shop: {
-                shop.shopFunction(m);
+
+                shop.shopFunction(m,m);
                 gUI.displayShop();
+
 
             }
             break;
@@ -47,7 +51,13 @@ public class Location {
 
                 startMenu.functions();
 
-            }
+            }break;
+
+            case info:{
+                info.functions();
+
+            }break;
+
 
             }
         }

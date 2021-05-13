@@ -1,5 +1,8 @@
 import processing.core.PApplet;
 import processing.core.PImage;
+
+import java.util.ArrayList;
+
 public class ImageLoader {
     //Backgrounds
     PImage shopBackground;
@@ -8,6 +11,8 @@ public class ImageLoader {
 
 
     //Animations.
+    ArrayList<PImage> tutorial = new ArrayList<>();
+
     PImage[] frontImgs = new PImage[2];
     PImage[] behindImgs = new PImage[2];
     PImage[] rightUpImgs = new PImage[2];
@@ -118,5 +123,13 @@ public class ImageLoader {
             downLeftImgs[i-1] = p.loadImage("downleft"+i+".png");
             cheeseGhastImgs[i-1] = p.loadImage("cheeseghast"+i+".png");
         }
+
+        for(int i = 1; i<=4;i++){
+            tutorial.add(new PImage());
+        tutorial.set(i-1,p.loadImage(i+".png"));
+
+
+        }
+
     }
 }

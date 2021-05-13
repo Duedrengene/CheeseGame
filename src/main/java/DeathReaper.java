@@ -30,8 +30,7 @@ DeathReaper(PApplet p,float posX,float posY, ImageLoader imgLoad) {
 
 }
 void drawDeathReaper() {
-    p.background(95,73,41);
-    p.image(imgLoad.deathRealm,0,0);
+    p.background(imgLoad.deathRealm);
     p.fill(133);
     //p.rect(940,65,96,96);
     float rx = horizontalRadius*p.cos(angle);

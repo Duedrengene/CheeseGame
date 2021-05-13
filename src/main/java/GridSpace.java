@@ -51,8 +51,7 @@ public class GridSpace {
 if(hasFurniture) {
     if (furnitureGridType != FurnitureTypes.empty)
         furniture.display(p, x, y);
-    else
-        p.rect(x,y,width,height);
+
 
 }else{
    // System.out.println("Ture");
