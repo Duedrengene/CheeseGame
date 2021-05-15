@@ -44,7 +44,8 @@ for (int i =0; i<m.grid.size();i++)
            m.player.position.x = m.grid.get(i).x+m.grid.get(i).width/4;
            m.player.position.y = m.grid.get(i).y+m.grid.get(i).height/4;
         m.camera.mode = 0;
-
+        m.player.playerHealth = 100;
+        m.player.dead = false;
     }
         }
 

@@ -7,10 +7,11 @@ import static processing.core.PConstants.CENTER;
 
 public class Deathrealm {
     PApplet p;
-    Door reaper = new Door(null);
+    Door reaper;
     Player player;
     DeathReaper deathReaper;
     ArrayList<PasswordPillar> pillars;
+    Main m;
 
     int unit = 40;
     int count;
@@ -21,18 +22,28 @@ public class Deathrealm {
     int pillardiameter = 20;
     float longlarg = 15;
     int [] [] gridData = new int [3] [2];
+    int reaperX ;
+    int reaperY=100;
+
     int xTemp;
     int yTemp;
-    Deathrealm(PApplet p, Player player, ArrayList<PasswordPillar> pillars, DeathReaper deathReaper) {
+    Deathrealm(PApplet p, Player player, ArrayList<PasswordPillar> pillars, DeathReaper deathReaper,Main m) {
+        this.m =m;
         this.p = p;
         this.player = player;
         this.deathReaper = deathReaper;
         this.pillars = pillars;
+        reaperX = p.width/2;
+        reaper = new Door(null);
     }
 
     void deathrealmFunctions() {
         playerFunctions();
+
         deathReaperFunctions();
+        if(player.activate&&reaper.playerNearby(player,reaperX,reaperY,player.width,player.height,100,100)!=-1)
+            reaper.function(m);
+        player.activate = false;
         //passwordPillarFunctions();
         //passwordLoop();
 
