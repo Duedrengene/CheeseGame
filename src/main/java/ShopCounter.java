@@ -11,7 +11,9 @@ public class ShopCounter extends Furniture {
 
 
     void function(Main m){
-        if(itemType !=Items.empty) {
+        if (m.player.buildMode == false) {
+
+            if(itemType !=Items.empty) {
 
             itemImg = null;
             Item temp = null;
@@ -38,7 +40,6 @@ public class ShopCounter extends Furniture {
 
             }
 
-            if (m.player.buildMode == false) {
                 for (int i = 0; i < m.inventory.useBarList.size(); i++) {
                     if (m.inventory.useBarList.get(i).selected) {
                         itemType = m.inventory.useBarList.get(i).useList.get(i).itemType;

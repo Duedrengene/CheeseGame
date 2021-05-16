@@ -500,7 +500,7 @@ else{
 
                 }   break;
 
-/*
+
                 case 'l':
                 case 'L': {
                     if (pressed) {
@@ -513,7 +513,7 @@ else{
                 }
 
 
-                break;*/
+                break;
 
                 case 'E':
                 case 'e':{
